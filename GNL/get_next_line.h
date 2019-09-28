@@ -17,6 +17,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+typedef static struct	s_s
+{
+	int					fd;
+	char				*s;
+	struct s_s			*next;
+	struct s_s			*prev;
+}						t_s;
+
 int	get_next_line(const int fd, char **line);
 
 #define BUFF_SIZE 64
