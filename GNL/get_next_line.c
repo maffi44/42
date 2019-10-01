@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:05:17 by mcamila           #+#    #+#             */
-/*   Updated: 2019/10/01 15:52:10 by mcamila          ###   ########.fr       */
+/*   Updated: 2019/10/01 16:12:02 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,18 @@ static int		ft_seek_line(char *s, int rd, char **line)
 			return (-1);
 		*line = ft_strncpy(*line, s, i);
 		(*line)[i] = '\0';
-		if (len - i == 0)
-		{
-			free(s);
-			return (1);
-		}
+//		if (len - i == 0)
+//		{
+//			free(s);
+//			s = NULL;
+//			return (1);
+//		}
 		if (!(buf = ft_strnew(len - i)))
 			return (-1);
-		buf = ft_strcpy(buf, &b[i]);
+		buf = ft_strcpy(buf, &s[i]);
 		free(s);
-		s = buf;
+		s = ft_strdup(buf);
+		ft_memdel((void**)&buf);
 		return (1);
 	}
 	return (0);
@@ -80,9 +82,16 @@ static int		ft_read_to_buf(t_list *head, int fd, char **line)
 	{
 		if ((rd = read(fd, buf, BUFF_SIZE)) == -1)
 			return (-1);
+//		ft_putnbr(fd);
+		if (list->content)
+			ft_putendl(list->content);
+		if (rd == 0)
+			return (0);
 		buf[rd] = '\0';
+
 		if (list->content || rd > 0)
 		{
+			ft_putendl("fafafa");
 			buf2 = NULL;
 			if (list->content)
 				if (!(buf2 = ft_strdup(list->content)))
@@ -131,8 +140,8 @@ int	main()
 //	ft_putstr(buf);
 	while ((rd = get_next_line(fd, &line)) == 1)
 	{
-//		ft_putnbr(rd);
-//		ft_putchar(' ');
+		ft_putnbr(rd);
+		ft_putchar(' ');
 		ft_putstr(line);
 		ft_putchar('\n');
 		free(line);
