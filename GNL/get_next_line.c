@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:05:17 by mcamila           #+#    #+#             */
-/*   Updated: 2019/10/01 16:12:02 by mcamila          ###   ########.fr       */
+/*   Updated: 2019/10/01 17:21:30 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,10 @@ static t_list	*ft_get_list(int fd, t_list *head)
 static int		ft_seek_line(char *s, int rd, char **line)
 {
 	size_t	i;
-	size_t	len;
 	char	*buf;
 
-	len = ft_strlen(s);
 	i = 0;
-	while (s[i] != '\n' && i < len)
+	while (s[i] != '\n' && s[i] != '\0')
 		i++;
 	if (s[i] == '\n' || (rd == 0 && ft_strlen(s) > 0))
 	{
@@ -52,19 +50,26 @@ static int		ft_seek_line(char *s, int rd, char **line)
 			return (-1);
 		*line = ft_strncpy(*line, s, i);
 		(*line)[i] = '\0';
-//		if (len - i == 0)
-//		{
-//			free(s);
-//			s = NULL;
-//			return (1);
-//		}
-		if (!(buf = ft_strnew(len - i)))
+		if (s[i] == '\0')
+		{
+			free(s);
+			s = NULL;
+			return (1);
+		}
+		i++;
+		if (!(buf = ft_strnew(ft_strlen(s) - i)))
 			return (-1);
 		buf = ft_strcpy(buf, &s[i]);
 		free(s);
 		s = ft_strdup(buf);
 		ft_memdel((void**)&buf);
 		return (1);
+	}
+	if (rd == 0 && s[i] == '\0')
+	{
+		free(s);
+		s = NULL;
+		return (2);
 	}
 	return (0);
 }
@@ -83,26 +88,32 @@ static int		ft_read_to_buf(t_list *head, int fd, char **line)
 		if ((rd = read(fd, buf, BUFF_SIZE)) == -1)
 			return (-1);
 //		ft_putnbr(fd);
-		if (list->content)
-			ft_putendl(list->content);
+//		if (list->content)
+//			ft_putendl(list->content);
 		if (rd == 0)
 			return (0);
 		buf[rd] = '\0';
 
 		if (list->content || rd > 0)
 		{
-			ft_putendl("fafafa");
+//			ft_putendl("fafafa");
 			buf2 = NULL;
 			if (list->content)
 				if (!(buf2 = ft_strdup(list->content)))
 					return (-1);
 			list->content = ft_strjoin(buf2, buf);
+//			if (list->content)
+//				ft_putendl(list->content);
 			if (buf2)
 				free(buf2);
 			if (!(list->content))
 				return (-1);
 			if ((rd = ft_seek_line(list->content, rd, line)) != 0)
+			{
+				if (rd == 2)
+					return (0);
 				return (rd);
+			}
 		}
 		else
 			return (0);
@@ -140,10 +151,10 @@ int	main()
 //	ft_putstr(buf);
 	while ((rd = get_next_line(fd, &line)) == 1)
 	{
-		ft_putnbr(rd);
-		ft_putchar(' ');
-		ft_putstr(line);
-		ft_putchar('\n');
+//		ft_putnbr(rd);
+//		ft_putchar(' ');
+		ft_putendl(line);
+//		ft_putchar('0');
 		free(line);
 	}
 	return (0);
