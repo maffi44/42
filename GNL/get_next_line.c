@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:05:17 by mcamila           #+#    #+#             */
-/*   Updated: 2019/10/01 12:56:08 by mcamila          ###   ########.fr       */
+/*   Updated: 2019/10/01 15:52:10 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static int		ft_seek_line(char *s, int rd, char **line)
 {
 	size_t	i;
 	size_t	len;
+	char	*buf;
 
 	len = ft_strlen(s);
 	i = 0;
@@ -51,7 +52,16 @@ static int		ft_seek_line(char *s, int rd, char **line)
 			return (-1);
 		*line = ft_strncpy(*line, s, i);
 		(*line)[i] = '\0';
+		if (len - i == 0)
+		{
+			free(s);
+			return (1);
+		}
+		if (!(buf = ft_strnew(len - i)))
+			return (-1);
+		buf = ft_strcpy(buf, &b[i]);
 		free(s);
+		s = buf;
 		return (1);
 	}
 	return (0);
@@ -61,7 +71,7 @@ static int		ft_read_to_buf(t_list *head, int fd, char **line)
 {
 	t_list	*list;
 	char	buf[BUFF_SIZE];
-	char 	*buf2 = NULL;
+	char 	*buf2;
 	int 	rd;
 
 	if (!(list = ft_get_list(fd, head)))
@@ -73,11 +83,11 @@ static int		ft_read_to_buf(t_list *head, int fd, char **line)
 		buf[rd] = '\0';
 		if (list->content || rd > 0)
 		{
+			buf2 = NULL;
 			if (list->content)
 				if (!(buf2 = ft_strdup(list->content)))
 					return (-1);
 			list->content = ft_strjoin(buf2, buf);
-			ft_putstr(list->content);
 			if (buf2)
 				free(buf2);
 			if (!(list->content))
