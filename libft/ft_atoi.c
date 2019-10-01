@@ -36,7 +36,7 @@ int			ft_atoi(const char *s)
 		pos = -1;
 	}
 	else
-	{cd
+	{
 		if (*s == '+')
 			s++;
 	}

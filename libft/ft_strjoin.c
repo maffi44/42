@@ -27,5 +27,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 			return (ns);
 		}
 	}
+	if (s1 && !s2)
+		return (ft_strdup(s1));
+	if (s2 && !s1)
+		return (ft_strdup(s2));
 	return (NULL);
 }
