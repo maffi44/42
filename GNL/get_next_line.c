@@ -12,15 +12,6 @@
 
 #include "get_next_line.h"
 
-static t_list	*ft_seeklst(int fd, t_list *list)
-{
-	if (!list)
-		return (NULL);
-	if (list->content_size == fd)
-		return (t_list);
-	ft_seeklist(fd, list->next);
-}
-
 static void		ft_freeclst(t_list *clist, t_list *head)
 {
 	if (!clist)
@@ -138,6 +129,15 @@ int				get_next_line(const int fd, char **line)
 	return (-1);
 }
 
+static t_list	*ft_seeklst(int fd, t_list *list)
+{
+	if (!list)
+		return (NULL);
+	if (list->content_size == fd)
+		return (t_list);
+	ft_seeklist(fd, list->next);
+}
+
 int				ft_seek_line(char *s, int rd, char **line)
 {
 	size_t	i;
@@ -154,10 +154,10 @@ int				ft_seek_line(char *s, int rd, char **line)
 		free(s);
 		return (1)
 	}
-	return (rd);
+	return (0);
 }
 
-int				ft_read_to_buf(t_list *list, int fd, char **line)
+int				ft_read_to_buf(t_list *list, t_list **head, int fd, char **line)
 {
 	char	buf[BUFF_SIZE];
 	char 	*buf2;
@@ -166,8 +166,9 @@ int				ft_read_to_buf(t_list *list, int fd, char **line)
 	if (!(list = ft_seeklst(fd, head)))
 	{
 		list = (t_list*)malloc(sizeof(t_list));
-		list->content = ft_strnew(1);
+		list->content = ft_strnew(0);
 		list->content_size = fd;
+		ft_lstadd(head, list);
 	}
 	while (1)
 	{
@@ -182,7 +183,6 @@ int				ft_read_to_buf(t_list *list, int fd, char **line)
 			return (-1);
 		if (ft_seek_line(list->content, rd, line) == 1)
 			return (1);
-		
 	}
 
 
@@ -197,7 +197,7 @@ int				get_next_line(const int fd, char **line)
 		head = ft_lstnew("", 1);
 	if (!head)
 		return (-1);
-	ft_read_to_buf(list, fd, line);
+	ft_read_to_buf(list, head, fd, line);
 
 
 }
