@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:05:17 by mcamila           #+#    #+#             */
-/*   Updated: 2019/10/03 20:39:16 by mcamila          ###   ########.fr       */
+/*   Updated: 2019/10/03 22:53:11 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,47 +40,36 @@ static t_list	*ft_get_list(int fd, t_list **head)
 static int		ft_seek_line(char *s, int rd, char **line, t_list *list)
 {
 	size_t	i;
-	size_t	j;
 	char	*buf;
 
-	j = 0;
-	while (s[j] == '\n')
-		j++;
-	i = j;
+	i = 0;
 	while (s[i] != '\n' && s[i] != '\0')
 		i++;
-	if (i == j)
-	{
-		free(s);
-		list->content = NULL;
-		return (0);
-	}
 	if (s[i] == '\n' || (rd == 0 && ft_strlen(s) > 0))
 	{
-		if (!(*line = (char*)malloc(i + 1 - j)))
+		if (!(*line = (char*)malloc(i + 1)))
 			return (-1);
-		*line = ft_strncpy(*line, &s[j], i - j);
-		(*line)[i - j] = '\0';
+		*line = ft_strncpy(*line, s, i);
+		(*line)[i] = '\0';
 		if (s[i] == '\0')
 		{
 			free(s);
-			s = NULL;
+			list->content = NULL;
 			return (1);
 		}
 		if (s[i] == '\n')
 			i++;
 		if (!(buf = ft_strdup(&(s[i]))))
 			return (-1);
-//		buf = ft_strcpy(buf, &s[i]);
 		free(s);
 		list->content = buf;
-//		ft_putendl(list->content);
 		return (1);
 	}
 	if (rd == 0 && ft_strlen(s) == 0)
 	{
-		free(s);
-		s = NULL;
+		if (s)
+			free(s);
+		list->content = NULL;
 		return (2);
 	}
 	return (0);
@@ -99,20 +88,17 @@ static int		ft_read_to_buf(t_list **head, int fd, char **line)
 	{
 		if ((rd = read(fd, buf, BUFF_SIZE)) == -1)
 			return (-1);
-//		ft_putnbr(rd);
-//		if (list->content)
-//			ft_putendl(list->content);
 		buf[rd] = '\0';
 		if (list->content || rd > 0)
 		{
-//			ft_putendl("fafafa");
 			buf2 = NULL;
 			if (list->content)
+			{
 				if (!(buf2 = ft_strdup(list->content)))
 					return (-1);
+				free(list->content);
+			}
 			list->content = ft_strjoin(buf2, buf);
-//			if (list->content)
-//				ft_putendl(list->content);
 			if (buf2)
 				free(buf2);
 			if (!(list->content))
@@ -144,7 +130,7 @@ int				get_next_line(const int fd, char **line)
 	}
 	return (ft_read_to_buf(head, fd, line));
 }
-
+/*
 #include <string.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -323,7 +309,7 @@ int				main(void)
 		printf("An error occured while opening files %s and/or %s\n", filename1, filename2);
 	return (0);
 }
-
+*/
 
 /*
 #include <sys/types.h>
