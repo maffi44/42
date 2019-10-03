@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:05:17 by mcamila           #+#    #+#             */
-/*   Updated: 2019/10/03 19:45:06 by mcamila          ###   ########.fr       */
+/*   Updated: 2019/10/03 20:39:16 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,34 @@ static t_list	*ft_get_list(int fd, t_list **head)
 static int		ft_seek_line(char *s, int rd, char **line, t_list *list)
 {
 	size_t	i;
+	size_t	j;
 	char	*buf;
 
-	i = 0;
-//	while (*s == '\n')
-//		s++;
+	j = 0;
+	while (s[j] == '\n')
+		j++;
+	i = j;
 	while (s[i] != '\n' && s[i] != '\0')
 		i++;
+	if (i == j)
+	{
+		free(s);
+		list->content = NULL;
+		return (0);
+	}
 	if (s[i] == '\n' || (rd == 0 && ft_strlen(s) > 0))
 	{
-		if (!(*line = (char*)malloc(i + 1)))
+		if (!(*line = (char*)malloc(i + 1 - j)))
 			return (-1);
-		*line = ft_strncpy(*line, s, i);
-		(*line)[i] = '\0';
+		*line = ft_strncpy(*line, &s[j], i - j);
+		(*line)[i - j] = '\0';
 		if (s[i] == '\0')
 		{
 			free(s);
 			s = NULL;
 			return (1);
 		}
-		while (s[i] == '\n')
+		if (s[i] == '\n')
 			i++;
 		if (!(buf = ft_strdup(&(s[i]))))
 			return (-1);
@@ -69,7 +77,7 @@ static int		ft_seek_line(char *s, int rd, char **line, t_list *list)
 //		ft_putendl(list->content);
 		return (1);
 	}
-	if (rd == 0 && s[i] == '\0')
+	if (rd == 0 && ft_strlen(s) == 0)
 	{
 		free(s);
 		s = NULL;
@@ -81,7 +89,7 @@ static int		ft_seek_line(char *s, int rd, char **line, t_list *list)
 static int		ft_read_to_buf(t_list **head, int fd, char **line)
 {
 	t_list	*list;
-	char	buf[BUFF_SIZE];
+	char	buf[BUFF_SIZE + 1];
 	char 	*buf2;
 	int 	rd;
 

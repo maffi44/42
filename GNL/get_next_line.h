@@ -19,6 +19,6 @@
 
 int	get_next_line(const int fd, char **line);
 
-#define BUFF_SIZE 777
+#define BUFF_SIZE 1
 
 #endif
