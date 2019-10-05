@@ -102,10 +102,7 @@ static int		ft_read_to_buf(t_list **head, int fd, char **line)
 			if (buf2)
 				free(buf2);
 			if (!(list->content))
-			{
-				free(list->content);
 				return (-1);
-			}
 			if ((rd = ft_seek_line(list->content, rd, line, list)) != 0)
 			{
 				if (rd == 2)
