@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/26 19:31:12 by mcamila           #+#    #+#             */
-/*   Updated: 2019/10/01 18:17:52 by mcamila          ###   ########.fr       */
+/*   Created: 2019/09/11 18:43:59 by mcamila           #+#    #+#             */
+/*   Updated: 2019/09/20 15:58:35 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-#include <stdlib.h>
-#include <unistd.h>
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	unsigned char		*pto;
+	const unsigned char	*pfrom;
 
-int	get_next_line(const int fd, char **line);
-
-#define BUFF_SIZE 1
-
-#endif
+	if (!dest && !src)
+		return (NULL);
+	pfrom = (const unsigned char*)src;
+	pto = (unsigned char*)dest;
+	if (pfrom > pto)
+		ft_memcpy(dest, src, n);
+	else
+	{
+		while (n > 0)
+		{
+			pto[n - 1] = pfrom[n - 1];
+			n--;
+		}
+	}
+	return (dest);
+}

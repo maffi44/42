@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "get_next_line.h"
 #include <stdio.h>
 
@@ -75,15 +76,12 @@ static int		ft_seek_line(char *s, int rd, char **line, t_list *list)
 	return (0);
 }
 
-static int		ft_read_to_buf(t_list **head, int fd, char **line)
+static int		ft_read_to_buf(t_list *list, int fd, char **line)
 {
-	t_list	*list;
 	char	buf[BUFF_SIZE + 1];
 	char 	*buf2;
 	int 	rd;
 
-	if (!(list = ft_get_list(fd, head)))
-		return (-1);
 	while (1)
 	{
 		if ((rd = read(fd, buf, BUFF_SIZE)) == -1)
@@ -118,6 +116,7 @@ static int		ft_read_to_buf(t_list **head, int fd, char **line)
 int				get_next_line(const int fd, char **line)
 {
 	static t_list	**head;
+	t_list			*list;
 
 	if (!head)
 	{
@@ -125,9 +124,11 @@ int				get_next_line(const int fd, char **line)
 			return (-1);
 		*head = NULL;
 	}
-	return (ft_read_to_buf(head, fd, line));
+	if (!(list = ft_get_list(fd, head)))
+		return (-1);
+	return (ft_read_to_buf(list, fd, line));
 }
-/*
+
 #include <string.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -306,7 +307,7 @@ int				main(void)
 		printf("An error occured while opening files %s and/or %s\n", filename1, filename2);
 	return (0);
 }
-*/
+
 
 /*
 #include <sys/types.h>

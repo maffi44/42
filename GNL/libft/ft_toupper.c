@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/26 19:31:12 by mcamila           #+#    #+#             */
-/*   Updated: 2019/10/01 18:17:52 by mcamila          ###   ########.fr       */
+/*   Created: 2019/09/18 17:42:27 by mcamila           #+#    #+#             */
+/*   Updated: 2019/09/18 17:50:17 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-#include <stdlib.h>
-#include <unistd.h>
+static int	ft_islower(char c)
+{
+	if (c >= -128 && c <= 127)
+	{
+		if ((unsigned char)c >= 'a' && (unsigned char)c <= 'z')
+			return (1);
+	}
+	return (0);
+}
 
-int	get_next_line(const int fd, char **line);
-
-#define BUFF_SIZE 1
-
-#endif
+int			ft_toupper(int c)
+{
+	if (c >= -128 && c <= 127)
+	{
+		if (ft_islower(c))
+			return (c - 32);
+	}
+	return (c);
+}
