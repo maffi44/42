@@ -6,18 +6,18 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 19:31:12 by mcamila           #+#    #+#             */
-/*   Updated: 2019/10/01 18:17:52 by mcamila          ###   ########.fr       */
+/*   Updated: 2019/10/11 14:04:19 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#include <stdlib.h>
-#include <unistd.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 int	get_next_line(const int fd, char **line);
 
-#define BUFF_SIZE 1
+# define BUFF_SIZE 1
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:05:17 by mcamila           #+#    #+#             */
-/*   Updated: 2019/10/09 19:24:04 by mcamila          ###   ########.fr       */
+/*   Updated: 2019/10/11 14:02:59 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static t_list	*ft_get_list(int fd, t_list **head)
 	}
 	return (list);
 }
+
 static int		ft_seek_line(char *s, int rd, char **line, t_list *list)
 {
 	size_t	i;
@@ -79,8 +80,8 @@ static int		ft_seek_line(char *s, int rd, char **line, t_list *list)
 static int		ft_read_to_buf(t_list *list, int fd, char **line)
 {
 	char	buf[BUFF_SIZE + 1];
-	char 	*buf2;
-	int 	rd;
+	char	*buf2;
+	int		rd;
 
 	while (1)
 	{
@@ -90,17 +91,10 @@ static int		ft_read_to_buf(t_list *list, int fd, char **line)
 		if (list->content || rd > 0)
 		{
 			buf2 = NULL;
-			if (list->content)
-			{
-				if (!(buf2 = ft_strdup(list->content)))
-					return (-1);
-				free(list->content);
-			}
-			list->content = ft_strjoin(buf2, buf);
-			if (buf2)
-				free(buf2);
-			if (!(list->content))
+			if (!(buf2 = ft_strjoin(list->content, buf)))
 				return (-1);
+			free(list->content);
+			list->content = buf2;
 			if ((rd = ft_seek_line(list->content, rd, line, list)) != 0)
 			{
 				if (rd == 2)
