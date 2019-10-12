@@ -6,7 +6,7 @@
 #    By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 14:22:48 by mcamila           #+#    #+#              #
-#    Updated: 2019/10/12 20:28:16 by mcamila          ###   ########.fr        #
+#    Updated: 2019/10/12 21:37:48 by mcamila          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,21 +29,21 @@ GCC_FLAGS = -Wall -Werror -Wextra
 
 OBJ = $(SRC:.c=.o)
 
-.PHONY: all
+.PHONY: all clean fclean re
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	gcc $(GCC_FLAGS) -c $(SRC) -I $(INC) -I-
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-.PHONY: clean
+%c%o:
+	gcc $(GCC_FLAGS) -c $< -I $(INC) -I-mak
+
 clean:
 	rm -rf $(OBJ)
 
-.PHONY: fclean
 fclean: clean
 	rm -rf $(NAME)
 
-.PHONY: re
 re: fclean all
