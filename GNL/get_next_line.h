@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 19:31:12 by mcamila           #+#    #+#             */
-/*   Updated: 2019/10/11 14:04:19 by mcamila          ###   ########.fr       */
+/*   Updated: 2019/10/12 18:56:44 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 
 int	get_next_line(const int fd, char **line);
 
-# define BUFF_SIZE 1
+# define BUFF_SIZE 32
 
 #endif

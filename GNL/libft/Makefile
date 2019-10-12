@@ -6,7 +6,7 @@
 #    By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 14:22:48 by mcamila           #+#    #+#              #
-#    Updated: 2019/09/21 17:53:36 by mcamila          ###   ########.fr        #
+#    Updated: 2019/10/12 20:28:16 by mcamila          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,19 +27,23 @@ INCL = libft.h
 
 GCC_FLAGS = -Wall -Werror -Wextra
 
-OBJ = ft_*.o
+OBJ = $(SRC:.c=.o)
 
+.PHONY: all
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(OBJ)
 	gcc $(GCC_FLAGS) -c $(SRC) -I $(INC) -I-
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
+.PHONY: clean
 clean:
 	rm -rf $(OBJ)
 
+.PHONY: fclean
 fclean: clean
 	rm -rf $(NAME)
 
+.PHONY: re
 re: fclean all
