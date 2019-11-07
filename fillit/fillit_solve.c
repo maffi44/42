@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 17:29:19 by mcamila           #+#    #+#             */
-/*   Updated: 2019/11/07 14:28:49 by mcamila          ###   ########.fr       */
+/*   Updated: 2019/11/07 14:47:04 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		ft_Y(int imax, int i)
 	j = 0;
 	while (j < tets[i].length)
 	{
-		if ((masks[i][i][j / 64] >> j) & (unsigned long)1)
+		if (!((masks[i][i][j / 64] >> j) & (unsigned long)1))
 		{
 			ft_create_mask(i, j, imax, 1);
 			if (ft_Y(imax, i + 1))
@@ -93,4 +93,16 @@ void	ft_solve(int imax, int i, int map_side)
 	while (!(ft_Y(imax, i)))
 		ft_make_map(map_side + 1);
 	ft_draw_map();
+}
+
+void	ft_make_map(t_fill *figure, int imax)
+{
+	int i;
+
+	i = 0;
+	while (i < imax)
+	{
+		tets->rows
+		i++;
+	}
 }
