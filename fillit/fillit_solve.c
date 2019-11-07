@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 17:29:19 by mcamila           #+#    #+#             */
-/*   Updated: 2019/11/07 14:47:04 by mcamila          ###   ########.fr       */
+/*   Updated: 2019/11/07 20:29:06 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void			ft_disable_rows(int j, int i, int imax)
 		k = 0;
 		while (k < 4)
 		{
-			masks[i][s][cols[j][s][k] / 64] |= (unsigned long)1 << cols[j][s][k];
+			masks[i][s][cols[j][s][k] / 64] |= (unsigned long)1 << (cols[j][s][k] % 64);
 			k++;
 		}
 		s++;
@@ -76,9 +76,9 @@ int		ft_Y(int imax, int i)
 	j = 0;
 	while (j < tets[i].length)
 	{
-		if (!((masks[i][i][j / 64] >> j) & (unsigned long)1))
+		if (!((masks[i][i][j / 64] >> (j % 64)) & (unsigned long)1))
 		{
-			ft_create_mask(i, j, imax, 1);
+			ft_create_mask(i, j, imax);
 			if (ft_Y(imax, i + 1))
 				return (1);
 		}
@@ -95,14 +95,43 @@ void	ft_solve(int imax, int i, int map_side)
 	ft_draw_map();
 }
 
-void	ft_make_map(t_fill *figure, int imax)
+typedef struct	s_fill
+{
+	int			x_len;
+	int			y_len;
+	int			tetr[4];
+}            	t_fill;
+
+void	ft_make_map(t_fill *figure, int imax, int length)
 {
 	int i;
+	int j;
+	int k;
+	int m;
+	int n;
 
 	i = 0;
 	while (i < imax)
 	{
-		tets->rows
+		n = 0;
+		j = 0;
+		while (j < length - (figure[i].y_len - 1))
+		{
+			k = 0;
+			while (k < length - (figure[i].x_len - 1))
+			{
+				m = 0;
+				while (m < 4)
+				{
+					tets[i].rows[n][m] =
+							((k + figure[i].tetr[m] % 10) + (length * ((figure[i].tetr[m] / 10) + k)));
+					cols[tets[i].rows[n][m]][i][m] = n;
+					n++;
+					m++;
+				}
+				figure[i].tetr[0];
+			}
+		}
 		i++;
 	}
 }
