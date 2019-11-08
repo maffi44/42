@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit_test.c                                      :+:      :+:    :+:   */
+/*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 17:29:19 by mcamila           #+#    #+#             */
-/*   Updated: 2019/11/08 19:32:32 by mcamila          ###   ########.fr       */
+/*   Updated: 2019/11/08 22:00:20 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int				ft_build_map(int tet, int row, int len)
 	i = 0;
 	while (i < 4)
 	{
+//		printf("tet:%d row:%d, result:%d", tet, row, tets[tet].rows[row][i]);
 		map[tets[tet].rows[row][i] / len][tets[tet].rows[row][i] % len] = 'A' + tet;
 		i++;
 	}
@@ -62,24 +63,32 @@ void			ft_disable_rows(int j, int i, int imax)
 	s = i;
 	while (s < imax)
 	{
+//		printf("mask1.0: %lu\n",
 		masks[i][s][0] = masks[i - 1][s][0];
+//		printf("mask1.1: %lu\n",
 		masks[i][s][1] = masks[i - 1][s][1];
 		k = 0;
 		while (k < cols[j][s].len)
 		{
-			masks[i][s][cols[j][s].elem[k] / 64] |= (unsigned long)1 << (cols[j][s].elem[k] % 64);
+//			printf("cols elems value: %d, ", cols[j][s].elem[k]);
+			masks[i][s][cols[j][s].elem[k] / 64] |= ((unsigned long)1 << (cols[j][s].elem[k] % 64));
 			k++;
 		}
 		s++;
+//		printf("mask2.0: %lu\n", masks[i][s][0]);
+//		printf("mask2.1: %lu\n", masks[i][s][1]);
 	}
+//	printf("%lu %lu", masks[i][s][0], masks[i][s][0]);
 }
 /*
  * k - index of node
  */
 void			ft_create_mask(int i, int j, int imax)
 {
+//	printf("create mask\n");
 	int k;
 
+	k = 0;
 	while (k < 4)
 	{
 		ft_disable_rows(tets[i].rows[j][k], i + 1, imax);
@@ -101,7 +110,7 @@ int		ft_Y(int imax, int i)
 	short int	j;
 	if (i == imax)
 	{
-		printf("Fin!");
+//		printf("Fin!");
 		return (ft_prepare_map(map_side));
 	}
 	j = 0;
@@ -109,6 +118,7 @@ int		ft_Y(int imax, int i)
 	{
 		if (!((masks[i][i][j / 64] >> (j % 64)) & (unsigned long)1))
 		{
+//			printf("%d", i);
 			ft_create_mask(i, j, imax);
 			if (ft_Y(imax, i + 1))
 				return (ft_build_map(i, j, map_side));
@@ -139,17 +149,16 @@ void	ft_make_map(t_fill *figure, int imax, int length)
 				m = 0;
 				while (m < 4)
 				{
-					printf("%d",
+//					printf("tet:%d row:%d res:%d", i, n,
 					tets[i].rows[n][m] =
-							((k + figure[i].sharp[m] % 10) + (length * ((figure[i].sharp[m] / 10) + k))));
-					printf("%d",
-					cols[tets[i].rows[n][m]][i].elem[m] = n);
+							((k + figure[i].sharp[m] % 10) + (length * ((figure[i].sharp[m] / 10) + k)));
+					cols[tets[i].rows[n][m]][i].elem[m] = n;
 					cols[tets[i].rows[n][m]][i].len++;
-					n++;
 					m++;
 				}
-				printf("\n");
+				tets[i].length++;
 				k++;
+				n++;
 			}
 			j++;
 		}
@@ -176,15 +185,65 @@ void	ft_draw_map()
 	}
 }
 
+void	ft_check_map(int imax)
+{
+	int i;
+	int j;
+	int k;
+
+	i = 0;
+	while (i < imax)
+	{
+		j = 0;
+		while (j < tets[i].length)
+		{
+			k = 0;
+			while (k < 4)
+			{
+				printf("%d",tets[i].rows[j][k]);
+				k++;
+			}
+			j++;
+			printf("\n");
+		}
+		i++;
+		printf("\n");
+	}
+}
+
 void	ft_solve(int imax, int i, int side, t_fill *tetras)
 {
 	map_side = side;
 	ft_make_map(tetras, imax, map_side);
-	printf("\n%d", ft_Y(imax, i));
-//	while (!(ft_Y(imax, i)))
-//		ft_make_map(tetras, imax, map_side + 1);
+	ft_check_map(imax);
+	int j = 0;
+	while (j < 26)
+	{
+		masks[0][j][0] = 0;
+		masks[0][j][1] = 0;
+		j++;
+	}
+//	ft_Y(imax, i);
+	while (!(ft_Y(imax, i)))
+		ft_make_map(tetras, imax, ++map_side);
 	ft_draw_map();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void ft_length(t_fill *a)
 {
