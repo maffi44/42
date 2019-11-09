@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 17:29:19 by mcamila           #+#    #+#             */
-/*   Updated: 2019/11/08 22:00:20 by bjasper          ###   ########.fr       */
+/*   Updated: 2019/11/09 15:02:16 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void	ft_make_map(t_fill *figure, int imax, int length)
 				{
 //					printf("tet:%d row:%d res:%d", i, n,
 					tets[i].rows[n][m] =
-							((k + figure[i].sharp[m] % 10) + (length * ((figure[i].sharp[m] / 10) + k)));
+							((k + (figure[i].sharp[m] % 10)) + (length * ((figure[i].sharp[m] / 10) + j)));
 					cols[tets[i].rows[n][m]][i].elem[m] = n;
 					cols[tets[i].rows[n][m]][i].len++;
 					m++;
@@ -192,15 +192,17 @@ void	ft_check_map(int imax)
 	int k;
 
 	i = 0;
+	printf("rows:\n");
 	while (i < imax)
 	{
+		printf("tetras %d:\n", i);
 		j = 0;
 		while (j < tets[i].length)
 		{
 			k = 0;
 			while (k < 4)
 			{
-				printf("%d",tets[i].rows[j][k]);
+				printf("%d ",tets[i].rows[j][k]);
 				k++;
 			}
 			j++;
@@ -209,11 +211,31 @@ void	ft_check_map(int imax)
 		i++;
 		printf("\n");
 	}
+	printf("cols:\n");
+	j = 0;
+	while (j < map_side * map_side)
+	{
+		i = 0;
+		printf("col %d:\n", j);
+		while (i < imax) {
+			k = 0;
+			printf("tetra %d:\n", i);
+			while (k < cols[j][i].len)
+			{
+				printf("%d ", cols[j][i].elem[k]);
+				k++;
+			}
+			printf("\n");
+			i++;
+		}
+		j++;
+	}
 }
 
 void	ft_solve(int imax, int i, int side, t_fill *tetras)
 {
 	map_side = side;
+	printf("side: %d\n", map_side);
 	ft_make_map(tetras, imax, map_side);
 	ft_check_map(imax);
 	int j = 0;
