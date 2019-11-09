@@ -45,7 +45,7 @@ typedef struct 	s_Col
 int				map_side;
 
 t_Col			cols[144][26];
-unsigned long	masks[26][26][2];
+unsigned long long	masks[26][26][2];
 
 char			map[12][13];
 

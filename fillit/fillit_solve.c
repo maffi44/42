@@ -87,10 +87,6 @@ void			ft_create_mask(int i, int j, int imax)
 	}
 }
 
-int		ft_find_row()
-{
-	return (0);
-}
 /*
  * imax - number of tetrominos
  * i - index of current tetramino

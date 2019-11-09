@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 17:29:19 by mcamila           #+#    #+#             */
-/*   Updated: 2019/11/09 16:43:00 by mcamila          ###   ########.fr       */
+/*   Updated: 2019/11/09 17:55:05 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,20 @@ void			ft_disable_rows(int col_n, int i, int imax)
 	while (s < imax)
 	{
 //		printf("mask1.0: %lu\n",
-		masks[i][s][0] = masks[i - 1][s][0];
+
 //		printf("mask1.1: %lu\n",
-		masks[i][s][1] = masks[i - 1][s][1];
+
 		k = 0;
+//		printf("\nFigure number: %d\n\n", s);
 		while (k < cols[col_n][s].len)
 		{
-//			printf("cols elems value: %d\n", cols[col_n][s].elem[k]);
+//			printf("cols elems val: %d\n", cols[col_n][s].elem[k]);
 //			printf("%lu\n",
 			masks[i][s][cols[col_n][s].elem[k] / 64] |= ((unsigned long)1 << (cols[col_n][s].elem[k] % 64));
+//			printf("mask2.0: %llu\n", masks[i][s][0]);
 			k++;
 		}
-//		printf("mask2.0: %lu\n", masks[i][s][0]);
+
 //		printf("mask2.1: %lu\n\n", masks[i][s][1]);
 		s++;
 	}
@@ -86,9 +88,16 @@ void			ft_disable_rows(int col_n, int i, int imax)
  */
 void			ft_create_mask(int i, int j, int imax)
 {
-//	printf("create mask\n");
+//	printf("\ncreate mask\n");
 	int k;
 
+	k = 0;
+	while (k < imax)
+	{
+		masks[i + 1][k][0] = masks[i][k][0];
+		masks[i + 1][k][1] = masks[i][k][1];
+		k++;
+	}
 	k = 0;
 	while (k < 4)
 	{
@@ -110,9 +119,10 @@ int		ft_Y(int imax, int i)
 		return (ft_prepare_map(map_side));
 	}
 	j = 0;
+//	printf("rows length: %d\n", tets[i].length);
 	while (j < tets[i].length)
 	{
-		printf("%lu\n",((masks[i][i][j / 64] >> (j % 64)) & (unsigned long)1));
+//		printf("%llu\n", (masks[i][i][j / 64] >> (j % 64)) & (unsigned long)1);
 		if (!((masks[i][i][j / 64] >> (j % 64)) & (unsigned long)1))
 		{
 //			printf("%d", i);
@@ -134,8 +144,20 @@ void	ft_make_map(t_fill *figure, int imax, int length)
 	int n;
 
 	i = 0;
+	while (i < 144)
+	{
+		j = 0;
+		while (j < 26)
+		{
+			cols[i][j].len = 0;
+			j++;
+		}
+		i++;
+	}
+	i = 0;
 	while (i < imax)
 	{
+		tets[i].length = 0;
 		n = 0;
 		j = 0;
 		while (j < length - (figure[i].y_len - 1))
@@ -232,7 +254,7 @@ void	ft_check_map(int imax)
 void	ft_solve(int imax, int i, int side, t_fill *tetras)
 {
 	map_side = side;
-	printf("side: %d\n", map_side);
+//	printf("side: %d\n", map_side);
 	ft_make_map(tetras, imax, map_side);
 //	ft_check_map(imax);
 	int j = 0;
@@ -244,7 +266,10 @@ void	ft_solve(int imax, int i, int side, t_fill *tetras)
 	}
 //	ft_Y(imax, i);
 	while (!(ft_Y(imax, i)))
+	{
 		ft_make_map(tetras, imax, ++map_side);
+//		ft_check_map(imax);
+	}
 	ft_draw_map();
 }
 
