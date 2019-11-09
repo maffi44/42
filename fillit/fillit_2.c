@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 17:29:19 by mcamila           #+#    #+#             */
-/*   Updated: 2019/11/09 15:02:16 by mcamila          ###   ########.fr       */
+/*   Updated: 2019/11/09 16:43:00 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int				ft_build_map(int tet, int row, int len)
  * k - index of column elements
  * s - indexes of the next tetraminos
  */
-void			ft_disable_rows(int j, int i, int imax)
+void			ft_disable_rows(int col_n, int i, int imax)
 {
 	int k;
 	int s;
@@ -68,15 +68,16 @@ void			ft_disable_rows(int j, int i, int imax)
 //		printf("mask1.1: %lu\n",
 		masks[i][s][1] = masks[i - 1][s][1];
 		k = 0;
-		while (k < cols[j][s].len)
+		while (k < cols[col_n][s].len)
 		{
-//			printf("cols elems value: %d, ", cols[j][s].elem[k]);
-			masks[i][s][cols[j][s].elem[k] / 64] |= ((unsigned long)1 << (cols[j][s].elem[k] % 64));
+//			printf("cols elems value: %d\n", cols[col_n][s].elem[k]);
+//			printf("%lu\n",
+			masks[i][s][cols[col_n][s].elem[k] / 64] |= ((unsigned long)1 << (cols[col_n][s].elem[k] % 64));
 			k++;
 		}
-		s++;
 //		printf("mask2.0: %lu\n", masks[i][s][0]);
-//		printf("mask2.1: %lu\n", masks[i][s][1]);
+//		printf("mask2.1: %lu\n\n", masks[i][s][1]);
+		s++;
 	}
 //	printf("%lu %lu", masks[i][s][0], masks[i][s][0]);
 }
@@ -95,11 +96,6 @@ void			ft_create_mask(int i, int j, int imax)
 		k++;
 	}
 }
-
-int		ft_find_row()
-{
-	return (0);
-}
 /*
  * imax - number of tetrominos
  * i - index of current tetramino
@@ -116,6 +112,7 @@ int		ft_Y(int imax, int i)
 	j = 0;
 	while (j < tets[i].length)
 	{
+		printf("%lu\n",((masks[i][i][j / 64] >> (j % 64)) & (unsigned long)1));
 		if (!((masks[i][i][j / 64] >> (j % 64)) & (unsigned long)1))
 		{
 //			printf("%d", i);
@@ -152,7 +149,7 @@ void	ft_make_map(t_fill *figure, int imax, int length)
 //					printf("tet:%d row:%d res:%d", i, n,
 					tets[i].rows[n][m] =
 							((k + (figure[i].sharp[m] % 10)) + (length * ((figure[i].sharp[m] / 10) + j)));
-					cols[tets[i].rows[n][m]][i].elem[m] = n;
+					cols[tets[i].rows[n][m]][i].elem[cols[tets[i].rows[n][m]][i].len] = n;
 					cols[tets[i].rows[n][m]][i].len++;
 					m++;
 				}
@@ -216,7 +213,7 @@ void	ft_check_map(int imax)
 	while (j < map_side * map_side)
 	{
 		i = 0;
-		printf("col %d:\n", j);
+		printf("\ncol %d:\n", j);
 		while (i < imax) {
 			k = 0;
 			printf("tetra %d:\n", i);
@@ -237,7 +234,7 @@ void	ft_solve(int imax, int i, int side, t_fill *tetras)
 	map_side = side;
 	printf("side: %d\n", map_side);
 	ft_make_map(tetras, imax, map_side);
-	ft_check_map(imax);
+//	ft_check_map(imax);
 	int j = 0;
 	while (j < 26)
 	{
