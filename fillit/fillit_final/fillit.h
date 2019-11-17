@@ -13,9 +13,11 @@
 #ifndef FILLIT_H
 # define FILLIT_H
 
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include <unistd.h>
 
 # define BUFF_SIZE 21
 

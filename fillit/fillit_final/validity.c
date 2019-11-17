@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 17:29:19 by mcamila           #+#    #+#             */
-/*   Updated: 2019/11/12 14:12:49 by bjasper          ###   ########.fr       */
+/*   Updated: 2019/11/17 17:02:20 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ static int		ft_letter(int *connect, char *buf, t_fill *figure, int tetnum)
 int				ft_validity(int fd, char *buf, t_fill *figure)
 {
 	int ret;
-	int i;
 	int tetnum;
 	int connect;
 	int sum;

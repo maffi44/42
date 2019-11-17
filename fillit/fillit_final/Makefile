@@ -25,10 +25,10 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	gcc $(GCC_FLAGS) $(OBJ) -o fillit
+	gcc $(OBJ) -o fillit
 
-%c%o:
-	gcc $(GCC_FLAGS) -c $(INC)
+%.o: %.c ${INCL}
+	gcc $(GCC_FLAGS) -c $<
 
 clean:
 	rm -rf $(OBJ)
