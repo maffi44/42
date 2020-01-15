@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 16:16:54 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/14 11:51:47 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/15 17:20:36 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@
 #include <stdlib.h>
 #include "/Users/mcamila/MyProjects/42/42/libft/libft.h"
 #include "/Users/mcamila/MyProjects/42/42/MinilibX/minilibx_macos/mlx.h"
+#include <math.h>
 
 typedef struct	s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
 	char		mouse_bool;
+	int			x;
+	int			y;
 }				t_data;
 
 void	go_away(t_data *data)
@@ -39,5 +42,7 @@ void	go_away(t_data *data)
 	}
 	exit(0);
 }
+
+void	draw_line(int x0, int y0, int x1, int y1, t_data *data);
 
 #endif /* HEADER_H */
