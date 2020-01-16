@@ -1,6 +1,6 @@
 NAME = fdf
 
-SRC = *.c
+SRC = main.c
 
 INCL = *.h
 
