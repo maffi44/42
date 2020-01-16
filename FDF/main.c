@@ -7,7 +7,11 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2020/01/16 17:14:26 by mcamila          ###   ########.fr       */
+=======
+/*   Updated: 2020/01/14 11:51:47 by mcamila          ###   ########.fr       */
+>>>>>>> parent of d2b40b7... fdf 123
 =======
 /*   Updated: 2020/01/14 11:51:47 by mcamila          ###   ########.fr       */
 >>>>>>> parent of d2b40b7... fdf 123
@@ -16,6 +20,7 @@
 
 #include "header.h"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
@@ -149,6 +154,11 @@ void	draw_line()
 {
 
 >>>>>>> parent of d2b40b7... fdf 123
+=======
+void	draw_line()
+{
+
+>>>>>>> parent of d2b40b7... fdf 123
 }
 
 int	key_press(int key, void *data)
@@ -208,6 +218,7 @@ int	main() {
 	data->mouse_bool = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mlx_hook(data->win_ptr, 2, 0, key_press, data);
 	mlx_hook(data->win_ptr, 3, 0, key_release, (void*)0);
 	mlx_hook(data->win_ptr, 4, 0, mouse_press, data);
@@ -215,12 +226,17 @@ int	main() {
 	mlx_hook(data->win_ptr, 6, 0, mouse_move, data);
 	mlx_hook(data->win_ptr, 17, 0, x_press, data);
 =======
+=======
+>>>>>>> parent of d2b40b7... fdf 123
 	mlx_hook(data->win_ptr, 2, 0, &key_press, data);
 	mlx_hook(data->win_ptr, 3, 0, &key_release, (void*)0);
 	mlx_hook(data->win_ptr, 4, 0, &mouse_press, data);
 	mlx_hook(data->win_ptr, 5, 0, &mouse_release, data);
 	mlx_hook(data->win_ptr, 6, 0, &mouse_move, data);
 	mlx_hook(data->win_ptr, 17, 0, &x_press, data);
+<<<<<<< HEAD
+>>>>>>> parent of d2b40b7... fdf 123
+=======
 >>>>>>> parent of d2b40b7... fdf 123
 
 	mlx_loop(data->mlx_ptr);

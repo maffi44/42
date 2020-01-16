@@ -7,7 +7,11 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 16:16:54 by mcamila           #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2020/01/16 17:14:01 by mcamila          ###   ########.fr       */
+=======
+/*   Updated: 2020/01/14 11:51:47 by mcamila          ###   ########.fr       */
+>>>>>>> parent of d2b40b7... fdf 123
 =======
 /*   Updated: 2020/01/14 11:51:47 by mcamila          ###   ########.fr       */
 >>>>>>> parent of d2b40b7... fdf 123
