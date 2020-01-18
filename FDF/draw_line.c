@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/18 16:45:22 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/18 20:31:16 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void drawPixel( int x , int y , float brightness, t_data *data)
 //	SDL_SetRenderDrawColor(pRenderer, c, c, c, 255);
 //	SDL_RenderDrawPoint(pRenderer, x, y);
 }
-
+/*
 void	draw_line(int x0, int y0, int x1, int y1, t_data *data)
 {
 	int steep = absolute(y1 - y0) > absolute(x1 - x0) ;
@@ -125,4 +125,73 @@ void	draw_line(int x0, int y0, int x1, int y1, t_data *data)
 			intersectY += gradient;
 		}
 	}
+}
+*/
+
+void draw_line(int x0, int y0, int x1, int y1, t_data *data)
+{
+	double x;
+	double y;
+	double a;
+	double b;
+
+
+//	if (y0 > y1)
+//	{
+//		swap(&x0 ,&x1);
+//		swap(&y0 ,&y1);
+//	}
+	int dy = y1 - y0;
+	int dx = x1 - x0;
+	if (absolute(dx) > absolute(dy))
+	{
+		if (x0 > x1)
+		{
+			swap(&x0 ,&x1);
+			swap(&y0 ,&y1);
+		}
+		a = dy/dx;
+		y = y0;
+		x = x0;
+		while (x <= x1)
+		{
+			mlx_pixel_put((data)->mlx_ptr, (data)->win_ptr, x, y, 0x00FFFFFF);
+			y = (y + a);
+			x++;
+		}
+	} else
+	{
+		if (y0 > y1)
+		{
+			swap(&x0 ,&x1);
+			swap(&y0 ,&y1);
+		}
+		a = dx/dy;
+		y = y0;
+		x = x0;
+		while (y <= y1)
+		{
+			mlx_pixel_put((data)->mlx_ptr, (data)->win_ptr, x, y, 0x00FFFFFF);
+			x = (x + a);
+			y++;
+		}
+	}/*
+	if ()
+//	if (dx == 0)
+//		a = 1;
+//	else
+//		a = dy/dx;
+	a = dy/dx;
+//	a = (double)(y1 - y0)/(double)(x1 - x0);
+//	b = y0 - (a * x0);
+	x = x0;
+	y = y0;
+//	printf("%f", a);
+	while (x <= x1)
+	{
+		mlx_pixel_put((data)->mlx_ptr, (data)->win_ptr, x, y, 0x00FFFFFF);
+		y = (int)(y + a);
+		//drawPixel(x, y, 1, data);
+		x++;
+	}*/
 }

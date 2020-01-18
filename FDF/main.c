@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/18 16:45:22 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/18 19:17:24 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,28 +49,37 @@ int mouse_press(int button, int x, int y, void *data)
 {
 	if (button == 1)
 	{
-		((t_data *) data)->mouse_bool = 1;
-		((t_data*)data)->x = x;
-		((t_data*)data)->y = y;
+		if (((t_data *) data)->mouse_bool == 0) {
+			((t_data *) data)->mouse_bool = 1;
+			((t_data *) data)->x = x;
+			((t_data *) data)->y = y;
+		}
+		else
+		{
+			//((t_data *) data)->mouse_bool = 0;
+			draw_line(((t_data *) data)->x, ((t_data *) data)->y, x, y, data);
+			((t_data *) data)->x = x;
+			((t_data *) data)->y = y;
+		}
 	}
 	return (0);
 }
 
 int	mouse_release(int button, int x, int y, void *data)
 {
-	if (button == 1)
-		((t_data *) data)->mouse_bool = 0;
+//	if (button == 1)
+//		((t_data *) data)->mouse_bool = 0;
 	return (0);
 }
 
 int	mouse_move(int x, int y, t_data *data)
 {
-	if (((t_data*)data)->mouse_bool)
-	{
-		draw_line(x, y, ((t_data*)data)->x, ((t_data*)data)->y, data);
-		((t_data*)data)->x = x;
-		((t_data*)data)->y = y;
-	}
+//	if (((t_data*)data)->mouse_bool)
+//	{
+//		draw_line(x, y, ((t_data*)data)->x, ((t_data*)data)->y, data);
+//		((t_data*)data)->x = x;
+//		((t_data*)data)->y = y;
+//	}
 	return (0);
 }
 
@@ -90,6 +99,8 @@ int	main() {
 	if (!(data->win_ptr = mlx_new_window(data->mlx_ptr, 1920, 1080, "rissovalka")))
 		go_away(data);
 	data->mouse_bool = 0;
+
+	draw_line(0, 0, 100, 500, data);
 
 	mlx_hook(data->win_ptr, 2, 0, key_press, data);
 	mlx_hook(data->win_ptr, 3, 0, key_release, (void*)0);
