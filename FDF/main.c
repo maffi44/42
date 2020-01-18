@@ -6,11 +6,25 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/18 16:38:05 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/18 16:45:22 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+void	go_away(t_data *data)
+{
+	if (data)
+	{
+		if (data->mlx_ptr)
+			free(data->mlx_ptr);
+		if (data->win_ptr)
+			free(data->win_ptr);
+		free(data);
+		data = NULL;
+	}
+	exit(0);
+}
 
 int expose(void *data)
 {

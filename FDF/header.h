@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 16:16:54 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/18 16:33:55 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/18 16:52:08 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,7 @@ typedef struct	s_data
 	int			y;
 }				t_data;
 
-void	go_away(t_data *data)
-{
-	if (data)
-	{
-		if (data->mlx_ptr)
-			free(data->mlx_ptr);
-		if (data->win_ptr)
-			free(data->win_ptr);
-		free(data);
-		data = NULL;
-	}
-	exit(0);
-}
-
+void	go_away(t_data *data);
 void	draw_line(int x0, int y0, int x1, int y1, t_data *data);
 
 #endif /* HEADER_H */
