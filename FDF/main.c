@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/18 21:07:01 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/19 20:12:46 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int mouse_press(int button, int x, int y, void *data)
 		}
 		else
 		{
-			//((t_data *) data)->mouse_bool = 0;
-			draw_line(((t_data *) data)->x, ((t_data *) data)->y, x, y, data);
+		//	((t_data *) data)->mouse_bool = 0;
+			draw_line(((t_data *) data)->x, ((t_data *) data)->y, x, y, data, 0x00FFFFFF);
 			((t_data *) data)->x = x;
 			((t_data *) data)->y = y;
 		}
@@ -100,7 +100,7 @@ int	main() {
 		go_away(data);
 	data->mouse_bool = 0;
 
-	draw_line(0, 0, 100, 500, data);
+	draw_tri(500, 500, 1000, 300, 1200, 0, data);
 
 	mlx_hook(data->win_ptr, 2, 0, key_press, data);
 	mlx_hook(data->win_ptr, 3, 0, key_release, (void*)0);

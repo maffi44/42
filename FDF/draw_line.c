@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/18 21:07:01 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/19 20:09:58 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	draw_line(int x0, int y0, int x1, int y1, t_data *data)
 	}
 }
 */
-
+/*
 void draw_line(int x0, int y0, int x1, int y1, t_data *data)
 {
 	double x;
@@ -175,7 +175,7 @@ void draw_line(int x0, int y0, int x1, int y1, t_data *data)
 			x = (x + a);
 			y++;
 		}
-	}/*
+	}
 	if ()
 //	if (dx == 0)
 //		a = 1;
@@ -193,5 +193,103 @@ void draw_line(int x0, int y0, int x1, int y1, t_data *data)
 		y = (int)(y + a);
 		//drawPixel(x, y, 1, data);
 		x++;
-	}*/
+	}
+}
+*/
+
+void	draw_line (int x0, int y0, int x1, int y1, t_data *data, int color)
+{
+	int dx;
+	int dy;
+
+	if (x0 == x1 && y0 == y1)
+	{
+		mlx_pixel_put(data->mlx_ptr, data->win_ptr, x0, y0, color);
+		return;
+	}
+	if (absolute(x0 - x1) > absolute(y0 - y1)) {
+		if (x0 > x1) {
+			swap(&x0, &x1);
+			swap(&y0, &y1);
+		}
+
+		dx = x0 - x1;
+		dy = y0 - y1;
+
+		double a;
+
+		a = (double) dy / (double) dx;
+		double x;
+		double y;
+		x = x0;
+		y = y0;
+		while (x <= x1) {
+			mlx_pixel_put(data->mlx_ptr, data->win_ptr, (int) x, (int) y, color);
+			y += a;
+			x++;
+		}
+	} else
+	{
+		if (y0 > y1) {
+			swap(&x0, &x1);
+			swap(&y0, &y1);
+		}
+
+		dx = x0 - x1;
+		dy = y0 - y1;
+
+		double a;
+
+		a = (double) dx / (double) dy;
+		double x;
+		double y;
+		x = x0;
+		y = y0;
+		while (y <= y1) {
+			mlx_pixel_put(data->mlx_ptr, data->win_ptr, (int) x, (int) y, color);
+			x += a;
+			y++;
+		}
+	}
+}
+
+
+void draw_tri(int x0, int y0, int x1, int y1, int x2, int y2, t_data *data) {
+	if (y0 > y1)
+	{
+		swap(&y1, &y0);
+		swap(&x1, &x0);
+	}
+	if (y0 > y2)
+	{
+		swap(&y2, &y0);
+		swap(&x2, &x0);
+	}
+	if (y1 > y2)
+	{
+		swap(&y1, &y2);
+		swap(&x1, &x2);
+	}
+
+	int y = y0;
+	double a1 = absolute(x0 - x1) / (y1 - y0);
+	double a2 = absolute(x0 - x2) / (y2 - y0);
+	int b1 = absolute(x1 - x0);
+	int b2 = absolute(x0 - x2);
+	while (y <= y1)
+	{
+		draw_line(a1 * y, y, a2 * y, y, data, 0xAAFFFFFF);
+		y++;
+	}
+	a1 = absolute(x2 - x1) / (y2 - y1);
+	b1 = x2 - x1;
+	while (y <= y2)
+	{
+		draw_line(a1 * y + b1, y, a2 * y, y, data, 0xAAFFFFFF);
+		y++;
+	}
+
+	draw_line(x0,y0,x1,y1,data,0x00FFFFFF);
+	draw_line(x2,y2,x1,y1,data,0x00FFFFFF);
+	draw_line(x0,y0,x2,y2,data,0x00FFFFFF);
 }
