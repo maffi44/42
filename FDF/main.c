@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/20 14:00:51 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/20 15:36:21 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,13 @@ int mouse_press(int button, int x, int y, void *data)
 			draw_tri(
 					((t_data *) data)->x,
 					((t_data *) data)->y,
+					0,
 					((t_data *) data)->x1,
 					((t_data *) data)->y1,
+					0.5f,
 					x,
 					y,
+					1.0f,
 					data
 					);
 		}
@@ -112,8 +115,6 @@ int	main() {
 	if (!(data->win_ptr = mlx_new_window(data->mlx_ptr, 1920, 1080, "rissovalka")))
 		go_away(data);
 	data->mouse_bool = 0;
-
-	draw_tri(500, 500, 1000, 300, 1200, 0, data);
 
 	mlx_hook(data->win_ptr, 2, 0, key_press, data);
 	mlx_hook(data->win_ptr, 3, 0, key_release, (void*)0);

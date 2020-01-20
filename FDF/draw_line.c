@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/20 14:18:24 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/20 15:57:35 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,18 +254,33 @@ void	draw_line (int x0, int y0, int x1, int y1, t_data *data, int color)
 }
 
 
-void draw_hor_line(int x0, int x1, int y, t_data *data, int color)
+void draw_hor_line(int x0, int x1, int y, t_data *data, double h0, double h1, int color)
 {
+	if (x0 == x1)
+		return;
 	if (x0 > x1)
+	{
 		swap(&x0, &x1);
+		double temp_h;
+		temp_h = h0;
+		h0 = h1;
+		h1 = temp_h;
+	}
+	double h = h0;
+	double a = (h0 - h1) / (x1 - x0);
+	if (h0 < h1)
+		a = -a;
+	int col;
 	while (x0 <= x1)
 	{
-		mlx_pixel_put(data->mlx_ptr, data->win_ptr, x0, y, color);
+		col = (int)((color & 0x000000FF) * h) + ((int)(((color & 0x0000FF00) >> 8) * h) << 8) + ((int)(((color & 0x00FF0000) >> 16) * h) << 16);
+				mlx_pixel_put(data->mlx_ptr, data->win_ptr, x0, y, col);
+		h += a;
 		x0++;
 	}
 }
 
-void draw_tri(int x0, int y0, int x1, int y1, int x2, int y2, t_data *data) {
+void draw_tri(int x0, int y0, double h0, int x1, int y1, double h1, int x2, int y2, double h2, t_data *data) {
 	if (y0 > y1)
 	{
 		swap(&y1, &y0);
@@ -283,8 +298,9 @@ void draw_tri(int x0, int y0, int x1, int y1, int x2, int y2, t_data *data) {
 		swap(&x1, &x2);
 	}
 
-	if (y0 == y1 || y1 == y2)
+	if (y0 == y1 || y1 == y2 || x0 == x1 || x1 == x2 || x2 == x0)
 		return;
+
 	int y = y0;
 	double a1 = absolute(x0 - x1) / (y1 - y0);
 	double a2 = absolute(x0 - x2) / (y2 - y0);
@@ -294,27 +310,48 @@ void draw_tri(int x0, int y0, int x1, int y1, int x2, int y2, t_data *data) {
 		a2 = -a2;
 	double X1 = x0;
 	double X2 = x0;
+
+	double H1 = h0;
+	double H2 = h0;
+	double b1 = absolute(h0 - h1) / (y0 - y1);
+	double b2 = absolute(h0 - h2) / (y0 - y2);
+	if (h0 < h1)
+		b1 = -b1;
+	if (h0 < h2)
+		b2 = -b2;
+
 	while (y <= y1)
 	{
-		draw_hor_line((int)X1, (int)X2, y, data, 0xAAFFFFFF);
+		draw_hor_line((int)X1, (int)X2, y, data, H1, H2, 0x00FFFFFF);
 		X1 += a1;
 		X2 += a2;
+		H1 += b1;
+		H2 += b2;
 		y++;
 	}
+
 	X1 = x1;
 	a1 = absolute(x1 - x2) / (y2 - y1);
 	if (x1 > x2)
 		a1 = -a1;
+
+	H1 = h1;
+	b1 = (h1 - h2) / (y1 - y2);
+	if (h1 > h2)
+		b1 = -b1;
+
 	while (y <= y2)
 	{
 
-		draw_hor_line((int)X1, (int)X2, y, data, 0xAAFFFFFF);
+		draw_hor_line((int)X1, (int)X2, y, data, H1, H2, 0x00FFFFFF);
 		X1 += a1;
 		X2 += a2;
+		H1 += b1;
+		H2 += b2;
 		y++;
 	}
 
-	draw_line(x0,y0,x1,y1,data,0x00FFFFFF);
-	draw_line(x2,y2,x1,y1,data,0x00FFFFFF);
-	draw_line(x0,y0,x2,y2,data,0x00FFFFFF);
+//	draw_line(x0,y0,x1,y1,data,0x00FFFFFF);
+//	draw_line(x2,y2,x1,y1,data,0x00FFFFFF);
+//	draw_line(x0,y0,x2,y2,data,0x00FFFFFF);
 }
