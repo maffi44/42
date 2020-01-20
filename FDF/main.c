@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/20 13:00:44 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/20 14:00:51 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,25 @@ int mouse_press(int button, int x, int y, void *data)
 			((t_data *) data)->x = x;
 			((t_data *) data)->y = y;
 		}
+		else if (((t_data *) data)->mouse_bool == 1)
+		{
+			((t_data *) data)->mouse_bool = 2;
+//			draw_line(((t_data *) data)->x, ((t_data *) data)->y, x, y, data, 0x00FFFFFF);
+			((t_data *) data)->x1 = x;
+			((t_data *) data)->y1 = y;
+		}
 		else
 		{
-		//	((t_data *) data)->mouse_bool = 0;
-			draw_line(((t_data *) data)->x, ((t_data *) data)->y, x, y, data, 0x00FFFFFF);
-			((t_data *) data)->x = x;
-			((t_data *) data)->y = y;
+			((t_data *) data)->mouse_bool = 0;
+			draw_tri(
+					((t_data *) data)->x,
+					((t_data *) data)->y,
+					((t_data *) data)->x1,
+					((t_data *) data)->y1,
+					x,
+					y,
+					data
+					);
 		}
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/20 13:03:40 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/20 14:09:15 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,6 +254,17 @@ void	draw_line (int x0, int y0, int x1, int y1, t_data *data, int color)
 }
 
 
+void draw_hor_line(int x0, int x1, int y, t_data *data, int color)
+{
+	if (x0 > x1)
+		swap(&x0, &x1);
+	while (x0 <= x1)
+	{
+		mlx_pixel_put(data->mlx_ptr, data->win_ptr, x0, y, color);
+		x0++;
+	}
+}
+
 void draw_tri(int x0, int y0, int x1, int y1, int x2, int y2, t_data *data) {
 	if (y0 > y1)
 	{
@@ -266,28 +277,38 @@ void draw_tri(int x0, int y0, int x1, int y1, int x2, int y2, t_data *data) {
 		swap(&x2, &x0);
 	}
 	if (y1 > y2)
+
 	{
 		swap(&y1, &y2);
 		swap(&x1, &x2);
 	}
 
+	if (y0 == y1 || y1 == y2)
+		return;
 	int y = y0;
-	double a1 = (x0 - x1) / (y1 - y0);
-	double a2 = (x0 - x2) / (y2 - y0);
+	double a1 = absolute(x0 - x1) / (y1 - y0);
+	double a2 = absolute(x0 - x2) / (y2 - y0);
+	if (x0 > x1)
+		a1 = -a1;
+	if (x0 > x2)
+		a2 = -a2;
 	double X1 = x0;
 	double X2 = x0;
-	while (y <= y1)
+	while (y < y1)
 	{
-		draw_line((int)X1, y, (int)X2, y, data, 0xAAFFFFFF);
+		draw_hor_line((int)X1, (int)X2, y, data, 0xAAFFFFFF);
 		X1 += a1;
 		X2 += a2;
 		y++;
 	}
-	a1 = (x2 - x1) / (y2 - y1);
+	draw_hor_line((int)X1, (int)X2, y, data, 0xAAFFFFFF);
+	a1 = absolute(x1 - x2) / (y2 - y1);
+	if (x1 > x2)
+		a1 = -a1;
 	while (y <= y2)
 	{
 
-		draw_line(X1, y, X2, y, data, 0xAAFFFFFF);
+		draw_hor_line((int)X1, (int)X2, y, data, 0xAAFFFFFF);
 		X1 += a1;
 		X2 += a2;
 		y++;
