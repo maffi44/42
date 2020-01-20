@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/20 15:36:21 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/20 18:19:58 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int mouse_press(int button, int x, int y, void *data)
 					0,
 					((t_data *) data)->x1,
 					((t_data *) data)->y1,
-					0.5f,
+					0,
 					x,
 					y,
 					1.0f,

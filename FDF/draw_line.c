@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/20 15:57:35 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/20 18:19:58 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,6 +253,12 @@ void	draw_line (int x0, int y0, int x1, int y1, t_data *data, int color)
 	}
 }
 
+void swap_f(double *a, double *b)
+{
+	double temp = *a;
+	*a = *b;
+	*b = temp;
+}
 
 void draw_hor_line(int x0, int x1, int y, t_data *data, double h0, double h1, int color)
 {
@@ -261,15 +267,12 @@ void draw_hor_line(int x0, int x1, int y, t_data *data, double h0, double h1, in
 	if (x0 > x1)
 	{
 		swap(&x0, &x1);
-		double temp_h;
-		temp_h = h0;
-		h0 = h1;
-		h1 = temp_h;
+		swap_f(&h0, &h1);
 	}
 	double h = h0;
-	double a = (h0 - h1) / (x1 - x0);
-	if (h0 < h1)
-		a = -a;
+	double a = (h1 - h0) / (x1 - x0);
+//	if (h0 < h1)
+//		a = -a;
 	int col;
 	while (x0 <= x1)
 	{
@@ -285,17 +288,20 @@ void draw_tri(int x0, int y0, double h0, int x1, int y1, double h1, int x2, int 
 	{
 		swap(&y1, &y0);
 		swap(&x1, &x0);
+		swap_f(&h1, &h0);
 	}
 	if (y0 > y2)
 	{
 		swap(&y2, &y0);
 		swap(&x2, &x0);
+		swap_f(&h2, &h0);
 	}
 	if (y1 > y2)
 
 	{
 		swap(&y1, &y2);
 		swap(&x1, &x2);
+		swap_f(&h1, &h2);
 	}
 
 	if (y0 == y1 || y1 == y2 || x0 == x1 || x1 == x2 || x2 == x0)
@@ -313,16 +319,16 @@ void draw_tri(int x0, int y0, double h0, int x1, int y1, double h1, int x2, int 
 
 	double H1 = h0;
 	double H2 = h0;
-	double b1 = absolute(h0 - h1) / (y0 - y1);
-	double b2 = absolute(h0 - h2) / (y0 - y2);
-	if (h0 < h1)
-		b1 = -b1;
-	if (h0 < h2)
-		b2 = -b2;
+	double b1 = (h1 - h0) / (y1 - y0);
+	double b2 = (h2 - h0) / (y2 - y0);
+//	if (h0 < h1)
+//		b1 = -b1;
+//	if (h0 < h2)
+//		b2 = -b2;
 
 	while (y <= y1)
 	{
-		draw_hor_line((int)X1, (int)X2, y, data, H1, H2, 0x00FFFFFF);
+		draw_hor_line((int)X1, (int)X2, y, data, H1, H2, 0x005588FF);
 		X1 += a1;
 		X2 += a2;
 		H1 += b1;
@@ -337,13 +343,13 @@ void draw_tri(int x0, int y0, double h0, int x1, int y1, double h1, int x2, int 
 
 	H1 = h1;
 	b1 = (h1 - h2) / (y1 - y2);
-	if (h1 > h2)
-		b1 = -b1;
+//	if (h1 > h2)
+//		b1 = -b1;
 
 	while (y <= y2)
 	{
 
-		draw_hor_line((int)X1, (int)X2, y, data, H1, H2, 0x00FFFFFF);
+		draw_hor_line((int)X1, (int)X2, y, data, H1, H2, 0x005588FF);
 		X1 += a1;
 		X2 += a2;
 		H1 += b1;
