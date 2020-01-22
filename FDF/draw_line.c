@@ -277,7 +277,7 @@ void draw_hor_line(int x0, int x1, int y, t_data *data, double h0, double h1, in
 	while (x0 <= x1)
 	{
 		col = (int)((color & 0x000000FF) * h) + ((int)(((color & 0x0000FF00) >> 8) * h) << 8) + ((int)(((color & 0x00FF0000) >> 16) * h) << 16);
-				mlx_pixel_put(data->mlx_ptr, data->win_ptr, x0, y, col);
+		mlx_pixel_put(data->mlx_ptr, data->win_ptr, x0, y, col);
 		h += a;
 		x0++;
 	}
