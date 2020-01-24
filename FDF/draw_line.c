@@ -6,11 +6,18 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/20 18:19:58 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/24 18:20:57 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+void swap_f(double *a, double *b)
+{
+	double temp = *a;
+	*a = *b;
+	*b = temp;
+}
 
 void swap(int* a , int*b)
 {
@@ -253,13 +260,6 @@ void	draw_line (int x0, int y0, int x1, int y1, t_data *data, int color)
 	}
 }
 
-void swap_f(double *a, double *b)
-{
-	double temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
 void draw_hor_line(int x0, int x1, int y, t_data *data, double h0, double h1, int color)
 {
 	if (x0 == x1)
@@ -328,7 +328,7 @@ void draw_tri(int x0, int y0, double h0, int x1, int y1, double h1, int x2, int 
 
 	while (y <= y1)
 	{
-		draw_hor_line((int)X1, (int)X2, y, data, H1, H2, 0x005588FF);
+		draw_hor_line((int)X1, (int)X2, y, data, H1, H2, 0x00FF8855);
 		X1 += a1;
 		X2 += a2;
 		H1 += b1;
@@ -349,7 +349,7 @@ void draw_tri(int x0, int y0, double h0, int x1, int y1, double h1, int x2, int 
 	while (y <= y2)
 	{
 
-		draw_hor_line((int)X1, (int)X2, y, data, H1, H2, 0x005588FF);
+		draw_hor_line((int)X1, (int)X2, y, data, H1, H2, 0x00FF8855);
 		X1 += a1;
 		X2 += a2;
 		H1 += b1;
