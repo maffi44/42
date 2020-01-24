@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/24 18:20:57 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/24 22:03:38 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,8 +304,8 @@ void draw_tri(int x0, int y0, double h0, int x1, int y1, double h1, int x2, int 
 		swap_f(&h1, &h2);
 	}
 
-	if (y0 == y1 || y1 == y2 || x0 == x1 || x1 == x2 || x2 == x0)
-		return;
+//	if ((y0 == y1 && y1 == y2) || (x0 == x1 && x1 == x2))
+//		return;
 
 	int y = y0;
 	double a1 = absolute(x0 - x1) / (y1 - y0);

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/24 21:03:57 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/24 21:25:29 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	main() {
 		go_away(data);
 	if (!(data->mlx_ptr = mlx_init()))
 		go_away(data);
-	if (!(data->win_ptr = mlx_new_window(data->mlx_ptr, 1920, 1080, "rissovalka")))
+	if (!(data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HIEGHT, "FDF")))
 		go_away(data);
 	data->mouse_bool = 0;
 
@@ -156,6 +156,52 @@ int	main() {
 	obj.pt[7].z = 8;
 
 	obj.tri[0].pt[0] = 0;
+	obj.tri[0].pt[1] = 1;
+	obj.tri[0].pt[2] = 2;
+
+	obj.tri[1].pt[0] = 0;
+	obj.tri[1].pt[1] = 2;
+	obj.tri[1].pt[2] = 3;
+
+	obj.tri[2].pt[0] = 3;
+	obj.tri[2].pt[1] = 2;
+	obj.tri[2].pt[2] = 7;
+
+	obj.tri[3].pt[0] = 7;
+	obj.tri[3].pt[1] = 2;
+	obj.tri[3].pt[2] = 6;
+
+	obj.tri[4].pt[0] = 6;
+	obj.tri[4].pt[1] = 4;
+	obj.tri[4].pt[2] = 7;
+
+	obj.tri[5].pt[0] = 6;
+	obj.tri[5].pt[1] = 4;
+	obj.tri[5].pt[2] = 5;
+
+	obj.tri[6].pt[0] = 5;
+	obj.tri[6].pt[1] = 4;
+	obj.tri[6].pt[2] = 1;
+
+	obj.tri[7].pt[0] = 1;
+	obj.tri[7].pt[1] = 4;
+	obj.tri[7].pt[2] = 0;
+
+	obj.tri[8].pt[0] = 1;
+	obj.tri[8].pt[1] = 2;
+	obj.tri[8].pt[2] = 5;
+
+	obj.tri[9].pt[0] = 5;
+	obj.tri[9].pt[1] = 2;
+	obj.tri[9].pt[2] = 6;
+
+	obj.tri[10].pt[0] = 0;
+	obj.tri[10].pt[1] = 3;
+	obj.tri[10].pt[2] = 4;
+
+	obj.tri[11].pt[0] = 3;
+	obj.tri[11].pt[1] = 4;
+	obj.tri[11].pt[2] = 7;
 
 	render_frame(&obj, 1, data);
 
