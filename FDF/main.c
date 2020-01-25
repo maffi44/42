@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/25 12:51:14 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/25 12:51:46 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,7 +214,7 @@ int	main() {
 
 	insts[1].ref = &obj;
 	insts[1].translate.x = 5;
-	insts[1].translate.y = 0;
+	insts[1].translate.y = 4;
 	insts[1].translate.z = 5;
 
 	render_frame(insts, 2, data);

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/25 12:44:36 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/25 12:44:57 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, double d)
 	pt1 = project_pt(p1, d);
 	pt2 = project_pt(p2, d);
 	pt3 = project_pt(p3, d);
-	draw_tri(pt1.x, pt1.y, 0.5f, pt2.x, pt2.y, 0, pt3.x, pt3.y, 1, data);
+//	draw_tri(pt1.x, pt1.y, 0.5f, pt2.x, pt2.y, 0, pt3.x, pt3.y, 1, data);
 	draw_line(pt1.x, pt1.y, pt2.x, pt2.y, data, 0x00FFFFFF);
 	draw_line(pt2.x, pt2.y, pt3.x, pt3.y, data, 0x00FFFFFF);
 	draw_line(pt1.x, pt1.y, pt3.x, pt3.y, data, 0x00FFFFFF);
