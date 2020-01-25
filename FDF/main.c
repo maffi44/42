@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/24 21:25:29 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/25 12:51:14 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int mouse_press(int button, int x, int y, void *data)
 					0,
 					((t_data *) data)->x1,
 					((t_data *) data)->y1,
-					1.0f,
+					0.5f,
 					x,
 					y,
 					1.0f,
@@ -116,7 +116,7 @@ int	main() {
 		go_away(data);
 	data->mouse_bool = 0;
 
-	t_3d_obj obj;
+	t_ref_obj obj;
 
 	obj.pt = (t_pt3*)malloc(sizeof(t_pt3) * 8);
 	obj.tri = (t_tri*)malloc(sizeof(t_tri) * 12);
@@ -125,35 +125,35 @@ int	main() {
 
 	obj.pt[0].x = -2;
 	obj.pt[0].y = -2;
-	obj.pt[0].z = 4;
+	obj.pt[0].z = -2;
 
 	obj.pt[1].x = -2;
 	obj.pt[1].y = 2;
-	obj.pt[1].z = 4;
+	obj.pt[1].z = -2;
 
 	obj.pt[2].x = 2;
 	obj.pt[2].y = 2;
-	obj.pt[2].z = 4;
+	obj.pt[2].z = -2;
 
 	obj.pt[3].x = 2;
 	obj.pt[3].y = -2;
-	obj.pt[3].z = 4;
+	obj.pt[3].z = -2;
 
 	obj.pt[4].x = -2;
 	obj.pt[4].y = -2;
-	obj.pt[4].z = 8;
+	obj.pt[4].z = 2;
 
 	obj.pt[5].x = -2;
 	obj.pt[5].y = 2;
-	obj.pt[5].z = 8;
+	obj.pt[5].z = 2;
 
 	obj.pt[6].x = 2;
 	obj.pt[6].y = 2;
-	obj.pt[6].z = 8;
+	obj.pt[6].z = 2;
 
 	obj.pt[7].x = 2;
 	obj.pt[7].y = -2;
-	obj.pt[7].z = 8;
+	obj.pt[7].z = 2;
 
 	obj.tri[0].pt[0] = 0;
 	obj.tri[0].pt[1] = 1;
@@ -203,7 +203,21 @@ int	main() {
 	obj.tri[11].pt[1] = 4;
 	obj.tri[11].pt[2] = 7;
 
-	render_frame(&obj, 1, data);
+	data->obj_refs = &obj;
+
+	t_inst_obj	*insts;
+	insts = (t_inst_obj*)malloc(sizeof(t_inst_obj) * 2);
+	insts[0].ref = &obj;
+	insts[0].translate.x = -1;
+	insts[0].translate.y = 0;
+	insts[0].translate.z = 4;
+
+	insts[1].ref = &obj;
+	insts[1].translate.x = 5;
+	insts[1].translate.y = 0;
+	insts[1].translate.z = 5;
+
+	render_frame(insts, 2, data);
 
 	mlx_hook(data->win_ptr, 2, 0, key_press, data);
 	mlx_hook(data->win_ptr, 3, 0, key_release, (void*)0);
