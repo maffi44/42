@@ -6,12 +6,19 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:17:48 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/25 14:40:24 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/29 23:24:45 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+typedef struct	s_matrix
+{
+	double 		elem[4][4];
+	int			i;
+	int			j;
+}				t_matrix;
 
 typedef struct	s_pt2
 {
@@ -41,8 +48,10 @@ typedef struct	s_ref_obj
 
 typedef struct	s_inst_obj
 {
-	t_ref_obj	*ref;
-	t_pt3		translate;
+	t_ref_obj	*ref_obj;
+	t_matrix	scale;
+	t_matrix	rotation;
+	t_matrix	translate;
 }				t_inst_obj;
 
 

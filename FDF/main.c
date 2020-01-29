@@ -70,12 +70,12 @@ int mouse_press(int button, int x, int y, void *data)
 					0,
 					((t_data *) data)->x1,
 					((t_data *) data)->y1,
-					0.5f,
+					0.1f,
 					x,
 					y,
 					1.0f,
 					data
-					);
+			);
 		}
 	}
 	return (0);
@@ -207,12 +207,12 @@ int	main() {
 
 	t_inst_obj	*insts;
 	insts = (t_inst_obj*)malloc(sizeof(t_inst_obj) * 2);
-	insts[0].ref = &obj;
-	insts[0].translate.x = -1;
+	insts[0].ref_obj = &obj;
+	insts[0].translate.x = -6;
 	insts[0].translate.y = 0;
 	insts[0].translate.z = 4;
 
-	insts[1].ref = &obj;
+	insts[1].ref_obj = &obj;
 	insts[1].translate.x = 5;
 	insts[1].translate.y = 4;
 	insts[1].translate.z = 5;
