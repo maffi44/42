@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/25 12:51:46 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/30 02:18:30 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,42 +118,19 @@ int	main() {
 
 	t_ref_obj obj;
 
-	obj.pt = (t_pt3*)malloc(sizeof(t_pt3) * 8);
+	obj.vertex = (t_vec3*)malloc(sizeof(t_vec3) * 8);
 	obj.tri = (t_tri*)malloc(sizeof(t_tri) * 12);
 	obj.num_of_pts = 8;
 	obj.num_of_tris = 12;
 
-	obj.pt[0].x = -2;
-	obj.pt[0].y = -2;
-	obj.pt[0].z = -2;
-
-	obj.pt[1].x = -2;
-	obj.pt[1].y = 2;
-	obj.pt[1].z = -2;
-
-	obj.pt[2].x = 2;
-	obj.pt[2].y = 2;
-	obj.pt[2].z = -2;
-
-	obj.pt[3].x = 2;
-	obj.pt[3].y = -2;
-	obj.pt[3].z = -2;
-
-	obj.pt[4].x = -2;
-	obj.pt[4].y = -2;
-	obj.pt[4].z = 2;
-
-	obj.pt[5].x = -2;
-	obj.pt[5].y = 2;
-	obj.pt[5].z = 2;
-
-	obj.pt[6].x = 2;
-	obj.pt[6].y = 2;
-	obj.pt[6].z = 2;
-
-	obj.pt[7].x = 2;
-	obj.pt[7].y = -2;
-	obj.pt[7].z = 2;
+	obj.vertex[0] = make_vertex(-2, -2, -2);
+	obj.vertex[1] = make_vertex(-2, 2, -2);
+	obj.vertex[2] = make_vertex(2, 2, -2);
+	obj.vertex[3] = make_vertex(2, -2, -2);
+	obj.vertex[4] = make_vertex(-2, -2, 2);
+	obj.vertex[5] = make_vertex(-2, 2, 2);
+	obj.vertex[6] = make_vertex(2, 2, 2);
+	obj.vertex[7] = make_vertex(2, -2, 2);
 
 	obj.tri[0].pt[0] = 0;
 	obj.tri[0].pt[1] = 1;
@@ -207,16 +184,11 @@ int	main() {
 
 	t_inst_obj	*insts;
 	insts = (t_inst_obj*)malloc(sizeof(t_inst_obj) * 2);
-	insts[0].ref_obj = &obj;
-	insts[0].translate.x = -6;
-	insts[0].translate.y = 0;
-	insts[0].translate.z = 4;
+	insts[0] = make_obj_inst(&obj);
+	insts[1] = make_obj_inst(&obj);
 
-	insts[1].ref_obj = &obj;
-	insts[1].translate.x = 5;
-	insts[1].translate.y = 4;
-	insts[1].translate.z = 5;
 
+	data->camera = initialize_camera(1);
 	render_frame(insts, 2, data);
 
 	mlx_hook(data->win_ptr, 2, 0, key_press, data);

@@ -6,32 +6,20 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:17:48 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/29 23:24:45 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/30 03:00:03 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct	s_matrix
-{
-	double 		elem[4][4];
-	int			i;
-	int			j;
-}				t_matrix;
+#include "matrix.h"
 
 typedef struct	s_pt2
 {
 	int			x;
 	int			y;
 }				t_pt2;
-
-typedef struct	s_pt3
-{
-	double		x;
-	double		y;
-	double		z;
-}				t_pt3;
 
 typedef struct	s_tri
 {
@@ -40,7 +28,7 @@ typedef struct	s_tri
 
 typedef struct	s_ref_obj
 {
-	t_pt3		*pt;
+	t_vec3		*vertex;
 	t_tri		*tri;
 	int			num_of_pts;
 	int			num_of_tris;
@@ -52,9 +40,29 @@ typedef struct	s_inst_obj
 	t_matrix	scale;
 	t_matrix	rotation;
 	t_matrix	translate;
+	t_matrix	transform;
 }				t_inst_obj;
 
+typedef struct	s_camera
+{
+	t_matrix	transform;
+	t_matrix	rotation;
+	t_matrix	translation;
+	t_matrix	projection;
+	float 		d;
+}				t_camera;
 
-t_pt3	pt3_add(t_pt3 pt1, t_pt3 pt2);
+typedef struct	s_data
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_ref_obj	*obj_refs;
+	t_camera	camera;
+	int			x;
+	int			y;
+	int			x1;
+	int			y1;
+	int 		mouse_bool;
+}				t_data;
 
 #endif

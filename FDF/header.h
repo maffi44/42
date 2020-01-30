@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 16:16:54 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/26 14:57:09 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/30 02:03:25 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,11 @@
 #include "/Users/mcamila/MyProjects/42/42/MinilibX/minilibx_macos/mlx.h"
 #include <math.h>
 #include "structs.h"
+#include "matrix.h"
+#include "functions.h"
 
 # define HIEGHT	1080
 # define WIDTH	1920
-
-typedef struct	s_data
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_ref_obj	*obj_refs;
-	 
-	int			x;
-	int			y;
-	int			x1;
-	int			y1;
-	int 		mouse_bool;
-}				t_data;
 
 void	go_away(t_data *data);
 void	draw_line(int x0, int y0, int x1, int y1, t_data *data, int color);

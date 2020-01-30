@@ -168,7 +168,7 @@ class WinEvent: NSWindow
 	flag = UInt32(event.modifierFlags.rawValue)
 	val = (keyflag|flag)&(~(keyflag&flag))
 	if (val == 0)
-	    { return }   /// no change - can happen when loosing focus on special key pressed, then re-pressed later
+	    { return }   /// no change - can happen when loosing d on special key pressed, then re-pressed later
          the_key = 1
 	 while (((val >> (the_key-1)) & 0x01)==0)
 	  { the_key += 1 }

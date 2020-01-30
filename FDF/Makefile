@@ -1,6 +1,6 @@
 NAME = fdf
 
-SRC = main.c draw_line.c render.c functions.c
+SRC = main.c draw_line.c render.c functions.c matrix.c
 
 INCL = *.h
 
