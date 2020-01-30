@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 16:16:54 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 02:03:25 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/30 02:31:19 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 #include "matrix.h"
 #include "functions.h"
 
-# define HIEGHT	1080
-# define WIDTH	1920
+# define HIEGHT	500
+# define WIDTH	500
 
 void	go_away(t_data *data);
 void	draw_line(int x0, int y0, int x1, int y1, t_data *data, int color);

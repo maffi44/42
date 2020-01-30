@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 02:18:30 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/30 06:35:37 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,14 @@ int mouse_press(int button, int x, int y, void *data)
 {
 	if (button == 1)
 	{
-		if (((t_data *) data)->mouse_bool == 0) {
-			((t_data *) data)->mouse_bool = 1;
-			((t_data *) data)->x = x;
-			((t_data *) data)->y = y;
-		}
+		((t_data *) data)->mouse_bool = 1;
+		((t_data*)data)->x = x;
+		((t_data*)data)->y = y;
+	//	if (((t_data *) data)->mouse_bool == 0) {
+	//		((t_data *) data)->mouse_bool = 1;
+//			((t_data *) data)->x = x;
+//			((t_data *) data)->y = y;
+		}/*
 		else if (((t_data *) data)->mouse_bool == 1)
 		{
 			((t_data *) data)->mouse_bool = 2;
@@ -76,26 +79,30 @@ int mouse_press(int button, int x, int y, void *data)
 					1.0f,
 					data
 			);
-		}
-	}
+		}*/
+//	}
 	return (0);
 }
 
 int	mouse_release(int button, int x, int y, void *data)
 {
-//	if (button == 1)
-//		((t_data *) data)->mouse_bool = 0;
+	if (button == 1)
+		((t_data *) data)->mouse_bool = 0;
 	return (0);
 }
 
 int	mouse_move(int x, int y, t_data *data)
 {
-//	if (((t_data*)data)->mouse_bool)
-//	{
+	if (((t_data*)data)->mouse_bool)
+	{
+		data->obj_inst->translate.elem[0][3] += (double)(x - data->x) / 50;
+		data->obj_inst->translate.elem[1][3] += (double)(y - data->y) / 50;
+		mlx_clear_window(data->mlx_ptr, data->win_ptr);
+		render_frame(data->obj_inst, 1, data);
 //		draw_line(x, y, ((t_data*)data)->x, ((t_data*)data)->y, data);
-//		((t_data*)data)->x = x;
-//		((t_data*)data)->y = y;
-//	}
+		((t_data*)data)->x = x;
+		((t_data*)data)->y = y;
+	}
 	return (0);
 }
 
@@ -180,16 +187,14 @@ int	main() {
 	obj.tri[11].pt[1] = 4;
 	obj.tri[11].pt[2] = 7;
 
-	data->obj_refs = &obj;
-
 	t_inst_obj	*insts;
 	insts = (t_inst_obj*)malloc(sizeof(t_inst_obj) * 2);
 	insts[0] = make_obj_inst(&obj);
 	insts[1] = make_obj_inst(&obj);
 
-
+	data->obj_inst = insts;
 	data->camera = initialize_camera(1);
-	render_frame(insts, 2, data);
+	render_frame(insts, 1, data);
 
 	mlx_hook(data->win_ptr, 2, 0, key_press, data);
 	mlx_hook(data->win_ptr, 3, 0, key_release, (void*)0);

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:17:48 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 03:00:03 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/30 03:02:08 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct	s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	t_ref_obj	*obj_refs;
+	t_inst_obj	*obj_inst;
 	t_camera	camera;
 	int			x;
 	int			y;

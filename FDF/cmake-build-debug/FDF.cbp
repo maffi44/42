@@ -218,6 +218,9 @@
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/functions.c">
 			<Option target="FDF"/>
 		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/functions.h">
+			<Option target="FDF"/>
+		</Unit>
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/header.h">
 			<Option target="FDF"/>
 		</Unit>
@@ -402,6 +405,12 @@
 			<Option target="libft"/>
 		</Unit>
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/main.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/matrix.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/matrix.h">
 			<Option target="FDF"/>
 		</Unit>
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/render.c">

@@ -6,3 +6,25 @@
 
 #IncludeRegexTransform: 
 
+/Users/mcamila/MyProjects/42/42/FDF/MinilibX/minilibx_macos/mlx_int.h
+
+/Users/mcamila/MyProjects/42/42/FDF/MinilibX/minilibx_macos/mlx_new_window.h
+Cocoa/Cocoa.h
+-
+mlx_int.h
+/Users/mcamila/MyProjects/42/42/FDF/MinilibX/minilibx_macos/mlx_int.h
+
+/Users/mcamila/MyProjects/42/42/FDF/MinilibX/minilibx_macos/mlx_new_window.m
+Cocoa/Cocoa.h
+-
+OpenGL/gl3.h
+-
+AppKit/NSOpenGLView.h
+-
+stdio.h
+-
+mlx_int.h
+/Users/mcamila/MyProjects/42/42/FDF/MinilibX/minilibx_macos/mlx_int.h
+mlx_new_window.h
+/Users/mcamila/MyProjects/42/42/FDF/MinilibX/minilibx_macos/mlx_new_window.h
+

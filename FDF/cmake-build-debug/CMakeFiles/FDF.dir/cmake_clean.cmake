@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/FDF.dir/functions.c.o"
   "CMakeFiles/FDF.dir/main.c.o"
   "CMakeFiles/FDF.dir/render.c.o"
+  "CMakeFiles/FDF.dir/matrix.c.o"
   "FDF.pdb"
   "FDF"
 )

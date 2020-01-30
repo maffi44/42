@@ -6,14 +6,12 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 01:43:15 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 02:00:12 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/30 02:54:22 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATRIX_H
 # define MATRIX_H
-
-#include "str"
 
 typedef struct	s_matrix
 {

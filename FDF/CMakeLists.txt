@@ -86,6 +86,8 @@ add_executable(FDF
         header.h
         main.c
         render.c
-        structs.h)
+        structs.h
+        matrix.c
+        matrix.h)
 
 target_link_libraries(FDF mlx libft  "-framework OpenGL" "-framework AppKit" )

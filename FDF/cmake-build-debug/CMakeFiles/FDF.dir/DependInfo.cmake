@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mcamila/MyProjects/42/42/FDF/draw_line.c" "/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles/FDF.dir/draw_line.c.o"
   "/Users/mcamila/MyProjects/42/42/FDF/functions.c" "/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles/FDF.dir/functions.c.o"
   "/Users/mcamila/MyProjects/42/42/FDF/main.c" "/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles/FDF.dir/main.c.o"
+  "/Users/mcamila/MyProjects/42/42/FDF/matrix.c" "/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles/FDF.dir/matrix.c.o"
   "/Users/mcamila/MyProjects/42/42/FDF/render.c" "/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles/FDF.dir/render.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
