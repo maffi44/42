@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 12:46:02 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/30 14:51:57 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, double d)
 	pt2 = make_pt2_from_v3(p2);
 	pt3 = make_pt2_from_v3(p3);
 	draw_tri(pt1, pt2, pt3, 0.5f, 0, 1, data);
-	draw_line(pt1.x, pt1.y, pt2.x, pt2.y, data, 0x00FFFFFF);
-	draw_line(pt2.x, pt2.y, pt3.x, pt3.y, data, 0x00FFFFFF);
-	draw_line(pt1.x, pt1.y, pt3.x, pt3.y, data, 0x00FFFFFF);
+//	draw_line(pt1.x, pt1.y, pt2.x, pt2.y, data, 0x00FFFFFF);
+//	draw_line(pt2.x, pt2.y, pt3.x, pt3.y, data, 0x00FFFFFF);
+//	draw_line(pt1.x, pt1.y, pt3.x, pt3.y, data, 0x00FFFFFF);
 
 //	ft_putnbr(pt1.x);
 //	ft_putstr(" ");
@@ -86,6 +86,7 @@ void	render_frame(t_inst_obj *objects, int  num_of_obj, t_data *data)
 //									   &(data->img_line),
 //									   &(data->endian));
 	ft_bzero(data->img_data, WIDTH * HIEGHT * 4);
+	bzero(data->zbuff, sizeof(double) * WIDTH * HIEGHT);
 //	data->camera.transform = matrix_mult(data->camera.rotation, data->camera.translation);
 	i = 0;
 	while (i < num_of_obj)

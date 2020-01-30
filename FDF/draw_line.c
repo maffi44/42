@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 14:29:41 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/30 14:31:59 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,7 +293,7 @@ void draw_hor_line(int x0, int x1, int y, t_data *data, double h0, double h1, do
 	{
 		if ((x0 >= 0 && x0 <= WIDTH) && (y >= 0 && y <= HIEGHT) && Z0 > data->zbuff[(x0 + y * (WIDTH)) - 1])
 		{
-			printf("%f", data->zbuff[(x0 + y * (WIDTH)) - 1]);
+//		printf("%f", data->zbuff[(x0 + y * (WIDTH)) - 1]);
 			data->zbuff[(x0 + (y * (WIDTH))) - 1] = Z0;
 			col = (int) ((color & 0x000000FF) * h) + ((int) (((color & 0x0000FF00) >> 8) * h) << 8)
 				  + ((int) (((color & 0x00FF0000) >> 16) * h) << 16);
