@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 12:42:03 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 06:20:02 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/30 07:53:05 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,9 @@ t_inst_obj	make_obj_inst(t_ref_obj *ref)
 	new_inst.translate.elem[3][1] = 0;
 	new_inst.translate.elem[3][2] = 0;
 	new_inst.translate.elem[3][3] = 1;
+
+	new_inst.x_ang = 0;
+	new_inst.y_ang = 0;
 
 	return (new_inst);
 }
@@ -155,5 +158,15 @@ t_pt2		make_pt2_from_v3(t_vec3 vec)
 	y = vec.elem[1] / vec.elem[2];
 	pt2.x = (x * (WIDTH / 2) / 2) + WIDTH / 2;
 	pt2.y = (y * (HIEGHT/ 2) / 2 * (double)((double)WIDTH / (double)HIEGHT)) + HIEGHT / 2;
+	pt2.x1 = x;
+	pt2.y1 = y;
+	pt2.z1 = 1 / vec.elem[2];
 	return (pt2);
+}
+
+void 		put_pixel(int x, int y, int color, t_data *data)
+{
+	if (x >= WIDTH || x < 0 || y >= HIEGHT || y < 0)
+		return;
+	((int*)(data->img_data))[x + (y * WIDTH)] = color;
 }

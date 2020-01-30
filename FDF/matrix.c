@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 17:06:33 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 06:08:30 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/30 06:56:23 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,32 @@ t_matrix	make_transform_matrix(t_camera cam, t_inst_obj obj)
 //			cam.projection,
 //			matrix_mult(matrix_mult(obj.scale,obj.rotation), obj.translate));
 	return (transform);
+}
+
+t_matrix	make_rotation_matrix(double x_rot, double y_rot)
+{
+	t_matrix mat;
+
+	double cos_y = cos(y_rot);
+	double sin_y = sin(y_rot);
+	double cos_x = cos(x_rot);
+	double sin_x = sin(x_rot);
+
+	mat.elem[0][0] = cos_y;
+	mat.elem[0][1] = sin_y * sin_x;
+	mat.elem[0][2] = sin_y * cos_x;
+	mat.elem[0][3] = 0;
+	mat.elem[1][0] = 0;
+	mat.elem[1][1] = cos_x;
+	mat.elem[1][2] = -sin_x;
+	mat.elem[1][3] = 0;
+	mat.elem[2][0] = -sin_y;
+	mat.elem[2][1] = sin_x * cos_y;
+	mat.elem[2][2] = cos_x * cos_y;
+	mat.elem[2][3] = 0;
+	mat.elem[3][0] = 0;
+	mat.elem[3][1] = 0;
+	mat.elem[3][2] = 0;
+	mat.elem[3][3] = 1;
+	return (mat);
 }
