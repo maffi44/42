@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 14:31:59 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/01/31 18:05:13 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,13 +267,13 @@ void	draw_line (int x0, int y0, int x1, int y1, t_data *data, int color)
 	}
 }
 
-void draw_hor_line(int x0, int x1, int y, t_data *data, double h0, double h1, double zb1, double zb2, int color)
+void draw_hor_line(double x0, double x1, int y, t_data *data, double h0, double h1, double zb1, double zb2, int color)
 {
 	if (x0 == x1)
 		return;
 	if (x0 > x1)
 	{
-		swap(&x0, &x1);
+		swap_f(&x0, &x1);
 		swap_f(&h0, &h1);
 		swap_f(&zb1, &zb2);
 		//swap_f(&z1, &z2);
@@ -291,10 +291,10 @@ void draw_hor_line(int x0, int x1, int y, t_data *data, double h0, double h1, do
 	int col;
 	while (x0 <= x1)
 	{
-		if ((x0 >= 0 && x0 <= WIDTH) && (y >= 0 && y <= HIEGHT) && Z0 > data->zbuff[(x0 + y * (WIDTH)) - 1])
+		if ((x0 >= 0 && x0 <= WIDTH) && (y >= 0 && y <= HIEGHT) && Z0 >= data->zbuff[((int)x0 + (y * WIDTH)) - 1])
 		{
 //		printf("%f", data->zbuff[(x0 + y * (WIDTH)) - 1]);
-			data->zbuff[(x0 + (y * (WIDTH))) - 1] = Z0;
+			data->zbuff[((int)x0 + (y * (WIDTH))) - 1] = Z0;
 			col = (int) ((color & 0x000000FF) * h) + ((int) (((color & 0x0000FF00) >> 8) * h) << 8)
 				  + ((int) (((color & 0x00FF0000) >> 16) * h) << 16);
 			put_pixel(x0, y, col, data);
@@ -328,7 +328,7 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, double h0, double h1, double h2, t_d
 //	if ((y0 == y1 && y1 == y2) || (x0 == x1 && x1 == x2))
 //		return;
 
-	int y = p0.y;
+	double y = p0.y;
 	double a1 = absolute(p0.x - p1.x) / (p1.y - p0.y);
 	double a2 = absolute(p0.x - p2.x) / (p2.y - p0.y);
 	if (p0.x > p1.x)
@@ -352,9 +352,9 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, double h0, double h1, double h2, t_d
 //	if (zb2 < 0)
 //		zb2 = -zb2;
 
-	while (y <= p1.y)
+	while (y < p1.y)
 	{
-		draw_hor_line((int)X1, (int)X2, y, data, H1, H2, ZB1, ZB2, 0x00FF8855);
+		draw_hor_line(X1, X2, y, data, H1, H2, ZB1, ZB2, 0x00FF8855);
 		X1 += a1;
 		X2 += a2;
 		H1 += b1;
@@ -380,7 +380,7 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, double h0, double h1, double h2, t_d
 	while (y <= p2.y)
 	{
 
-		draw_hor_line((int)X1, (int)X2, y, data, H1, H2, ZB1, ZB2, 0x00FF8855);
+		draw_hor_line(X1, X2, y, data, H1, H2, ZB1, ZB2, 0x00FF8855);
 		X1 += a1;
 		X2 += a2;
 		H1 += b1;

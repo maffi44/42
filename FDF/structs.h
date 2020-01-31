@@ -20,8 +20,6 @@ typedef struct	s_pt2
 {
 	double		x;
 	double		y;
-	double		x1;
-	double 		y1;
 	double 		z1;
 }				t_pt2;
 
@@ -30,10 +28,16 @@ typedef struct	s_tri
 	int	pt[3];
 }				t_tri;
 
+typedef	struct	s_normal
+{
+	t_vec3		nor[3];
+}				t_normal;
+
 typedef struct	s_ref_obj
 {
 	t_vec3		*vertex;
 	t_tri		*tri;
+	t_normal	*normals;
 	int			num_of_pts;
 	int			num_of_tris;
 }				t_ref_obj;

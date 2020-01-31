@@ -158,8 +158,6 @@ t_pt2		make_pt2_from_v3(t_vec3 vec)
 	y = vec.elem[1] / vec.elem[2];
 	pt2.x = (x * (WIDTH / 2) / 2) + WIDTH / 2;
 	pt2.y = (y * (HIEGHT/ 2) / 2 * (double)((double)WIDTH / (double)HIEGHT)) + HIEGHT / 2;
-	pt2.x1 = x;
-	pt2.y1 = y;
 	pt2.z1 = 1 / vec.elem[2];
 	return (pt2);
 }
