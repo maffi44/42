@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 14:23:22 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/04 19:04:47 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,11 @@ int	main() {
 
 	bzero(data->zbuff, sizeof(double) * WIDTH * HIEGHT);
 
+	data->dir_light.elem[0] = 0;
+	data->dir_light.elem[1] = 0;
+	data->dir_light.elem[2] = 0;
+	data->dir_light.elem[3] = 1;
+
 	data->mouse_bool = 0;
 	data->R_bool = 0;
 	data->img_data = mlx_get_data_addr(data->img_ptr,
@@ -204,23 +209,23 @@ int	main() {
 	obj.tri[4].pt[2] = 7;
 
 	obj.tri[5].pt[0] = 6;
-	obj.tri[5].pt[1] = 4;
-	obj.tri[5].pt[2] = 5;
+	obj.tri[5].pt[1] = 5;
+	obj.tri[5].pt[2] = 4;
 
 	obj.tri[6].pt[0] = 5;
-	obj.tri[6].pt[1] = 4;
-	obj.tri[6].pt[2] = 1;
+	obj.tri[6].pt[1] = 1;
+	obj.tri[6].pt[2] = 4;
 
 	obj.tri[7].pt[0] = 1;
-	obj.tri[7].pt[1] = 4;
-	obj.tri[7].pt[2] = 0;
+	obj.tri[7].pt[1] = 0;
+	obj.tri[7].pt[2] = 4;
 
 	obj.tri[8].pt[0] = 1;
-	obj.tri[8].pt[1] = 2;
-	obj.tri[8].pt[2] = 5;
+	obj.tri[8].pt[1] = 5;
+	obj.tri[8].pt[2] = 2;
 
-	obj.tri[9].pt[0] = 5;
-	obj.tri[9].pt[1] = 2;
+	obj.tri[9].pt[0] = 2;
+	obj.tri[9].pt[1] = 5;
 	obj.tri[9].pt[2] = 6;
 
 	obj.tri[10].pt[0] = 0;
@@ -228,14 +233,14 @@ int	main() {
 	obj.tri[10].pt[2] = 4;
 
 	obj.tri[11].pt[0] = 3;
-	obj.tri[11].pt[1] = 4;
-	obj.tri[11].pt[2] = 7;
+	obj.tri[11].pt[1] = 7;
+	obj.tri[11].pt[2] = 4;
 
 	t_inst_obj	*insts;
 	insts = (t_inst_obj*)malloc(sizeof(t_inst_obj) * 2);
 	insts[0] = make_obj_inst(&obj);
 	insts[1] = make_obj_inst(&obj);
-	insts[0].rotation = make_rotation_matrix(0, 1);
+	//insts[0].rotation = make_rotation_matrix(0, 1);
 
 	data->obj_inst = insts;
 	data->camera = initialize_camera(1);

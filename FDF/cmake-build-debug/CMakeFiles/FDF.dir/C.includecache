@@ -28,11 +28,15 @@ matrix.h
 functions.h
 /Users/mcamila/MyProjects/42/42/FDF/functions.h
 
-/Users/mcamila/MyProjects/42/42/FDF/main.c
+/Users/mcamila/MyProjects/42/42/FDF/matrix.c
 header.h
 /Users/mcamila/MyProjects/42/42/FDF/header.h
 
 /Users/mcamila/MyProjects/42/42/FDF/matrix.h
+
+/Users/mcamila/MyProjects/42/42/FDF/render.c
+header.h
+/Users/mcamila/MyProjects/42/42/FDF/header.h
 
 /Users/mcamila/MyProjects/42/42/FDF/structs.h
 header.h

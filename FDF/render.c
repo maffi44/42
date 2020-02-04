@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 14:51:57 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/04 20:03:35 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, double d)
 	t_vec3 p1;
 	t_vec3 p2;
 	t_vec3 p3;
+	t_vec3 normal;
+	t_vec3 cam_vector;
+	t_vec3 light_vector;
+	t_vec3 edge1;
+	t_vec3 edge2;
 	t_pt2 pt1;
 	t_pt2 pt2;
 	t_pt2 pt3;
@@ -52,10 +57,32 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, double d)
 			obj.ref_obj->vertex[tri.pt[2]]
 	);
 
+	edge1 = vec_divide(p1, p2);
+	edge2 = vec_divide(p1, p3);
+
+	cam_vector.elem[0] = (p1.elem[0] + p2.elem[0] + p3.elem[0]) / 3;
+	cam_vector.elem[1] = (p1.elem[1] + p2.elem[1] + p3.elem[1]) / 3;
+	cam_vector.elem[2] = (p1.elem[2] + p2.elem[2] + p3.elem[2]) / 3;
+	cam_vector.elem[3] = (p1.elem[3] + p2.elem[3] + p3.elem[3]) / 3;
+
+	normal = vec_mult(edge1, edge2);
+	if (vec_scalar_mult(normal, cam_vector) <= 0)
+		return;
+
+	normal = normalize_vec(normal);
+//	printf("%f", vec_length(normal));
+	light_vector = vec_divide(data->dir_light, cam_vector);
+	light_vector = normalize_vec(light_vector);
+
+	float light = vec_scalar_mult(normal, light_vector);
+	printf("%f\n", light);
+	if (light < 0)
+		light = 0;
+
 	pt1 = make_pt2_from_v3(p1);
 	pt2 = make_pt2_from_v3(p2);
 	pt3 = make_pt2_from_v3(p3);
-	draw_tri(pt1, pt2, pt3, 0.5f, 0, 1, data);
+	draw_tri(pt1, pt2, pt3, light + 0.1, light + 0.1, light + 0.1, data);
 //	draw_line(pt1.x, pt1.y, pt2.x, pt2.y, data, 0x00FFFFFF);
 //	draw_line(pt2.x, pt2.y, pt3.x, pt3.y, data, 0x00FFFFFF);
 //	draw_line(pt1.x, pt1.y, pt3.x, pt3.y, data, 0x00FFFFFF);

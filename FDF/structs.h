@@ -74,6 +74,7 @@ typedef struct	s_data
 	int 		endian;
 	t_inst_obj	*obj_inst;
 	t_camera	camera;
+	t_vec3		dir_light;
 	int			x;
 	int			y;
 	int			R_bool;
