@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/05 22:05:28 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/05 22:05:42 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void	render_frame(t_inst_obj *objects, int  num_of_obj, t_data *data)
 			j++;
 		}
 		i++;
-		color_loop(objects[i].ref_obj, 10);
+		color_loop(objects[i].ref_obj, 8);
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 }

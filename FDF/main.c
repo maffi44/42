@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/05 22:02:36 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/05 22:05:15 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,10 +186,10 @@ int	main() {
 	obj.vertex[1] = make_vertex(-2, 2, -2, 0x00FF00FF);
 	obj.vertex[2] = make_vertex(2, 2, -2, 0x0000FFFF);
 	obj.vertex[3] = make_vertex(2, -2, -2, 0x0000FFFF);
-	obj.vertex[4] = make_vertex(-2, -2, 2, 0x00FFFF00);
+	obj.vertex[4] = make_vertex(-2, -2, 2, 0x00FF00FF);
 	obj.vertex[5] = make_vertex(-2, 2, 2, 0x00FF00FF);
-	obj.vertex[6] = make_vertex(2, 2, 2, 0x00FFFF00);
-	obj.vertex[7] = make_vertex(2, -2, 2, 0x00FF00FF);
+	obj.vertex[6] = make_vertex(2, 2, 2, 0x0000FFFF);
+	obj.vertex[7] = make_vertex(2, -2, 2, 0x0000FFFF);
 
 	obj.tri[0].pt[0] = 0;
 	obj.tri[0].pt[1] = 1;
