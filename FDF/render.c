@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/05 16:13:11 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/05 17:58:41 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,10 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, double d)
 	pt1.light = vec_scalar_mult(normal, light_vector1) * 0.95;
 	pt2.light = vec_scalar_mult(normal, light_vector2) * 0.95;
 	pt3.light = vec_scalar_mult(normal, light_vector3) * 0.95;
+
+	pt1.color.ARGB = obj.ref_obj->vertex[tri.pt[0]].color;
+	pt2.color.ARGB = obj.ref_obj->vertex[tri.pt[1]].color;
+	pt3.color.ARGB = obj.ref_obj->vertex[tri.pt[2]].color;
 
 	draw_tri(pt1, pt2, pt3, data);
 //	draw_line(pt1.x, pt1.y, pt2.x, pt2.y, data, 0x00FFFFFF);

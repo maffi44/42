@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 17:06:33 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/05 15:14:27 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/05 17:58:41 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ float 	vec_scalar_mult(t_vec3 v1, t_vec3 v2)
 	return ((v1.elem[0] * v2.elem[0]) + (v1.elem[1] * v2.elem[1]) + (v1.elem[2] * v2.elem[2]));
 }
 
-t_vec3	make_vertex(float x, float y, float z)
+t_vec3	make_vertex(float x, float y, float z, unsigned int color)
 {
 	t_vec3	vertex;
 
@@ -140,6 +140,7 @@ t_vec3	make_vertex(float x, float y, float z)
 	vertex.elem[1] = y;
 	vertex.elem[2] = z;
 	vertex.elem[3] = 1;
+	vertex.color = color;
 	return (vertex);
 }
 

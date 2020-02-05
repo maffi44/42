@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:17:48 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/05 16:29:36 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/05 18:29:50 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include "header.h"
 #include "matrix.h"
 
-typedef union	u_color
+typedef union		u_color
 {
-	char		colors[4];
-	int 		ARGB;
-}				t_color;
+	unsigned int 	ARGB;
+	unsigned char	colors[4];
+}					t_color;
 
 typedef struct	s_pt2
 {
