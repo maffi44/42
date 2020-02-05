@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 16:16:54 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 14:22:17 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/05 16:29:36 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 void	go_away(t_data *data);
 void	draw_line(int x0, int y0, int x1, int y1, t_data *data, int color);
-void	draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data);
+void	draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2,  t_data *data);
 void	render_frame(t_inst_obj *objects, int  num_of_obj, t_data *data);
 
 #endif /* HEADER_H */

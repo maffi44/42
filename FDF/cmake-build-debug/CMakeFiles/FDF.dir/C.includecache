@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/mcamila/MyProjects/42/42/FDF/draw_line.c
-header.h
-/Users/mcamila/MyProjects/42/42/FDF/header.h
-
 /Users/mcamila/MyProjects/42/42/FDF/functions.c
 header.h
 /Users/mcamila/MyProjects/42/42/FDF/header.h
@@ -35,14 +31,6 @@ matrix.h
 /Users/mcamila/MyProjects/42/42/FDF/matrix.h
 functions.h
 /Users/mcamila/MyProjects/42/42/FDF/functions.h
-
-/Users/mcamila/MyProjects/42/42/FDF/main.c
-header.h
-/Users/mcamila/MyProjects/42/42/FDF/header.h
-
-/Users/mcamila/MyProjects/42/42/FDF/matrix.c
-header.h
-/Users/mcamila/MyProjects/42/42/FDF/header.h
 
 /Users/mcamila/MyProjects/42/42/FDF/matrix.h
 
