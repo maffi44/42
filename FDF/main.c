@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/05 19:18:58 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/05 20:35:06 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,7 @@ void	go_away(t_data *data)
 	exit(0);
 }
 
-int expose(t_data *data)
-{
-//	render_frame(data->obj_inst, 1, data);
-//	if (((t_data*)data)->mouse_bool)
-//		mlx_pixel_put(((t_data*)data)->mlx_ptr, ((t_data*)data)->win_ptr, ((t_data*)data)->x, ((t_data*)data)->y, 0x00FFFFFF);
-	return (0);
-}
+
 
 int	key_press(int key, t_data *data)
 {
@@ -143,6 +137,15 @@ int	x_press(void *data)
 	return (0);
 }
 
+int frame_loop(t_data *data)
+{
+	render_frame(data->obj_inst, 1, (void*)data);
+//	data->obj_inst->ref_obj->vertex[0].color += 1;
+//	if (((t_data*)data)->mouse_bool)
+//		mlx_pixel_put(((t_data*)data)->mlx_ptr, ((t_data*)data)->win_ptr, ((t_data*)data)->x, ((t_data*)data)->y, 0x00FFFFFF);
+	return (0);
+}
+
 int	main() {
 	t_data	*data;
 
@@ -186,7 +189,7 @@ int	main() {
 	obj.vertex[4] = make_vertex(-2, -2, 2, 0x00FF00FF);
 	obj.vertex[5] = make_vertex(-2, 2, 2, 0x00FF00FF);
 	obj.vertex[6] = make_vertex(2, 2, 2, 0x000000FF);
-	obj.vertex[7] = make_vertex(2, -2, 2, 0x000000FF);
+	obj.vertex[7] = make_vertex(2, -2, 2, 0x00FF0000);
 
 	obj.tri[0].pt[0] = 0;
 	obj.tri[0].pt[1] = 1;
@@ -246,13 +249,17 @@ int	main() {
 	data->camera = initialize_camera(1);
 	render_frame(insts, 1, data);
 
-	mlx_hook(data->win_ptr, 2, 0, key_press, data);
-	mlx_hook(data->win_ptr, 3, 0, key_release, data);
-	mlx_hook(data->win_ptr, 4, 0, mouse_press, data);
-	mlx_hook(data->win_ptr, 5, 0, mouse_release, data);
-	mlx_hook(data->win_ptr, 6, 0, mouse_move, data);
-	mlx_hook(data->win_ptr, 12, 0, expose, data);
+
+//	mlx_hook(data->win_ptr, 12, 0, expose, data);
+
+	mlx_hook(data->win_ptr, 2, 0, key_press, (void*)data);
+	mlx_hook(data->win_ptr, 3, 0, key_release, (void*)data);
+	mlx_hook(data->win_ptr, 4, 0, mouse_press, (void*)data);
+	mlx_hook(data->win_ptr, 5, 0, mouse_release, (void*)data);
+	mlx_hook(data->win_ptr, 6, 0, mouse_move, (void*)data);
+	mlx_loop_hook(data->mlx_ptr, frame_loop, data);
 	mlx_hook(data->win_ptr, 17, 0, x_press, data);
+
 
 	mlx_loop(data->mlx_ptr);
 	return (0);

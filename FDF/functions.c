@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 12:42:03 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 07:53:05 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/05 20:41:04 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,27 @@ t_vec3	pt3_add(t_vec3 pt1, t_vec3 pt2)
 	return (pt1);
 }
 */
+
+void		color_loop(t_ref_obj *obj)
+{
+	t_color c;
+	int i;
+
+	i = 0;
+	while (i < obj->num_of_pts)
+	{
+		c.ARGB = obj->vertex[i].color;
+		c.colors[0] += i + 1;
+		c.colors[1] -= i + 1;
+		c.colors[2] -= obj->num_of_pts - i;
+//		c.colors[1] += 3;
+//		c.colors[2] -= 2;
+		obj->vertex[i].color = c.ARGB;
+		c.ARGB = 0;
+		i++;
+	}
+}
+
 t_inst_obj	make_obj_inst(t_ref_obj *ref)
 {
 	t_inst_obj	new_inst;
