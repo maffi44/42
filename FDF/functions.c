@@ -22,9 +22,6 @@ t_vec3	pt3_add(t_vec3 pt1, t_vec3 pt2)
 */
 t_inst_obj	make_obj_inst(t_ref_obj *ref)
 {
-	int i;
-	int j;
-
 	t_inst_obj	new_inst;
 
 	new_inst.ref_obj = ref;
@@ -148,8 +145,8 @@ t_camera	initialize_camera(float d)
 t_pt2		make_pt2_from_v3(t_vec3 vec)
 {
 	t_pt2 pt2;
-	double x;
-	double y;
+	float x;
+	float y;
 
 	vec.elem[0] = vec.elem[0] / vec.elem[3];
 	vec.elem[1] = vec.elem[1] / vec.elem[3];
@@ -157,7 +154,7 @@ t_pt2		make_pt2_from_v3(t_vec3 vec)
 	x = vec.elem[0] / vec.elem[2];
 	y = vec.elem[1] / vec.elem[2];
 	pt2.x = (x * (WIDTH / 2) / 2) + WIDTH / 2;
-	pt2.y = (y * (HIEGHT/ 2) / 2 * (double)((double)WIDTH / (double)HIEGHT)) + HIEGHT / 2;
+	pt2.y = (y * (HIEGHT/ 2) / 2 * (float)((float)WIDTH / (float)HIEGHT)) + HIEGHT / 2;
 	pt2.z1 = 1 / vec.elem[2];
 	return (pt2);
 }

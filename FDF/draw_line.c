@@ -6,15 +6,15 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/31 18:05:13 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/05 16:40:06 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void swap_f(double *a, double *b)
+void swap_f(float *a, float *b)
 {
-	double temp = *a;
+	float temp = *a;
 	*a = *b;
 	*b = temp;
 }
@@ -267,7 +267,7 @@ void	draw_line (int x0, int y0, int x1, int y1, t_data *data, int color)
 	}
 }
 
-void draw_hor_line(double x0, double x1, int y, t_data *data, double h0, double h1, double zb1, double zb2, int color)
+void draw_hor_line(float x0, float x1, int y, t_data *data, float h0, float h1, float zb1, float zb2, int color)
 {
 	if (x0 == x1)
 		return;
@@ -278,11 +278,11 @@ void draw_hor_line(double x0, double x1, int y, t_data *data, double h0, double 
 		swap_f(&zb1, &zb2);
 		//swap_f(&z1, &z2);
 	}
-	double h = h0;
-	double a = (h1 - h0) / (x1 - x0);
+	float h = h0;
+	float a = (h1 - h0) / (x1 - x0);
 
-	double Z0 = zb1;
-	double ZB =	(zb2 - zb1) / (x1 - x0);
+	float Z0 = zb1;
+	float ZB =	(zb2 - zb1) / (x1 - x0);
 //	if (ZB < 0)
 //		ZB = -zb1;
 //	double zb1 = p0.z1 + (p1.z1 - p0.z1) / (p1.y - p0.y);
@@ -307,46 +307,38 @@ void draw_hor_line(double x0, double x1, int y, t_data *data, double h0, double 
 	}
 }
 
-void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, double h0, double h1, double h2, t_data *data) {
+void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 	if (p0.y > p1.y)
-	{
 		swap_2pt(&p1, &p0);
-		swap_f(&h1, &h0);
-	}
 	if (p0.y > p2.y)
-	{
 		swap_2pt(&p2, &p0);
-		swap_f(&h2, &h0);
-	}
 	if (p1.y > p2.y)
-
-	{
 		swap_2pt(&p2, &p1);
-		swap_f(&h2, &h1);
-	}
 
 //	if ((y0 == y1 && y1 == y2) || (x0 == x1 && x1 == x2))
 //		return;
 
-	double y = p0.y;
-	double a1 = absolute(p0.x - p1.x) / (p1.y - p0.y);
-	double a2 = absolute(p0.x - p2.x) / (p2.y - p0.y);
+	float y = p0.y;
+	float a1 = absolute(p0.x - p1.x) / (p1.y - p0.y);
+	float a2 = absolute(p0.x - p2.x) / (p2.y - p0.y);
 	if (p0.x > p1.x)
 		a1 = -a1;
 	if (p0.x > p2.x)
 		a2 = -a2;
-	double X1 = p0.x;
-	double X2 = p0.x;
+	float X1 = p0.x;
+	float X2 = p0.x;
 
-	double H1 = h0;
-	double H2 = h0;
-	double b1 = (h1 - h0) / (p1.y - p0.y);
-	double b2 = (h2 - h0) / (p2.y - p0.y);
+	float H1 = p0.light;
+	float H2 = p0.light;
+	float b1 = (p1.light - p0.light) / (p1.y - p0.y);
+	float b2 = (p2.light - p0.light) / (p2.y - p0.y);
 
-	double ZB1 = p0.z1;
-	double ZB2 = p0.z1;
-	double zb1 = (p1.z1 - p0.z1) / (p1.y - p0.y);
-	double zb2 = (p2.z1 - p0.z1) / (p2.y - p0.y);
+	float ZB1 = p0.z1;
+	float ZB2 = p0.z1;
+	float zb1 = (p1.z1 - p0.z1) / (p1.y - p0.y);
+	float zb2 = (p2.z1 - p0.z1) / (p2.y - p0.y);
+
+
 //	if (zb1 < 0)
 //		zb1 = -zb1;
 //	if (zb2 < 0)
@@ -369,8 +361,8 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, double h0, double h1, double h2, t_d
 	if (p1.x > p2.x)
 		a1 = -a1;
 
-	H1 = h1;
-	b1 = (h1 - h2) / (p1.y - p2.y);
+	H1 = p1.light;
+	b1 = (p1.light - p2.light) / (p1.y - p2.y);
 
 	ZB1 = p1.z1;
 	zb1 = (p2.z1 - p1.z1) / (p2.y - p1.y);

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:17:48 by mcamila           #+#    #+#             */
-/*   Updated: 2020/01/30 13:18:20 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/05 16:29:36 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,19 @@
 #include "header.h"
 #include "matrix.h"
 
+typedef union	u_color
+{
+	char		colors[4];
+	int 		ARGB;
+}				t_color;
+
 typedef struct	s_pt2
 {
-	double		x;
-	double		y;
-	double 		z1;
+	float		x;
+	float		y;
+	float 		z1;
+	t_color		color;
+	float 		light;
 }				t_pt2;
 
 typedef struct	s_tri
@@ -49,8 +57,8 @@ typedef struct	s_inst_obj
 	t_matrix	rotation;
 	t_matrix	translate;
 	t_matrix	transform;
-	double		x_ang;
-	double 		y_ang;
+	float		x_ang;
+	float 		y_ang;
 }				t_inst_obj;
 
 typedef struct	s_camera

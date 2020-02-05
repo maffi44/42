@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 17:06:33 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/05 15:11:34 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/05 15:14:27 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ float 	vec_scalar_mult(t_vec3 v1, t_vec3 v2)
 	return ((v1.elem[0] * v2.elem[0]) + (v1.elem[1] * v2.elem[1]) + (v1.elem[2] * v2.elem[2]));
 }
 
-t_vec3	make_vertex(double x, double y, double z)
+t_vec3	make_vertex(float x, float y, float z)
 {
 	t_vec3	vertex;
 
@@ -157,14 +157,14 @@ t_matrix	make_transform_matrix(t_camera cam, t_inst_obj obj)
 	return (transform);
 }
 
-t_matrix	make_rotation_matrix(double x_rot, double y_rot)
+t_matrix	make_rotation_matrix(float x_rot, float y_rot)
 {
 	t_matrix mat;
 
-	double cos_y = cos(y_rot);
-	double sin_y = sin(y_rot);
-	double cos_x = cos(x_rot);
-	double sin_x = sin(x_rot);
+	float cos_y = cosf(y_rot);
+	float sin_y = sinf(y_rot);
+	float cos_x = cosf(x_rot);
+	float sin_x = sinf(x_rot);
 
 	mat.elem[0][0] = cos_y;
 	mat.elem[0][1] = sin_y * sin_x;
