@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/04 20:03:35 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/05 15:11:34 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, double d)
 	t_vec3 p3;
 	t_vec3 normal;
 	t_vec3 cam_vector;
-	t_vec3 light_vector;
+	t_vec3 light_vector1;
+	t_vec3 light_vector2;
+	t_vec3 light_vector3;
 	t_vec3 edge1;
 	t_vec3 edge2;
 	t_pt2 pt1;
@@ -71,18 +73,26 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, double d)
 
 	normal = normalize_vec(normal);
 //	printf("%f", vec_length(normal));
-	light_vector = vec_divide(data->dir_light, cam_vector);
-	light_vector = normalize_vec(light_vector);
+	light_vector1 = vec_divide(data->dir_light, p1);
+	light_vector1 = normalize_vec(light_vector1);
 
-	float light = vec_scalar_mult(normal, light_vector);
-	printf("%f\n", light);
-	if (light < 0)
-		light = 0;
+	light_vector2 = vec_divide(data->dir_light, p2);
+	light_vector2 = normalize_vec(light_vector2);
+
+	light_vector3 = vec_divide(data->dir_light, p3);
+	light_vector3 = normalize_vec(light_vector3);
+
+	float light1 = vec_scalar_mult(normal, light_vector1);
+	float light2 = vec_scalar_mult(normal, light_vector2);
+	float light3 = vec_scalar_mult(normal, light_vector3);
+
+	if (light1 < 0)
+		light1 = 0;
 
 	pt1 = make_pt2_from_v3(p1);
 	pt2 = make_pt2_from_v3(p2);
 	pt3 = make_pt2_from_v3(p3);
-	draw_tri(pt1, pt2, pt3, light + 0.1, light + 0.1, light + 0.1, data);
+	draw_tri(pt1, pt2, pt3, light1, light2, light3, data);
 //	draw_line(pt1.x, pt1.y, pt2.x, pt2.y, data, 0x00FFFFFF);
 //	draw_line(pt2.x, pt2.y, pt3.x, pt3.y, data, 0x00FFFFFF);
 //	draw_line(pt1.x, pt1.y, pt3.x, pt3.y, data, 0x00FFFFFF);
@@ -113,7 +123,7 @@ void	render_frame(t_inst_obj *objects, int  num_of_obj, t_data *data)
 //									   &(data->img_line),
 //									   &(data->endian));
 	ft_bzero(data->img_data, WIDTH * HIEGHT * 4);
-	bzero(data->zbuff, sizeof(double) * WIDTH * HIEGHT);
+	ft_bzero(data->zbuff, sizeof(float) * WIDTH * HIEGHT);
 //	data->camera.transform = matrix_mult(data->camera.rotation, data->camera.translation);
 	i = 0;
 	while (i < num_of_obj)

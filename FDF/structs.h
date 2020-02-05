@@ -68,7 +68,7 @@ typedef struct	s_data
 	void		*win_ptr;
 	void		*img_ptr;
 	void		*img_data;
-	double 		*zbuff;
+	float 		*zbuff;
 	int 		img_line;
 	int 		bpp;
 	int 		endian;

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/04 19:04:47 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/05 15:17:47 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,10 +156,10 @@ int	main() {
 		go_away(data);
 	if (!(data->img_ptr = mlx_new_image(data->mlx_ptr, WIDTH, HIEGHT)))
 		go_away(data);
-	if (!(data->zbuff = (double*)ft_memalloc(sizeof(double) * WIDTH * HIEGHT)))
+	if (!(data->zbuff = (float*)ft_memalloc(sizeof(float) * WIDTH * HIEGHT)))
 		go_away(data);
 
-	bzero(data->zbuff, sizeof(double) * WIDTH * HIEGHT);
+	bzero(data->zbuff, sizeof(float) * WIDTH * HIEGHT);
 
 	data->dir_light.elem[0] = 0;
 	data->dir_light.elem[1] = 0;
