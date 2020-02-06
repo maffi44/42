@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/06 16:03:57 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/06 23:46:37 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,14 @@ int	mouse_move(int x, int y, t_data *data)
 		if (data->R_bool)
 		{
 			data->obj_inst->rotation = make_rotation_matrix(
-					data->obj_inst->y_ang -= (double) (y - data->y) / 150,
-					data->obj_inst->x_ang += (double) (x - data->x) / 150
+					data->obj_inst->y_ang -= (float) (y - data->y) / 150,
+					data->obj_inst->x_ang += (float) (x - data->x) / 150
 					);
 		}
 		else
 		{
-			data->obj_inst->translate.elem[0][3] += (double) (x - data->x) / 50;
-			data->obj_inst->translate.elem[1][3] += (double) (y - data->y) / 50;
+			data->obj_inst->translate.elem[0][3] += (float) (x - data->x) / 50;
+			data->obj_inst->translate.elem[1][3] += (float) (y - data->y) / 50;
 		}
 
 		mlx_clear_window(data->mlx_ptr, data->win_ptr);
@@ -239,18 +239,17 @@ int	main() {
 	obj.tri[11].pt[1] = 7;
 	obj.tri[11].pt[2] = 4;
 
+	t_ref_obj main_obj = map_parser("42.fdf");
+
 	t_inst_obj	*insts;
 	insts = (t_inst_obj*)malloc(sizeof(t_inst_obj) * 2);
-	insts[0] = make_obj_inst(&obj);
-	insts[1] = make_obj_inst(&obj);
+	insts[0] = make_obj_inst(&main_obj, 0.2f, 0.2f, 0.2f, 1, 1, 1);
+//	insts[1] = make_obj_inst(&obj);
 	//insts[0].rotation = make_rotation_matrix(0, 1);
-
-	map_parser("42.fdf");
 
 	data->obj_inst = insts;
 	data->camera = initialize_camera(1);
 	render_frame(insts, 1, data);
-
 
 //	mlx_hook(data->win_ptr, 12, 0, expose, data);
 

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/05 19:04:24 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/07 00:04:55 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,18 +304,17 @@ void draw_hor_line(float x0, float x1, int y, t_data *data, float h0, float h1, 
 
 	while (x0 <= x1)
 	{
-		if ((x0 >= 0 && x0 <= WIDTH) && (y >= 0 && y <= HIEGHT) && Z0 >= data->zbuff[((int)x0 + (y * WIDTH)) - 1])
+		if ((x0 >= 0 && (int)x0 < WIDTH) && (y >= 0 && y < HIEGHT))
 		{
-//		printf("%f", data->zbuff[(x0 + y * (WIDTH)) - 1]);
-			data->zbuff[((int)x0 + (y * (WIDTH))) - 1] = Z0;
-			col.colors[2] = (char)(C_R * h);
-			col.colors[1] = (char)(C_G * h);
-			col.colors[0] = (char)(C_B * h);
-//			col = (int) ((color & 0x000000FF) * h) + ((int) (((color & 0x0000FF00) >> 8) * h) << 8)
-//				  + ((int) (((color & 0x00FF0000) >> 16) * h) << 16);
-			put_pixel((int)x0, y, col.ARGB, data);
+			if (Z0 >= data->zbuff[((int)x0 + (y * WIDTH)) - 1])
+			{
+				data->zbuff[((int) x0 + (y * (WIDTH))) - 1] = Z0;
+				col.colors[2] = (char) (C_R * h);
+				col.colors[1] = (char) (C_G * h);
+				col.colors[0] = (char) (C_B * h);
+				put_pixel((int) x0, y, col.ARGB, data);
+			}
 		}
-
 		C_R += cb_r;
 		C_G += cb_g;
 		C_B += cb_b;
@@ -382,7 +381,6 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 
 	col1.ARGB = 0;
 	col2.ARGB = 0;
-
 	while (y < p1.y)
 	{
 		col1.colors[2] = (char)C_R1;
@@ -391,6 +389,7 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 		col2.colors[2] = (char)C_R2;
 		col2.colors[1] = (char)C_G2;
 		col2.colors[0] = (char)C_B2;
+
 		draw_hor_line(X1, X2, (int)y, data, H1, H2, ZB1, ZB2, col1, col2);
 
 		X1 += a1;

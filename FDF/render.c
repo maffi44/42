@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/05 22:05:42 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/07 00:30:48 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, double d)
 	light_vector3 = vec_divide(data->dir_light, vertex3);
 	light_vector3 = normalize_vec(light_vector3);
 
-	pt1.light = vec_scalar_mult(normal, light_vector1) * 0.95;
-	pt2.light = vec_scalar_mult(normal, light_vector2) * 0.95;
-	pt3.light = vec_scalar_mult(normal, light_vector3) * 0.95;
+	pt1.light = vec_scalar_mult(normal, light_vector1) * 0.95f;
+	pt2.light = vec_scalar_mult(normal, light_vector2) * 0.95f;
+	pt3.light = vec_scalar_mult(normal, light_vector3) * 0.95f;
 
 	pt1.color.ARGB = obj.ref_obj->vertex[tri.pt[0]].color;
 	pt2.color.ARGB = obj.ref_obj->vertex[tri.pt[1]].color;
@@ -98,12 +98,13 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, double d)
 //	draw_line(pt2.x, pt2.y, pt3.x, pt3.y, data, 0x00FFFFFF);
 //	draw_line(pt1.x, pt1.y, pt3.x, pt3.y, data, 0x00FFFFFF);
 
-//	ft_putnbr(pt1.x);
-//	ft_putstr(" ");
-//	ft_putnbr(pt1.y);
+//	ft_putnbr(tri.pt[0]);
 //	ft_putstr("  ");
-//	ft_putnbr(pt2.x);
-//	ft_putstr(" ");
+//	ft_putnbr(tri.pt[1]);
+//	ft_putstr("  ");
+//	ft_putnbr(tri.pt[02]);
+//	ft_putstr("  ");
+//	ft_putstr("\n");
 //	ft_putnbr(pt2.y);
 //	ft_putstr("  ");
 //	ft_putnbr(pt3.x);
@@ -137,7 +138,7 @@ void	render_frame(t_inst_obj *objects, int  num_of_obj, t_data *data)
 			j++;
 		}
 		i++;
-		color_loop(objects[i].ref_obj, 8);
+		//color_loop(objects[i].ref_obj, 15);
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 }

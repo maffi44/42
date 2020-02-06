@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 12:42:03 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/06 14:56:07 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/06 22:32:53 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void		color_loop(t_ref_obj *obj, unsigned int speed)
 	t_color c;
 	int i;
 	int j;
+
 
 	i = -1;
 	while (i < obj->num_of_pts - 1)
@@ -93,23 +94,23 @@ void		color_loop(t_ref_obj *obj, unsigned int speed)
 	}
 }
 
-t_inst_obj	make_obj_inst(t_ref_obj *ref)
+t_inst_obj	make_obj_inst(t_ref_obj *ref, float x_sc, float y_sc, float z_sc, float x_tr, float y_tr, float z_tr)
 {
 	t_inst_obj	new_inst;
 
 	new_inst.ref_obj = ref;
 
-	new_inst.scale.elem[0][0] = 1;
+	new_inst.scale.elem[0][0] = x_sc;
 	new_inst.scale.elem[0][1] = 0;
 	new_inst.scale.elem[0][2] = 0;
 	new_inst.scale.elem[0][3] = 0;
 	new_inst.scale.elem[1][0] = 0;
-	new_inst.scale.elem[1][1] = 1;
+	new_inst.scale.elem[1][1] = y_sc;
 	new_inst.scale.elem[1][2] = 0;
 	new_inst.scale.elem[1][3] = 0;
 	new_inst.scale.elem[2][0] = 0;
 	new_inst.scale.elem[2][1] = 0;
-	new_inst.scale.elem[2][2] = 1;
+	new_inst.scale.elem[2][2] = z_sc;
 	new_inst.scale.elem[2][3] = 0;
 	new_inst.scale.elem[3][0] = 0;
 	new_inst.scale.elem[3][1] = 0;
@@ -136,15 +137,15 @@ t_inst_obj	make_obj_inst(t_ref_obj *ref)
 	new_inst.translate.elem[0][0] = 1;
 	new_inst.translate.elem[0][1] = 0;
 	new_inst.translate.elem[0][2] = 0;
-	new_inst.translate.elem[0][3] = -4;
+	new_inst.translate.elem[0][3] = x_tr;
 	new_inst.translate.elem[1][0] = 0;
 	new_inst.translate.elem[1][1] = 1;
 	new_inst.translate.elem[1][2] = 0;
-	new_inst.translate.elem[1][3] = -7;
+	new_inst.translate.elem[1][3] = y_tr;
 	new_inst.translate.elem[2][0] = 0;
 	new_inst.translate.elem[2][1] = 0;
 	new_inst.translate.elem[2][2] = 1;
-	new_inst.translate.elem[2][3] = 5;
+	new_inst.translate.elem[2][3] = z_tr;
 	new_inst.translate.elem[3][0] = 0;
 	new_inst.translate.elem[3][1] = 0;
 	new_inst.translate.elem[3][2] = 0;

@@ -6,6 +6,32 @@
 
 #IncludeRegexTransform: 
 
+/Users/mcamila/MyProjects/42/42/FDF/MinilibX/minilibx_macos/mlx.h
+
+/Users/mcamila/MyProjects/42/42/FDF/functions.h
+
+/Users/mcamila/MyProjects/42/42/FDF/header.h
+unistd.h
+-
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+libft/libft.h
+/Users/mcamila/MyProjects/42/42/FDF/libft/libft.h
+MinilibX/minilibx_macos/mlx.h
+/Users/mcamila/MyProjects/42/42/FDF/MinilibX/minilibx_macos/mlx.h
+map_parser.h
+/Users/mcamila/MyProjects/42/42/FDF/map_parser.h
+structs.h
+/Users/mcamila/MyProjects/42/42/FDF/structs.h
+matrix.h
+/Users/mcamila/MyProjects/42/42/FDF/matrix.h
+functions.h
+/Users/mcamila/MyProjects/42/42/FDF/functions.h
+
 /Users/mcamila/MyProjects/42/42/FDF/libft/libft.h
 string.h
 -
@@ -14,9 +40,23 @@ stdlib.h
 unistd.h
 -
 
+/Users/mcamila/MyProjects/42/42/FDF/main.c
+header.h
+/Users/mcamila/MyProjects/42/42/FDF/header.h
+
 /Users/mcamila/MyProjects/42/42/FDF/map_parser.c
 libft/libft.h
 /Users/mcamila/MyProjects/42/42/FDF/libft/libft.h
 fcntl.h
 -
+
+/Users/mcamila/MyProjects/42/42/FDF/map_parser.h
+
+/Users/mcamila/MyProjects/42/42/FDF/matrix.h
+
+/Users/mcamila/MyProjects/42/42/FDF/structs.h
+header.h
+/Users/mcamila/MyProjects/42/42/FDF/header.h
+matrix.h
+/Users/mcamila/MyProjects/42/42/FDF/matrix.h
 
