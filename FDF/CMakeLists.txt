@@ -78,6 +78,7 @@ add_library(libft STATIC
         libft/ft_strtrim.c
         libft/ft_tolower.c
         libft/ft_toupper.c
+        libft/get_next_line.c
         libft/libft.h)
 
 add_executable(FDF
@@ -88,6 +89,8 @@ add_executable(FDF
         render.c
         structs.h
         matrix.c
-        matrix.h)
+        matrix.h
+        map_parser.c
+        map_parser.h)
 
 target_link_libraries(FDF mlx libft  "-framework OpenGL" "-framework AppKit" )

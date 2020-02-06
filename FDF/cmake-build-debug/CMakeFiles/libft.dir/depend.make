@@ -178,3 +178,6 @@ CMakeFiles/libft.dir/libft/ft_tolower.c.o: ../libft/libft.h
 CMakeFiles/libft.dir/libft/ft_toupper.c.o: ../libft/ft_toupper.c
 CMakeFiles/libft.dir/libft/ft_toupper.c.o: ../libft/libft.h
 
+CMakeFiles/libft.dir/libft/get_next_line.c.o: ../libft/get_next_line.c
+CMakeFiles/libft.dir/libft/get_next_line.c.o: ../libft/libft.h
+

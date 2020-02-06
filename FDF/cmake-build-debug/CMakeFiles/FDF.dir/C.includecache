@@ -6,47 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/Users/mcamila/MyProjects/42/42/FDF/functions.c
-header.h
-/Users/mcamila/MyProjects/42/42/FDF/header.h
-
-/Users/mcamila/MyProjects/42/42/FDF/functions.h
-
-/Users/mcamila/MyProjects/42/42/FDF/header.h
-unistd.h
--
-stdio.h
+/Users/mcamila/MyProjects/42/42/FDF/libft/libft.h
+string.h
 -
 stdlib.h
 -
-/Users/mcamila/MyProjects/42/42/libft/libft.h
+unistd.h
 -
-/Users/mcamila/MyProjects/42/42/MinilibX/minilibx_macos/mlx.h
--
-math.h
--
-structs.h
-/Users/mcamila/MyProjects/42/42/FDF/structs.h
-matrix.h
-/Users/mcamila/MyProjects/42/42/FDF/matrix.h
-functions.h
-/Users/mcamila/MyProjects/42/42/FDF/functions.h
 
-/Users/mcamila/MyProjects/42/42/FDF/matrix.h
-
-/Users/mcamila/MyProjects/42/42/FDF/render.c
-header.h
-/Users/mcamila/MyProjects/42/42/FDF/header.h
-
-/Users/mcamila/MyProjects/42/42/FDF/structs.h
-header.h
-/Users/mcamila/MyProjects/42/42/FDF/header.h
-matrix.h
-/Users/mcamila/MyProjects/42/42/FDF/matrix.h
-
-/Users/mcamila/MyProjects/42/42/MinilibX/minilibx_macos/mlx.h
-
-/Users/mcamila/MyProjects/42/42/libft/libft.h
-string.h
+/Users/mcamila/MyProjects/42/42/FDF/map_parser.c
+libft/libft.h
+/Users/mcamila/MyProjects/42/42/FDF/libft/libft.h
+fcntl.h
 -
 

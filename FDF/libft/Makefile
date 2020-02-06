@@ -6,7 +6,7 @@
 #    By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 14:22:48 by mcamila           #+#    #+#              #
-#    Updated: 2019/09/21 17:53:36 by mcamila          ###   ########.fr        #
+#    Updated: 2020/02/06 15:26:44 by mcamila          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,13 @@ SRC =	ft_atoi.c       ft_isdigit.c    ft_lstdelone.c  ft_memccpy.c    ft_memdup.
       	ft_isalpha.c    ft_lstadd.c     ft_lstnew.c     ft_memcpy.c     ft_putchar.c    ft_putnbr_fd.c\
       	ft_strclr.c     ft_strequ.c     ft_strlen.c     ft_strncpy.c    ft_strsplit.c   ft_toupper.c\
       	ft_isascii.c    ft_lstdel.c     ft_memalloc.c   ft_memdel.c     ft_putchar_fd.c ft_putstr.c\
-      	ft_strcmp.c     ft_striter.c    ft_strmap.c     ft_strnequ.c    ft_strstr.c
+      	ft_strcmp.c     ft_striter.c    ft_strmap.c     ft_strnequ.c    ft_strstr.c	get_next_line.c
 
 INCL = libft.h
 
 GCC_FLAGS = -Wall -Werror -Wextra
 
-OBJ = ft_*.o
+OBJ = *.o
 
 all: $(NAME)
 

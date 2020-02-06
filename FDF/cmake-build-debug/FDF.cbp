@@ -401,10 +401,19 @@
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/libft/ft_toupper.c">
 			<Option target="libft"/>
 		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/libft/get_next_line.c">
+			<Option target="libft"/>
+		</Unit>
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/libft/libft.h">
 			<Option target="libft"/>
 		</Unit>
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/main.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/map_parser.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/map_parser.h">
 			<Option target="FDF"/>
 		</Unit>
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/matrix.c">

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/05 22:05:15 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/06 16:03:57 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,6 +245,8 @@ int	main() {
 	insts[1] = make_obj_inst(&obj);
 	//insts[0].rotation = make_rotation_matrix(0, 1);
 
+	map_parser("42.fdf");
+
 	data->obj_inst = insts;
 	data->camera = initialize_camera(1);
 	render_frame(insts, 1, data);
@@ -259,7 +261,6 @@ int	main() {
 	mlx_hook(data->win_ptr, 6, 0, mouse_move, (void*)data);
 	mlx_loop_hook(data->mlx_ptr, frame_loop, data);
 	mlx_hook(data->win_ptr, 17, 0, x_press, data);
-
 
 	mlx_loop(data->mlx_ptr);
 	return (0);

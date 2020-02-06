@@ -1,14 +1,14 @@
 NAME = fdf
 
-SRC = main.c draw_line.c render.c functions.c matrix.c
+SRC = main.c draw_line.c render.c functions.c matrix.c map_parser.c
 
 INCL = *.h
 
 GCC_FLAGS = #-Wall -Werror -Wextra
 
-MLX_LIB = /Users/mcamila/MyProjects/42/42/MinilibX/minilibx_macos/libmlx.a
+MLX_LIB = MinilibX/minilibx_macos/libmlx.a
 
-FT_LIB = /Users/mcamila/MyProjects/42/42/libft/libft.a
+FT_LIB = libft/libft.a
 
 FRAMEWORKS = -framework OpenGL -framework AppKit
 

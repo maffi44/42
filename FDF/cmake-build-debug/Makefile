@@ -1985,6 +1985,33 @@ libft/ft_toupper.c.s:
 	$(MAKE) -f CMakeFiles/libft.dir/build.make CMakeFiles/libft.dir/libft/ft_toupper.c.s
 .PHONY : libft/ft_toupper.c.s
 
+libft/get_next_line.o: libft/get_next_line.c.o
+
+.PHONY : libft/get_next_line.o
+
+# target to build an object file
+libft/get_next_line.c.o:
+	$(MAKE) -f CMakeFiles/libft.dir/build.make CMakeFiles/libft.dir/libft/get_next_line.c.o
+.PHONY : libft/get_next_line.c.o
+
+libft/get_next_line.i: libft/get_next_line.c.i
+
+.PHONY : libft/get_next_line.i
+
+# target to preprocess a source file
+libft/get_next_line.c.i:
+	$(MAKE) -f CMakeFiles/libft.dir/build.make CMakeFiles/libft.dir/libft/get_next_line.c.i
+.PHONY : libft/get_next_line.c.i
+
+libft/get_next_line.s: libft/get_next_line.c.s
+
+.PHONY : libft/get_next_line.s
+
+# target to generate assembly for a file
+libft/get_next_line.c.s:
+	$(MAKE) -f CMakeFiles/libft.dir/build.make CMakeFiles/libft.dir/libft/get_next_line.c.s
+.PHONY : libft/get_next_line.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -2011,6 +2038,33 @@ main.s: main.c.s
 main.c.s:
 	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/main.c.s
 .PHONY : main.c.s
+
+map_parser.o: map_parser.c.o
+
+.PHONY : map_parser.o
+
+# target to build an object file
+map_parser.c.o:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/map_parser.c.o
+.PHONY : map_parser.c.o
+
+map_parser.i: map_parser.c.i
+
+.PHONY : map_parser.i
+
+# target to preprocess a source file
+map_parser.c.i:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/map_parser.c.i
+.PHONY : map_parser.c.i
+
+map_parser.s: map_parser.c.s
+
+.PHONY : map_parser.s
+
+# target to generate assembly for a file
+map_parser.c.s:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/map_parser.c.s
+.PHONY : map_parser.c.s
 
 matrix.o: matrix.c.o
 
@@ -2281,9 +2335,15 @@ help:
 	@echo "... libft/ft_toupper.o"
 	@echo "... libft/ft_toupper.i"
 	@echo "... libft/ft_toupper.s"
+	@echo "... libft/get_next_line.o"
+	@echo "... libft/get_next_line.i"
+	@echo "... libft/get_next_line.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... map_parser.o"
+	@echo "... map_parser.i"
+	@echo "... map_parser.s"
 	@echo "... matrix.o"
 	@echo "... matrix.i"
 	@echo "... matrix.s"

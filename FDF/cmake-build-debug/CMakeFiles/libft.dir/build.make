@@ -824,6 +824,19 @@ CMakeFiles/libft.dir/libft/ft_toupper.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/libft.dir/libft/ft_toupper.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mcamila/MyProjects/42/42/FDF/libft/ft_toupper.c -o CMakeFiles/libft.dir/libft/ft_toupper.c.s
 
+CMakeFiles/libft.dir/libft/get_next_line.c.o: CMakeFiles/libft.dir/flags.make
+CMakeFiles/libft.dir/libft/get_next_line.c.o: ../libft/get_next_line.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/libft.dir/libft/get_next_line.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/libft.dir/libft/get_next_line.c.o   -c /Users/mcamila/MyProjects/42/42/FDF/libft/get_next_line.c
+
+CMakeFiles/libft.dir/libft/get_next_line.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/libft.dir/libft/get_next_line.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mcamila/MyProjects/42/42/FDF/libft/get_next_line.c > CMakeFiles/libft.dir/libft/get_next_line.c.i
+
+CMakeFiles/libft.dir/libft/get_next_line.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/libft.dir/libft/get_next_line.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mcamila/MyProjects/42/42/FDF/libft/get_next_line.c -o CMakeFiles/libft.dir/libft/get_next_line.c.s
+
 # Object files for target libft
 libft_OBJECTS = \
 "CMakeFiles/libft.dir/libft/ft_atoi.c.o" \
@@ -884,7 +897,8 @@ libft_OBJECTS = \
 "CMakeFiles/libft.dir/libft/ft_strsub.c.o" \
 "CMakeFiles/libft.dir/libft/ft_strtrim.c.o" \
 "CMakeFiles/libft.dir/libft/ft_tolower.c.o" \
-"CMakeFiles/libft.dir/libft/ft_toupper.c.o"
+"CMakeFiles/libft.dir/libft/ft_toupper.c.o" \
+"CMakeFiles/libft.dir/libft/get_next_line.c.o"
 
 # External object files for target libft
 libft_EXTERNAL_OBJECTS =
@@ -948,9 +962,10 @@ liblibft.a: CMakeFiles/libft.dir/libft/ft_strsub.c.o
 liblibft.a: CMakeFiles/libft.dir/libft/ft_strtrim.c.o
 liblibft.a: CMakeFiles/libft.dir/libft/ft_tolower.c.o
 liblibft.a: CMakeFiles/libft.dir/libft/ft_toupper.c.o
+liblibft.a: CMakeFiles/libft.dir/libft/get_next_line.c.o
 liblibft.a: CMakeFiles/libft.dir/build.make
 liblibft.a: CMakeFiles/libft.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Linking C static library liblibft.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Linking C static library liblibft.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/libft.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/libft.dir/link.txt --verbose=$(VERBOSE)
 
