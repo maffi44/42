@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/07 00:04:55 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/07 21:59:34 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,7 +286,7 @@ void draw_hor_line(float x0, float x1, int y, t_data *data, float h0, float h1, 
 		swap_f(&zb1, &zb2);
 		swap_colors(&col0, &col1);
 	}
-	float h = h0;
+	double h = h0;
 	float a = (h1 - h0) / (x1 - x0);
 
 	float Z0 = zb1;

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/06 23:46:37 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/07 21:37:14 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,75 +175,75 @@ int	main() {
 			&(data->bpp),
 			&(data->img_line),
 			&(data->endian));
-	t_ref_obj obj;
+	t_ref_obj *obj;
+	obj = (t_ref_obj*)malloc(sizeof(t_ref_obj));
 
-	obj.vertex = (t_vec3*)malloc(sizeof(t_vec3) * 8);
-	obj.tri = (t_tri*)malloc(sizeof(t_tri) * 12);
-	obj.num_of_pts = 8;
-	obj.num_of_tris = 12;
+	obj->vertex = (t_vec3*)malloc(sizeof(t_vec3) * 8);
+	obj->tri = (t_tri*)malloc(sizeof(t_tri) * 12);
+	obj->num_of_pts = 8;
+	obj->num_of_tris = 12;
 
-	obj.vertex[0] = make_vertex(-2, -2, -2, 0x00FF00FF);
-	obj.vertex[1] = make_vertex(-2, 2, -2, 0x00FF00FF);
-	obj.vertex[2] = make_vertex(2, 2, -2, 0x0000FFFF);
-	obj.vertex[3] = make_vertex(2, -2, -2, 0x0000FFFF);
-	obj.vertex[4] = make_vertex(-2, -2, 2, 0x00FF00FF);
-	obj.vertex[5] = make_vertex(-2, 2, 2, 0x00FF00FF);
-	obj.vertex[6] = make_vertex(2, 2, 2, 0x0000FFFF);
-	obj.vertex[7] = make_vertex(2, -2, 2, 0x0000FFFF);
+	obj->vertex[0] = make_vertex(-2, -2, -2, 0x00FF00FF);
+	obj->vertex[1] = make_vertex(-2, 2, -2, 0x00FF00FF);
+	obj->vertex[2] = make_vertex(2, 2, -2, 0x0000FFFF);
+	obj->vertex[3] = make_vertex(2, -2, -2, 0x0000FFFF);
+	obj->vertex[4] = make_vertex(-2, -2, 2, 0x00FF00FF);
+	obj->vertex[5] = make_vertex(-2, 2, 2, 0x00FF00FF);
+	obj->vertex[6] = make_vertex(2, 2, 2, 0x0000FFFF);
+	obj->vertex[7] = make_vertex(2, -2, 2, 0x0000FFFF);
 
-	obj.tri[0].pt[0] = 0;
-	obj.tri[0].pt[1] = 1;
-	obj.tri[0].pt[2] = 2;
+	obj->tri[0].pt[0] = 0;
+	obj->tri[0].pt[1] = 1;
+	obj->tri[0].pt[2] = 2;
 
-	obj.tri[1].pt[0] = 0;
-	obj.tri[1].pt[1] = 2;
-	obj.tri[1].pt[2] = 3;
+	obj->tri[1].pt[0] = 0;
+	obj->tri[1].pt[1] = 2;
+	obj->tri[1].pt[2] = 3;
 
-	obj.tri[2].pt[0] = 3;
-	obj.tri[2].pt[1] = 2;
-	obj.tri[2].pt[2] = 7;
+	obj->tri[2].pt[0] = 3;
+	obj->tri[2].pt[1] = 2;
+	obj->tri[2].pt[2] = 7;
 
-	obj.tri[3].pt[0] = 7;
-	obj.tri[3].pt[1] = 2;
-	obj.tri[3].pt[2] = 6;
+	obj->tri[3].pt[0] = 7;
+	obj->tri[3].pt[1] = 2;
+	obj->tri[3].pt[2] = 6;
 
-	obj.tri[4].pt[0] = 6;
-	obj.tri[4].pt[1] = 4;
-	obj.tri[4].pt[2] = 7;
+	obj->tri[4].pt[0] = 6;
+	obj->tri[4].pt[1] = 4;
+	obj->tri[4].pt[2] = 7;
 
-	obj.tri[5].pt[0] = 6;
-	obj.tri[5].pt[1] = 5;
-	obj.tri[5].pt[2] = 4;
+	obj->tri[5].pt[0] = 6;
+	obj->tri[5].pt[1] = 5;
+	obj->tri[5].pt[2] = 4;
 
-	obj.tri[6].pt[0] = 5;
-	obj.tri[6].pt[1] = 1;
-	obj.tri[6].pt[2] = 4;
+	obj->tri[6].pt[0] = 5;
+	obj->tri[6].pt[1] = 1;
+	obj->tri[6].pt[2] = 4;
 
-	obj.tri[7].pt[0] = 1;
-	obj.tri[7].pt[1] = 0;
-	obj.tri[7].pt[2] = 4;
+	obj->tri[7].pt[0] = 1;
+	obj->tri[7].pt[1] = 0;
+	obj->tri[7].pt[2] = 4;
 
-	obj.tri[8].pt[0] = 1;
-	obj.tri[8].pt[1] = 5;
-	obj.tri[8].pt[2] = 2;
+	obj->tri[8].pt[0] = 1;
+	obj->tri[8].pt[1] = 5;
+	obj->tri[8].pt[2] = 2;
 
-	obj.tri[9].pt[0] = 2;
-	obj.tri[9].pt[1] = 5;
-	obj.tri[9].pt[2] = 6;
+	obj->tri[9].pt[0] = 2;
+	obj->tri[9].pt[1] = 5;
+	obj->tri[9].pt[2] = 6;
 
-	obj.tri[10].pt[0] = 0;
-	obj.tri[10].pt[1] = 3;
-	obj.tri[10].pt[2] = 4;
+	obj->tri[10].pt[0] = 0;
+	obj->tri[10].pt[1] = 3;
+	obj->tri[10].pt[2] = 4;
 
-	obj.tri[11].pt[0] = 3;
-	obj.tri[11].pt[1] = 7;
-	obj.tri[11].pt[2] = 4;
+	obj->tri[11].pt[0] = 3;
+	obj->tri[11].pt[1] = 7;
+	obj->tri[11].pt[2] = 4;
 
-	t_ref_obj main_obj = map_parser("42.fdf");
+	t_ref_obj main_obj = map_parser("/Users/mcamila/MyProjects/42/42/FDF/42.fdf");
 
 	t_inst_obj	*insts;
-	insts = (t_inst_obj*)malloc(sizeof(t_inst_obj) * 2);
-	insts[0] = make_obj_inst(&main_obj, 0.2f, 0.2f, 0.2f, 1, 1, 1);
+	insts = make_obj_inst(&main_obj, 0.1f, 0.1f, 0.1f, 1, 1, 1);
 //	insts[1] = make_obj_inst(&obj);
 	//insts[0].rotation = make_rotation_matrix(0, 1);
 

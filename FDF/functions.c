@@ -94,65 +94,67 @@ void		color_loop(t_ref_obj *obj, unsigned int speed)
 	}
 }
 
-t_inst_obj	make_obj_inst(t_ref_obj *ref, float x_sc, float y_sc, float z_sc, float x_tr, float y_tr, float z_tr)
+t_inst_obj	*make_obj_inst(t_ref_obj *ref, float x_sc, float y_sc, float z_sc, float x_tr, float y_tr, float z_tr)
 {
-	t_inst_obj	new_inst;
+	t_inst_obj	*new_inst;
 
-	new_inst.ref_obj = ref;
+	new_inst = (t_inst_obj*)malloc(sizeof(t_inst_obj));
 
-	new_inst.scale.elem[0][0] = x_sc;
-	new_inst.scale.elem[0][1] = 0;
-	new_inst.scale.elem[0][2] = 0;
-	new_inst.scale.elem[0][3] = 0;
-	new_inst.scale.elem[1][0] = 0;
-	new_inst.scale.elem[1][1] = y_sc;
-	new_inst.scale.elem[1][2] = 0;
-	new_inst.scale.elem[1][3] = 0;
-	new_inst.scale.elem[2][0] = 0;
-	new_inst.scale.elem[2][1] = 0;
-	new_inst.scale.elem[2][2] = z_sc;
-	new_inst.scale.elem[2][3] = 0;
-	new_inst.scale.elem[3][0] = 0;
-	new_inst.scale.elem[3][1] = 0;
-	new_inst.scale.elem[3][2] = 0;
-	new_inst.scale.elem[3][3] = 1;
+	new_inst->ref_obj = ref;
 
-	new_inst.rotation.elem[0][0] = 1;
-	new_inst.rotation.elem[0][1] = 0;
-	new_inst.rotation.elem[0][2] = 0;
-	new_inst.rotation.elem[0][3] = 0;
-	new_inst.rotation.elem[1][0] = 0;
-	new_inst.rotation.elem[1][1] = 1;
-	new_inst.rotation.elem[1][2] = 0;
-	new_inst.rotation.elem[1][3] = 0;
-	new_inst.rotation.elem[2][0] = 0;
-	new_inst.rotation.elem[2][1] = 0;
-	new_inst.rotation.elem[2][2] = 1;
-	new_inst.rotation.elem[2][3] = 0;
-	new_inst.rotation.elem[3][0] = 0;
-	new_inst.rotation.elem[3][1] = 0;
-	new_inst.rotation.elem[3][2] = 0;
-	new_inst.rotation.elem[3][3] = 1;
+	new_inst->scale.elem[0][0] = x_sc;
+	new_inst->scale.elem[0][1] = 0;
+	new_inst->scale.elem[0][2] = 0;
+	new_inst->scale.elem[0][3] = 0;
+	new_inst->scale.elem[1][0] = 0;
+	new_inst->scale.elem[1][1] = y_sc;
+	new_inst->scale.elem[1][2] = 0;
+	new_inst->scale.elem[1][3] = 0;
+	new_inst->scale.elem[2][0] = 0;
+	new_inst->scale.elem[2][1] = 0;
+	new_inst->scale.elem[2][2] = z_sc;
+	new_inst->scale.elem[2][3] = 0;
+	new_inst->scale.elem[3][0] = 0;
+	new_inst->scale.elem[3][1] = 0;
+	new_inst->scale.elem[3][2] = 0;
+	new_inst->scale.elem[3][3] = 1;
 
-	new_inst.translate.elem[0][0] = 1;
-	new_inst.translate.elem[0][1] = 0;
-	new_inst.translate.elem[0][2] = 0;
-	new_inst.translate.elem[0][3] = x_tr;
-	new_inst.translate.elem[1][0] = 0;
-	new_inst.translate.elem[1][1] = 1;
-	new_inst.translate.elem[1][2] = 0;
-	new_inst.translate.elem[1][3] = y_tr;
-	new_inst.translate.elem[2][0] = 0;
-	new_inst.translate.elem[2][1] = 0;
-	new_inst.translate.elem[2][2] = 1;
-	new_inst.translate.elem[2][3] = z_tr;
-	new_inst.translate.elem[3][0] = 0;
-	new_inst.translate.elem[3][1] = 0;
-	new_inst.translate.elem[3][2] = 0;
-	new_inst.translate.elem[3][3] = 1;
+	new_inst->rotation.elem[0][0] = 1;
+	new_inst->rotation.elem[0][1] = 0;
+	new_inst->rotation.elem[0][2] = 0;
+	new_inst->rotation.elem[0][3] = 0;
+	new_inst->rotation.elem[1][0] = 0;
+	new_inst->rotation.elem[1][1] = 1;
+	new_inst->rotation.elem[1][2] = 0;
+	new_inst->rotation.elem[1][3] = 0;
+	new_inst->rotation.elem[2][0] = 0;
+	new_inst->rotation.elem[2][1] = 0;
+	new_inst->rotation.elem[2][2] = 1;
+	new_inst->rotation.elem[2][3] = 0;
+	new_inst->rotation.elem[3][0] = 0;
+	new_inst->rotation.elem[3][1] = 0;
+	new_inst->rotation.elem[3][2] = 0;
+	new_inst->rotation.elem[3][3] = 1;
 
-	new_inst.x_ang = 0;
-	new_inst.y_ang = 0;
+	new_inst->translate.elem[0][0] = 1;
+	new_inst->translate.elem[0][1] = 0;
+	new_inst->translate.elem[0][2] = 0;
+	new_inst->translate.elem[0][3] = x_tr;
+	new_inst->translate.elem[1][0] = 0;
+	new_inst->translate.elem[1][1] = 1;
+	new_inst->translate.elem[1][2] = 0;
+	new_inst->translate.elem[1][3] = y_tr;
+	new_inst->translate.elem[2][0] = 0;
+	new_inst->translate.elem[2][1] = 0;
+	new_inst->translate.elem[2][2] = 1;
+	new_inst->translate.elem[2][3] = z_tr;
+	new_inst->translate.elem[3][0] = 0;
+	new_inst->translate.elem[3][1] = 0;
+	new_inst->translate.elem[3][2] = 0;
+	new_inst->translate.elem[3][3] = 1;
+
+	new_inst->x_ang = 0;
+	new_inst->y_ang = 0;
 
 	return (new_inst);
 }

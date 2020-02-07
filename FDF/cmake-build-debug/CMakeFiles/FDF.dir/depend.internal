@@ -29,8 +29,14 @@ CMakeFiles/FDF.dir/main.c.o
  /Users/mcamila/MyProjects/42/42/FDF/matrix.h
  /Users/mcamila/MyProjects/42/42/FDF/structs.h
 CMakeFiles/FDF.dir/map_parser.c.o
+ /Users/mcamila/MyProjects/42/42/FDF/MinilibX/minilibx_macos/mlx.h
+ /Users/mcamila/MyProjects/42/42/FDF/functions.h
+ /Users/mcamila/MyProjects/42/42/FDF/header.h
  /Users/mcamila/MyProjects/42/42/FDF/libft/libft.h
  /Users/mcamila/MyProjects/42/42/FDF/map_parser.c
+ /Users/mcamila/MyProjects/42/42/FDF/map_parser.h
+ /Users/mcamila/MyProjects/42/42/FDF/matrix.h
+ /Users/mcamila/MyProjects/42/42/FDF/structs.h
 CMakeFiles/FDF.dir/matrix.c.o
  /Users/mcamila/MyProjects/42/42/FDF/MinilibX/minilibx_macos/mlx.h
  /Users/mcamila/MyProjects/42/42/FDF/functions.h

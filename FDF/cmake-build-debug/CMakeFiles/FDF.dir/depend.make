@@ -28,8 +28,14 @@ CMakeFiles/FDF.dir/main.c.o: ../map_parser.h
 CMakeFiles/FDF.dir/main.c.o: ../matrix.h
 CMakeFiles/FDF.dir/main.c.o: ../structs.h
 
+CMakeFiles/FDF.dir/map_parser.c.o: ../MinilibX/minilibx_macos/mlx.h
+CMakeFiles/FDF.dir/map_parser.c.o: ../functions.h
+CMakeFiles/FDF.dir/map_parser.c.o: ../header.h
 CMakeFiles/FDF.dir/map_parser.c.o: ../libft/libft.h
 CMakeFiles/FDF.dir/map_parser.c.o: ../map_parser.c
+CMakeFiles/FDF.dir/map_parser.c.o: ../map_parser.h
+CMakeFiles/FDF.dir/map_parser.c.o: ../matrix.h
+CMakeFiles/FDF.dir/map_parser.c.o: ../structs.h
 
 CMakeFiles/FDF.dir/matrix.c.o: ../MinilibX/minilibx_macos/mlx.h
 CMakeFiles/FDF.dir/matrix.c.o: ../functions.h

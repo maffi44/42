@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/07 00:30:48 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/07 21:20:21 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,8 @@ void	render_frame(t_inst_obj *objects, int  num_of_obj, t_data *data)
 			draw_triangle(objects[i], objects[i].ref_obj->tri[j], data, 1);
 			j++;
 		}
+		color_loop(objects[i].ref_obj, 5);
 		i++;
-		//color_loop(objects[i].ref_obj, 15);
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 }
