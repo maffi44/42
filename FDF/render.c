@@ -158,7 +158,7 @@ void	render_frame(t_inst_obj *objects, int  num_of_obj, t_data *data)
 		j = 0;
 		while (j < objects[i].ref_obj->num_of_tris)
 		{
-			cheak_and_draw_tri(objects[i], objects[i].ref_obj->tri[j], data, 1)
+//			cheak_and_draw_tri(objects[i], objects[i].ref_obj->tri[j], data, 1)
 			draw_triangle(objects[i], objects[i].ref_obj->tri[j], data, 1);
 			j++;
 		}
