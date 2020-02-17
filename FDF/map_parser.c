@@ -5,15 +5,83 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/17 20:02:56 by mcamila           #+#    #+#             */
+/*   Updated: 2020/02/17 20:02:56 by mcamila          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_parser.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/17 20:02:55 by mcamila           #+#    #+#             */
+/*   Updated: 2020/02/17 20:02:55 by mcamila          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_parser.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:18:34 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/17 18:37:31 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/17 20:02:52 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <fcntl.h>
 
-void	error(int error)
+typedef struct 		s_maps
+{
+	char **line;
+	char *big_line;
+	char *temp;
+	char ***big_map;
+	int **map;
+}					t_maps;
+
+void	del_maps(t_maps *maps)
+{
+	size_t i;
+	size_t j;
+
+	if (maps->temp)
+		ft_memdel(&(maps->temp));
+	if (maps->big_line)
+		ft_memdel(&(maps->big_line));
+	if (maps->map)
+	{
+		i = 0;
+		while ((maps->map)[i])
+			ft_memdel((&(maps->map)[i++]));
+		ft_memdel(&(maps->map));
+	}
+	if (maps->line)
+	{
+		i = 0;
+		while ((maps->line)[i])
+			ft_memdel(&(maps->line)[i++]));
+		ft_memdel(&(maps->line));
+	}
+	if (maps->big_map)
+	{
+		i = 0;
+		while ((maps->big_map)[i])
+		{
+			j = 0;
+			while ((maps->big_map)[i][j])
+				ft_memdel((&(maps->line)[i][j++]));
+			ft_memdel((&(maps->line)[i++]));
+		}
+		ft_memdel((&(maps->line)));
+	}
+}
+
+void	error(int error, t_data *data, t_maps *maps)
 {
 	if (error == 0)
 		ft_putendl("ERROR");
@@ -21,10 +89,11 @@ void	error(int error)
 		;
 	else
 		;
-	exit(0);
+	del_maps(maps);
+	go_away(data);
 }
 
-t_ref_obj	make_ref_obj_from_map(int **map, int x, int y)
+t_ref_obj	make_ref_obj_from_map(int **map, int x, int y, t_data *data)
 {
 	t_ref_obj obj;
 	int i;
@@ -94,90 +163,93 @@ t_ref_obj	make_ref_obj_from_map(int **map, int x, int y)
 	return (obj);
 }
 
+
+
 t_ref_obj	map_parser(char *file_name)
 {
 	int fd;
 	int y;
 	int x;
-	char **line;
-	char *big_line;
-	char *temp;
-	char ***big_map;
-	int **map;
+	t_maps maps;
+
+	maps.big_line = NULL;
+	maps.big_map = NULL;
+	maps.line = NULL;
+	maps.map = NULL;
+	maps.temp = NULL;
 
 	if ((fd = open(file_name, O_RDONLY)) < 0)
 		error(0);
-	line = (char**)malloc(sizeof(char*));
-	big_line = (char*)malloc(sizeof(char));
-	*big_line = '\0';
+	(maps.line) = (char**)malloc(sizeof(char*));
+	(maps.big_line) = (char*)malloc(sizeof(char));
+	*(maps.big_line) = '\0';
 	y = 0;
-	while (get_next_line(fd, line))
+	while (get_next_line(fd, (maps.line)))
 	{
-		temp = ft_strjoin(big_line, *line);
-		free(big_line);
-		big_line = temp;
-		temp = ft_strjoin(big_line, "/");;
-		free(big_line);
-		big_line = temp;
-		free(*line);
+		(maps.temp) = ft_strjoin((maps.big_line), *(maps.line));
+		ft_memdel(&(maps.big_line));
+		(maps.big_line) = (maps.temp);
+		(maps.temp) = ft_strjoin((maps.big_line), "/");;
+		ft_memdel(&(maps.big_line));
+		(maps.big_line) = (maps.temp);
+		ft_memdel(&*(maps.line));
 		y++;
 	}
-	free(line);
-	if (ft_strlen(big_line) == 0)
+	ft_memdel(&(maps.line));
+	if (ft_strlen((maps.big_line)) == 0)
 		error(0);
-	line = ft_strsplit(big_line, '/');
-	free(big_line);
+	(maps.line) = ft_strsplit((maps.big_line), '/');
+	ft_memdel(&(maps.big_line));
 
 	y = 0;
-	while (line[y])
+	while ((maps.line)[y])
 		y++;
 
-	big_map = (char***)malloc(sizeof(char**) * y);
+	(maps.big_map) = (char***)malloc(sizeof(char**) * y);
 	int i = 0;
 	while (i < y)
 	{
-		big_map[i] = ft_strsplit(line[i], ' ');
-		free(line[i]);
+		(maps.big_map)[i] = ft_strsplit((maps.line)[i], ' ');
+		ft_memdel(&(maps.line)[i]);
 		i++;
 	}
-	free(line);
+	ft_memdel(&(maps.line));
 	x = 0;
-	while (big_map[0][x])
+	while ((maps.big_map)[0][x])
 		x++;
 
-	map = (int**)malloc(sizeof(int*) * y);
+	(maps.map) = (int**)malloc(sizeof(int*) * y);
 
 	i = 0;
 	while (i < y)
 	{
-		map[i] = (int*)malloc(sizeof(int) * x);
+		(maps.map)[i] = (int*)malloc(sizeof(int) * x);
 		i++;
 	}
-
 	i = 0;
 	while (i < y)
 	{
 		x = 0;
-		while (big_map[i][x])
+		while ((maps.big_map)[i][x])
 		{
-			map[i][x] = ft_atoi(big_map[i][x]);
-			free(big_map[i][x]);
+			(maps.map)[i][x] = ft_atoi((maps.big_map)[i][x]);
+			ft_memdel(&(maps.big_map)[i][x]);
 			x++;
 		}
-		free(big_map[i]);
+		ft_memdel(&(maps.big_map)[i]);
 		i++;
 	}
-	free(big_map);
+	ft_memdel(&(maps.big_map));
 
-	t_ref_obj obj = make_ref_obj_from_map(map, x, y);
+	t_ref_obj obj = make_ref_obj_from_map((maps.map), x, y);
 
 	i = 0;
 	while (i < y)
 	{
-		free(map[i]);
+		ft_memdel(&(maps.map)[i]);
 		printf("%d\n", i + 1);
 		i++;
 	}
-	free(map);
+	ft_memdel(&(maps.map));
 	return (obj);
 }
