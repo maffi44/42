@@ -70,6 +70,16 @@ typedef struct	s_camera
 	float 		d;
 }				t_camera;
 
+
+typedef struct 	s_maps
+{
+	char		**line;
+	char		*big_line;
+	char		*temp;
+	char		***big_map;
+	int			**map;
+}				t_maps;
+
 typedef struct	s_data
 {
 	void		*mlx_ptr;

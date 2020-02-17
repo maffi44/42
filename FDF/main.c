@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/17 18:29:20 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/17 22:53:21 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,21 @@ void	go_away(t_data *data)
 {
 	if (data)
 	{
-		mlx_destroy_image(data->mlx_ptr, data->img_ptr);
-		free(data->zbuff);
-		free(data->obj_inst->ref_obj->tri);
-		free(data->obj_inst->ref_obj->vertex);
-		free(data->obj_inst);
+		if (data->mlx_ptr && data->img_ptr)
+			mlx_destroy_image(data->mlx_ptr, data->img_ptr);
+		if (data->zbuff)
+			free(data->zbuff);
+		if (data->obj_inst)
+		{
+			if (data->obj_inst->ref_obj)
+			{
+				if (data->obj_inst->ref_obj->tri)
+					free(data->obj_inst->ref_obj->tri);
+				if (data->obj_inst->ref_obj->vertex)
+					free(data->obj_inst->ref_obj->vertex);
+			}
+			free(data->obj_inst);
+		}
 		if (data->mlx_ptr)
 			free(data->mlx_ptr);
 		if (data->win_ptr)
@@ -120,9 +130,13 @@ int frame_loop(t_data *data)
 	return (0);
 }
 
-int	main() {
+int	main(int argc, char **argv)
+{
 	t_data	*data;
 
+	data = NULL;
+	if (argc != 2)
+		go_away(data);
 	if (!(data = (t_data*)malloc(sizeof(t_data))))
 		go_away(data);
 	if (!(data->mlx_ptr = mlx_init()))
@@ -146,10 +160,10 @@ int	main() {
 			&(data->bpp),
 			&(data->img_line),
 			&(data->endian));
-	t_ref_obj main_obj = map_parser("/Users/mcamila/MyProjects/42/42/FDF/maps/42.fdf");
+	t_ref_obj main_obj = map_parser(argv[1], data);
 
 	t_inst_obj	*insts;
-	insts = make_obj_inst(&main_obj, 0.1f, 0.1f, 0.1f, 0, 0, 1);
+	insts = make_obj_inst(&main_obj, 0.01f, 0.01f, 0.01f, 0, 0, 1);
 //	insts[1] = make_obj_inst(&obj);
 	//insts[0].rotation = make_rotation_matrix(0, 1);
 
