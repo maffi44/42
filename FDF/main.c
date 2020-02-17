@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/17 17:05:59 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/17 18:29:20 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	go_away(t_data *data)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->img_ptr);
 		free(data->zbuff);
+		free(data->obj_inst->ref_obj->tri);
+		free(data->obj_inst->ref_obj->vertex);
 		free(data->obj_inst);
 		if (data->mlx_ptr)
 			free(data->mlx_ptr);

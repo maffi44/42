@@ -6,16 +6,21 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:18:34 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/17 16:27:26 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/17 18:37:31 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <fcntl.h>
 
-void	error()
+void	error(int error)
 {
-	ft_putendl("ERROR");
+	if (error == 0)
+		ft_putendl("ERROR");
+	else if (error == 1)
+		;
+	else
+		;
 	exit(0);
 }
 
@@ -101,7 +106,7 @@ t_ref_obj	map_parser(char *file_name)
 	int **map;
 
 	if ((fd = open(file_name, O_RDONLY)) < 0)
-		error();
+		error(0);
 	line = (char**)malloc(sizeof(char*));
 	big_line = (char*)malloc(sizeof(char));
 	*big_line = '\0';
@@ -118,7 +123,10 @@ t_ref_obj	map_parser(char *file_name)
 		y++;
 	}
 	free(line);
+	if (ft_strlen(big_line) == 0)
+		error(0);
 	line = ft_strsplit(big_line, '/');
+	free(big_line);
 
 	y = 0;
 	while (line[y])
@@ -129,8 +137,10 @@ t_ref_obj	map_parser(char *file_name)
 	while (i < y)
 	{
 		big_map[i] = ft_strsplit(line[i], ' ');
+		free(line[i]);
 		i++;
 	}
+	free(line);
 	x = 0;
 	while (big_map[0][x])
 		x++;
@@ -165,6 +175,7 @@ t_ref_obj	map_parser(char *file_name)
 	while (i < y)
 	{
 		free(map[i]);
+		printf("%d\n", i + 1);
 		i++;
 	}
 	free(map);
