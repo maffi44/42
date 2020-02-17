@@ -136,7 +136,7 @@ int	main(int argc, char **argv)
 
 	data = NULL;
 	if (argc != 2)
-		go_away(data);
+		error(0, data, NULL);
 	if (!(data = (t_data*)malloc(sizeof(t_data))))
 		go_away(data);
 	if (!(data->mlx_ptr = mlx_init()))
