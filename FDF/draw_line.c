@@ -6,34 +6,34 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/13 17:18:59 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/17 16:52:07 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void swap_f(float *a, float *b)
+inline void swap_f(float *a, float *b)
 {
 	float temp = *a;
 	*a = *b;
 	*b = temp;
 }
 
-void swap_2pt(t_pt2 *a, t_pt2 *b)
+inline void swap_2pt(t_pt2 *a, t_pt2 *b)
 {
 	t_pt2 temp = *a;
 	*a = *b;
 	*b = temp;
 }
 
-void swap_colors(t_color *a, t_color *b)
+inline void swap_colors(t_color *a, t_color *b)
 {
 	t_color temp = *a;
 	*a = *b;
 	*b = temp;
 }
 
-void swap(int* a , int*b)
+inline void swap(int* a , int*b)
 {
 	int temp = *a;
 	*a = *b;
@@ -41,26 +41,26 @@ void swap(int* a , int*b)
 }
 
 // returns absolute value of number
-float absolute(float x )
+inline float absolute(float x)
 {
 	if (x < 0) return -x;
 	else return x;
 }
 
 //returns integer part of a floating point number
-int iPartOfNumber(float x)
+inline int iPartOfNumber(float x)
 {
 	return (int)x;
 }
 
 //rounds off a number
-int roundNumber(float x)
+inline int roundNumber(float x)
 {
 	return iPartOfNumber(x + 0.5) ;
 }
 
 //returns fractional part of a number
-float fPartOfNumber(float x)
+inline float fPartOfNumber(float x)
 {
 	if (x>0) return x - iPartOfNumber(x);
 	else return x - (iPartOfNumber(x)+1);
@@ -68,7 +68,7 @@ float fPartOfNumber(float x)
 }
 
 //returns 1 - fractional part of number
-float rfPartOfNumber(float x)
+inline float rfPartOfNumber(float x)
 {
 	return 1 - fPartOfNumber(x);
 }
@@ -342,8 +342,8 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 		a1 = -a1;
 	if (p0.x > p2.x)
 		a2 = -a2;
-	float X1 = (float)((int)p0.x);
-	float X2 = (float)((int)p0.x);
+	float X1 = p0.x;
+	float X2 = p0.x;
 
 	float H1 = p0.light;
 	float H2 = p0.light;
@@ -407,7 +407,7 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 		y++;
 	}
 
-	X1 = (float)((int)p1.x);
+	X1 = p1.x;
 	a1 = absolute(p1.x - p2.x) / (p2.y - p1.y);
 	if (p1.x > p2.x)
 		a1 = -a1;

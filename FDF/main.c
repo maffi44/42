@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/07 21:37:14 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/17 17:05:59 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ void	go_away(t_data *data)
 {
 	if (data)
 	{
+		mlx_destroy_image(data->mlx_ptr, data->img_ptr);
+		free(data->zbuff);
+		free(data->obj_inst);
 		if (data->mlx_ptr)
 			free(data->mlx_ptr);
 		if (data->win_ptr)
 			free(data->win_ptr);
 		free(data);
-		data = NULL;
 	}
 	exit(0);
 }
@@ -34,6 +36,8 @@ int	key_press(int key, t_data *data)
 		go_away(data);
 	else if (key == 15)
 		data->R_bool = 1;
+	else if (key == 12)
+			data->Q_bool = !(data->Q_bool);
 	return (0);
 }
 
@@ -54,47 +58,18 @@ int mouse_press(int button, int x, int y, t_data *data)
 	}
 	if (button == 4)
 	{
-		data->obj_inst->scale.elem[0][0] += 0.1f;
-		data->obj_inst->scale.elem[1][1] += 0.1f;
-		data->obj_inst->scale.elem[2][2] += 0.1f;
+		data->obj_inst->scale.elem[0][0] *= 1.05f;
+		data->obj_inst->scale.elem[1][1] *= 1.05f;
+		data->obj_inst->scale.elem[2][2] *= 1.05f;
 		render_frame(data->obj_inst, 1, data);
 	}
 	if (button == 5)
 	{
-		data->obj_inst->scale.elem[0][0] *= 0.9f;
-		data->obj_inst->scale.elem[1][1] *= 0.9f;
-		data->obj_inst->scale.elem[2][2] *= 0.9f;
+		data->obj_inst->scale.elem[0][0] *= 0.95f;
+		data->obj_inst->scale.elem[1][1] *= 0.95f;
+		data->obj_inst->scale.elem[2][2] *= 0.95f;
 		render_frame(data->obj_inst, 1, data);
 	}
-	//	if (((t_data *) data)->mouse_bool == 0) {
-	//		((t_data *) data)->mouse_bool = 1;
-//			((t_data *) data)->x = x;
-//			((t_data *) data)->y = y;
-		/*
-		else if (((t_data *) data)->mouse_bool == 1)
-		{
-			((t_data *) data)->mouse_bool = 2;
-//			draw_line(((t_data *) data)->x, ((t_data *) data)->y, x, y, data, 0x00FFFFFF);
-			((t_data *) data)->x1 = x;
-			((t_data *) data)->y1 = y;
-		}
-		else
-		{
-			((t_data *) data)->mouse_bool = 0;
-			draw_tri(
-					((t_data *) data)->x,
-					((t_data *) data)->y,
-					0,
-					((t_data *) data)->x1,
-					((t_data *) data)->y1,
-					0.1f,
-					x,
-					y,
-					1.0f,
-					data
-			);
-		}*/
-//	}
 	return (0);
 }
 
@@ -140,16 +115,11 @@ int	x_press(void *data)
 int frame_loop(t_data *data)
 {
 	render_frame(data->obj_inst, 1, (void*)data);
-//	data->obj_inst->ref_obj->vertex[0].color += 1;
-//	if (((t_data*)data)->mouse_bool)
-//		mlx_pixel_put(((t_data*)data)->mlx_ptr, ((t_data*)data)->win_ptr, ((t_data*)data)->x, ((t_data*)data)->y, 0x00FFFFFF);
 	return (0);
 }
 
 int	main() {
 	t_data	*data;
-
-//	double z_buff[WIDTH][HIEGHT];
 
 	if (!(data = (t_data*)malloc(sizeof(t_data))))
 		go_away(data);
@@ -161,7 +131,6 @@ int	main() {
 		go_away(data);
 	if (!(data->zbuff = (float*)ft_memalloc(sizeof(float) * WIDTH * HIEGHT)))
 		go_away(data);
-
 	bzero(data->zbuff, sizeof(float) * WIDTH * HIEGHT);
 
 	data->dir_light.elem[0] = 0;
@@ -175,75 +144,10 @@ int	main() {
 			&(data->bpp),
 			&(data->img_line),
 			&(data->endian));
-	t_ref_obj *obj;
-	obj = (t_ref_obj*)malloc(sizeof(t_ref_obj));
-
-	obj->vertex = (t_vec3*)malloc(sizeof(t_vec3) * 8);
-	obj->tri = (t_tri*)malloc(sizeof(t_tri) * 12);
-	obj->num_of_pts = 8;
-	obj->num_of_tris = 12;
-
-	obj->vertex[0] = make_vertex(-2, -2, -2, 0x00FF00FF);
-	obj->vertex[1] = make_vertex(-2, 2, -2, 0x00FF00FF);
-	obj->vertex[2] = make_vertex(2, 2, -2, 0x0000FFFF);
-	obj->vertex[3] = make_vertex(2, -2, -2, 0x0000FFFF);
-	obj->vertex[4] = make_vertex(-2, -2, 2, 0x00FF00FF);
-	obj->vertex[5] = make_vertex(-2, 2, 2, 0x00FF00FF);
-	obj->vertex[6] = make_vertex(2, 2, 2, 0x0000FFFF);
-	obj->vertex[7] = make_vertex(2, -2, 2, 0x0000FFFF);
-
-	obj->tri[0].pt[0] = 0;
-	obj->tri[0].pt[1] = 1;
-	obj->tri[0].pt[2] = 2;
-
-	obj->tri[1].pt[0] = 0;
-	obj->tri[1].pt[1] = 2;
-	obj->tri[1].pt[2] = 3;
-
-	obj->tri[2].pt[0] = 3;
-	obj->tri[2].pt[1] = 2;
-	obj->tri[2].pt[2] = 7;
-
-	obj->tri[3].pt[0] = 7;
-	obj->tri[3].pt[1] = 2;
-	obj->tri[3].pt[2] = 6;
-
-	obj->tri[4].pt[0] = 6;
-	obj->tri[4].pt[1] = 4;
-	obj->tri[4].pt[2] = 7;
-
-	obj->tri[5].pt[0] = 6;
-	obj->tri[5].pt[1] = 5;
-	obj->tri[5].pt[2] = 4;
-
-	obj->tri[6].pt[0] = 5;
-	obj->tri[6].pt[1] = 1;
-	obj->tri[6].pt[2] = 4;
-
-	obj->tri[7].pt[0] = 1;
-	obj->tri[7].pt[1] = 0;
-	obj->tri[7].pt[2] = 4;
-
-	obj->tri[8].pt[0] = 1;
-	obj->tri[8].pt[1] = 5;
-	obj->tri[8].pt[2] = 2;
-
-	obj->tri[9].pt[0] = 2;
-	obj->tri[9].pt[1] = 5;
-	obj->tri[9].pt[2] = 6;
-
-	obj->tri[10].pt[0] = 0;
-	obj->tri[10].pt[1] = 3;
-	obj->tri[10].pt[2] = 4;
-
-	obj->tri[11].pt[0] = 3;
-	obj->tri[11].pt[1] = 7;
-	obj->tri[11].pt[2] = 4;
-
-	t_ref_obj main_obj = map_parser("/Users/mcamila/MyProjects/42/42/FDF/42.fdf");
+	t_ref_obj main_obj = map_parser("/Users/mcamila/MyProjects/42/42/FDF/maps/42.fdf");
 
 	t_inst_obj	*insts;
-	insts = make_obj_inst(&main_obj, 0.1f, 0.1f, 0.1f, 1, 1, 1);
+	insts = make_obj_inst(&main_obj, 0.1f, 0.1f, 0.1f, 0, 0, 1);
 //	insts[1] = make_obj_inst(&obj);
 	//insts[0].rotation = make_rotation_matrix(0, 1);
 

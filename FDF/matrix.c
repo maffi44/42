@@ -6,13 +6,13 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 17:06:33 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/05 17:58:41 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/17 16:47:08 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-t_matrix	matrix_mult(t_matrix A, t_matrix B)
+inline t_matrix	matrix_mult(t_matrix A, t_matrix B)
 {
 	t_matrix C;
 	int i;
@@ -33,7 +33,7 @@ t_matrix	matrix_mult(t_matrix A, t_matrix B)
 	return (C);
 }
 
-t_vec3	vec3_transform(t_matrix matrix, t_vec3 vec)
+inline t_vec3	vec3_transform(t_matrix matrix, t_vec3 vec)
 {
 	t_vec3 new_vec;
 	int i;
@@ -48,7 +48,7 @@ t_vec3	vec3_transform(t_matrix matrix, t_vec3 vec)
 	return (new_vec);
 }
 
-t_vec3	vec_divide(t_vec3 from, t_vec3 to)
+inline t_vec3	vec_divide(t_vec3 from, t_vec3 to)
 {
 	t_vec3 res;
 
@@ -73,7 +73,7 @@ t_vec3	vec_divide(t_vec3 from, t_vec3 to)
 	return (res);
 }
 
-float	vec_length(t_vec3 vec)
+inline float	vec_length(t_vec3 vec)
 {
 	if (vec.elem[3] != 1 || vec.elem[3] != 0)
 	{
@@ -85,7 +85,7 @@ float	vec_length(t_vec3 vec)
 	return (sqrtf(vec.elem[0] * vec.elem[0] + vec.elem[1] * vec.elem[1] + vec.elem[2] * vec.elem[2]));
 }
 
-t_vec3	normalize_vec(t_vec3 vec)
+inline t_vec3	normalize_vec(t_vec3 vec)
 {
 	float len;
 
@@ -102,7 +102,7 @@ t_vec3	normalize_vec(t_vec3 vec)
 	return (vec);
 }
 
-t_vec3	vec_mult(t_vec3 v1, t_vec3 v2)
+inline t_vec3	vec_mult(t_vec3 v1, t_vec3 v2)
 {
 	t_vec3 res;
 
@@ -127,12 +127,12 @@ t_vec3	vec_mult(t_vec3 v1, t_vec3 v2)
 	return (res);
 }
 
-float 	vec_scalar_mult(t_vec3 v1, t_vec3 v2)
+inline float 	vec_scalar_mult(t_vec3 v1, t_vec3 v2)
 {
 	return ((v1.elem[0] * v2.elem[0]) + (v1.elem[1] * v2.elem[1]) + (v1.elem[2] * v2.elem[2]));
 }
 
-t_vec3	make_vertex(float x, float y, float z, unsigned int color)
+inline t_vec3	make_vertex(float x, float y, float z, unsigned int color)
 {
 	t_vec3	vertex;
 
@@ -144,7 +144,7 @@ t_vec3	make_vertex(float x, float y, float z, unsigned int color)
 	return (vertex);
 }
 
-t_matrix	make_transform_matrix(t_camera cam, t_inst_obj obj)
+inline t_matrix	make_transform_matrix(t_camera cam, t_inst_obj obj)
 {
 	t_matrix transform;
 
@@ -158,7 +158,7 @@ t_matrix	make_transform_matrix(t_camera cam, t_inst_obj obj)
 	return (transform);
 }
 
-t_matrix	make_rotation_matrix(float x_rot, float y_rot)
+inline t_matrix	make_rotation_matrix(float x_rot, float y_rot)
 {
 	t_matrix mat;
 

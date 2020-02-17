@@ -87,6 +87,7 @@ typedef struct	s_data
 	int			y;
 	int			R_bool;
 	int 		mouse_bool;
+	int 		Q_bool;
 }				t_data;
 
 #endif

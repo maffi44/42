@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:18:34 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/07 00:24:04 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/17 16:27:26 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,13 @@ t_ref_obj	make_ref_obj_from_map(int **map, int x, int y)
 		i = 0;
 		while (i < x)
 		{
-			if (map[j][i] == 0)
-				col.ARGB = 0x0000FFFF;
-			else
-				col.ARGB = 0x00FFFF00;
+			//if (map[j][i] < 5)
+			//	col.ARGB = 0x0000FFFF;
+			//else
+			//	col.ARGB = 0x00FFFF00;
+			col.colors[0] = map[j][i] * 4;
+			col.colors[1] = map[j][i] * 1;
+			col.colors[2] = map[j][i] * 13;
 			obj.vertex[k] = make_vertex((float)(i - x / 2), ((float)map[j][i]) / 5, (float)(j - y / 2), col.ARGB);
 			i++;
 			k++;
@@ -158,5 +161,12 @@ t_ref_obj	map_parser(char *file_name)
 
 	t_ref_obj obj = make_ref_obj_from_map(map, x, y);
 
+	i = 0;
+	while (i < y)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 	return (obj);
 }

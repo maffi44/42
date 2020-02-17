@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 12:42:03 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/06 22:32:53 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/17 16:16:08 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_vec3	pt3_add(t_vec3 pt1, t_vec3 pt2)
 }
 */
 
-void		color_loop(t_ref_obj *obj, unsigned int speed)
+inline void		color_loop(t_ref_obj *obj, unsigned int speed)
 {
 	t_color c;
 	int i;
@@ -218,7 +218,7 @@ t_camera	initialize_camera(float d)
 	return (cam);
 }
 
-t_pt2		make_pt2_from_v3(t_vec3 vec)
+inline t_pt2		make_pt2_from_v3(t_vec3 vec)
 {
 	t_pt2 pt2;
 	float x;
@@ -235,7 +235,7 @@ t_pt2		make_pt2_from_v3(t_vec3 vec)
 	return (pt2);
 }
 
-void 		put_pixel(int x, int y, int color, t_data *data)
+inline void 		put_pixel(int x, int y, int color, t_data *data)
 {
 	if (x >= WIDTH || x < 0 || y >= HIEGHT || y < 0)
 		return;

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/10 19:52:09 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/17 16:48:49 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,6 @@ t_pt2	project_pt(t_vec3 pt3, double d)
 	return (ptC);
 }
 */
-
-void	cheak_and_draw_tri(t_inst_obj obj, t_tri tri, t_data *data, double d)
-{
-	t_vec3 vertex1;
-	t_vec3 vertex2;
-	t_vec3 vertex3;
-
-	vertex1 = vec3_transform(
-			obj.transform,
-			obj.ref_obj->vertex[tri.pt[0]]
-	);
-	vertex2 = vec3_transform(
-			obj.transform,
-			obj.ref_obj->vertex[tri.pt[1]]
-	);
-	vertex3 = vec3_transform(
-			obj.transform,
-			obj.ref_obj->vertex[tri.pt[2]]
-	);
-
-
-
-}
-
 void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, double d)
 {
 	t_vec3 vertex1;
@@ -158,11 +134,11 @@ void	render_frame(t_inst_obj *objects, int  num_of_obj, t_data *data)
 		j = 0;
 		while (j < objects[i].ref_obj->num_of_tris)
 		{
-//			cheak_and_draw_tri(objects[i], objects[i].ref_obj->tri[j], data, 1)
 			draw_triangle(objects[i], objects[i].ref_obj->tri[j], data, 1);
 			j++;
 		}
-		color_loop(objects[i].ref_obj, 5);
+		if (data->Q_bool)
+			color_loop(objects[i].ref_obj, 5);
 		i++;
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
