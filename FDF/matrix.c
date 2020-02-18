@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 17:06:33 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/17 16:47:08 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/18 14:16:40 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ inline t_matrix	make_transform_matrix(t_camera cam, t_inst_obj obj)
 {
 	t_matrix transform;
 
-	transform = matrix_mult(obj.scale, obj.rotation);
+	transform = matrix_mult(obj.rotation, obj.scale);
 	transform = matrix_mult(transform, obj.translate);
 //	transform = matrix_mult(transform, cam.projection);
 

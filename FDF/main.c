@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/17 22:53:21 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/18 14:59:02 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ int	key_press(int key, t_data *data)
 	else if (key == 15)
 		data->R_bool = 1;
 	else if (key == 12)
-			data->Q_bool = !(data->Q_bool);
+		data->Q_bool = !(data->Q_bool);
+	else if (key == 4)
+		data->H_bool = 1;
+	else if (key == 3)
+		data->F_bool = 1;
 	return (0);
 }
 
@@ -57,6 +61,10 @@ int	key_release(int key, t_data *data)
 {
 	if (key == 15)
 		data->R_bool = 0;
+	else if (key == 4)
+		data->H_bool = 0;
+	else if (key == 3)
+		data->F_bool = 0;
 	return (0);
 }
 
@@ -70,16 +78,40 @@ int mouse_press(int button, int x, int y, t_data *data)
 	}
 	if (button == 4)
 	{
-		data->obj_inst->scale.elem[0][0] *= 1.05f;
-		data->obj_inst->scale.elem[1][1] *= 1.05f;
-		data->obj_inst->scale.elem[2][2] *= 1.05f;
+		if (data->H_bool)
+		{
+			data->obj_inst->scale.elem[1][1] *= 1.05f;
+		}
+		else if (data->F_bool)
+		{
+			if ((data->d -= 0.05f) < 0.1f)
+				data->d = 0.1f;
+		}
+		else
+		{
+			data->obj_inst->scale.elem[0][0] *= 1.05f;
+			data->obj_inst->scale.elem[1][1] *= 1.05f;
+			data->obj_inst->scale.elem[2][2] *= 1.05f;
+		}
 		render_frame(data->obj_inst, 1, data);
 	}
 	if (button == 5)
 	{
-		data->obj_inst->scale.elem[0][0] *= 0.95f;
-		data->obj_inst->scale.elem[1][1] *= 0.95f;
-		data->obj_inst->scale.elem[2][2] *= 0.95f;
+		if (data->H_bool)
+		{
+			data->obj_inst->scale.elem[1][1] *= 0.95f;
+		}
+		else if (data->F_bool)
+		{
+			if ((data->d += 0.05f) > 4)
+				data->d = 4;
+		}
+		else
+		{
+			data->obj_inst->scale.elem[0][0] *= 0.95f;
+			data->obj_inst->scale.elem[1][1] *= 0.95f;
+			data->obj_inst->scale.elem[2][2] *= 0.95f;
+		}
 		render_frame(data->obj_inst, 1, data);
 	}
 	return (0);
@@ -154,6 +186,8 @@ int	main(int argc, char **argv)
 	data->dir_light.elem[2] = 0;
 	data->dir_light.elem[3] = 1;
 
+	data->d = 1;
+
 	data->mouse_bool = 0;
 	data->R_bool = 0;
 	data->img_data = mlx_get_data_addr(data->img_ptr,
@@ -163,7 +197,7 @@ int	main(int argc, char **argv)
 	t_ref_obj main_obj = map_parser(argv[1], data);
 
 	t_inst_obj	*insts;
-	insts = make_obj_inst(&main_obj, 0.01f, 0.01f, 0.01f, 0, 0, 1);
+	insts = make_obj_inst(&main_obj, 0.01f, 0.01f, 0.01f, 0, 0, 5);
 //	insts[1] = make_obj_inst(&obj);
 	//insts[0].rotation = make_rotation_matrix(0, 1);
 

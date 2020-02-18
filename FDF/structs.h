@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:17:48 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/05 18:29:50 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/18 14:24:16 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct	s_data
 	int 		bpp;
 	int 		endian;
 	t_inst_obj	*obj_inst;
+	float 		d;
 	t_camera	camera;
 	t_vec3		dir_light;
 	int			x;
@@ -98,6 +99,8 @@ typedef struct	s_data
 	int			R_bool;
 	int 		mouse_bool;
 	int 		Q_bool;
+	int 		H_bool;
+	int 		F_bool;
 }				t_data;
 
 #endif

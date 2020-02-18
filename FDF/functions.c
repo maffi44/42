@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 12:42:03 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/17 16:16:08 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/18 14:47:02 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,7 +218,7 @@ t_camera	initialize_camera(float d)
 	return (cam);
 }
 
-inline t_pt2		make_pt2_from_v3(t_vec3 vec)
+inline t_pt2		make_pt2_from_v3(t_vec3 vec, float d)
 {
 	t_pt2 pt2;
 	float x;
@@ -227,8 +227,8 @@ inline t_pt2		make_pt2_from_v3(t_vec3 vec)
 	vec.elem[0] = vec.elem[0] / vec.elem[3];
 	vec.elem[1] = vec.elem[1] / vec.elem[3];
 	vec.elem[2] = vec.elem[2] / vec.elem[3];
-	x = vec.elem[0] / vec.elem[2];
-	y = vec.elem[1] / vec.elem[2];
+	x = vec.elem[0] * d / vec.elem[2];
+	y = vec.elem[1] * d / vec.elem[2];
 	pt2.x = (x * (WIDTH / 2) / 2) + WIDTH / 2;
 	pt2.y = (y * (HIEGHT/ 2) / 2 * (float)((float)WIDTH / (float)HIEGHT)) + HIEGHT / 2;
 	pt2.z1 = 1 / vec.elem[2];

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/17 23:43:29 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/18 14:16:40 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,26 @@ inline void swap(int* a , int*b)
 }
 
 // returns absolute value of number
-inline float absolute(float x)
+inline float absolute(float x )
 {
 	if (x < 0) return -x;
 	else return x;
 }
 
 //returns integer part of a floating point number
-inline int iPartOfNumber(float x)
+int iPartOfNumber(float x)
 {
 	return (int)x;
 }
 
 //rounds off a number
-inline int roundNumber(float x)
+int roundNumber(float x)
 {
 	return iPartOfNumber(x + 0.5) ;
 }
 
 //returns fractional part of a number
-inline float fPartOfNumber(float x)
+float fPartOfNumber(float x)
 {
 	if (x>0) return x - iPartOfNumber(x);
 	else return x - (iPartOfNumber(x)+1);
@@ -68,7 +68,7 @@ inline float fPartOfNumber(float x)
 }
 
 //returns 1 - fractional part of number
-inline float rfPartOfNumber(float x)
+float rfPartOfNumber(float x)
 {
 	return 1 - fPartOfNumber(x);
 }
@@ -308,11 +308,11 @@ void draw_hor_line(float x0, float x1, int y, t_data *data, float h0, float h1, 
 		{
 			if (Z0 >= data->zbuff[((int)x0 + (y * WIDTH)) - 1])
 			{
-				data->zbuff[((int) x0 + (y * (WIDTH))) - 1] = Z0;
+				data->zbuff[((int)x0 + (y * (WIDTH))) - 1] = Z0;
 				col.colors[2] = (char) (C_R * h);
 				col.colors[1] = (char) (C_G * h);
 				col.colors[0] = (char) (C_B * h);
-				put_pixel((int) x0, y, col.ARGB, data);
+				put_pixel((int)x0, y, col.ARGB, data);
 			}
 		}
 		C_R += cb_r;
@@ -423,8 +423,7 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 	cb_r1 = (float)(p2.color.colors[2] - p1.color.colors[2]) / (p2.y - p1.y);
 	cb_g1 = (float)(p2.color.colors[1] - p1.color.colors[1]) / (p2.y - p1.y);
 	cb_b1 = (float)(p2.color.colors[0] - p1.color.colors[0]) / (p2.y - p1.y);
-//	if (zb1 < 0)
-//		zb1 = -zb1;
+
 
 	while (y <= (int)p2.y)
 	{
@@ -434,7 +433,9 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 		col2.colors[1] = (char)C_G2;
 		col1.colors[0] = (char)C_B1;
 		col2.colors[0] = (char)C_B2;
+
 		draw_hor_line(X1, X2, (int)y, data, H1, H2, ZB1, ZB2, col1, col2);
+
 		X1 += a1;
 		X2 += a2;
 		H1 += b1;

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/17 16:48:49 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/18 14:57:48 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_pt2	project_pt(t_vec3 pt3, double d)
 	return (ptC);
 }
 */
-void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, double d)
+void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, float d)
 {
 	t_vec3 vertex1;
 	t_vec3 vertex2;
@@ -59,6 +59,13 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, double d)
 			obj.ref_obj->vertex[tri.pt[2]]
 	);
 
+	if ((vertex1.elem[2] / vertex1.elem[3]) < d)
+		return;
+	if ((vertex2.elem[2] / vertex2.elem[3]) < d)
+		return;
+	if ((vertex3.elem[2] / vertex3.elem[3]) < d)
+		return;
+
 	edge1 = vec_divide(vertex1, vertex2);
 	edge2 = vec_divide(vertex1, vertex3);
 
@@ -71,9 +78,9 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, double d)
 	if (vec_scalar_mult(normal, cam_vector) <= 0)
 		return;
 
-	pt1 = make_pt2_from_v3(vertex1);
-	pt2 = make_pt2_from_v3(vertex2);
-	pt3 = make_pt2_from_v3(vertex3);
+	pt1 = make_pt2_from_v3(vertex1, d);
+	pt2 = make_pt2_from_v3(vertex2, d);
+	pt3 = make_pt2_from_v3(vertex3, d);
 
 	normal = normalize_vec(normal);
 	light_vector1 = vec_divide(data->dir_light, vertex1);
@@ -134,7 +141,7 @@ void	render_frame(t_inst_obj *objects, int  num_of_obj, t_data *data)
 		j = 0;
 		while (j < objects[i].ref_obj->num_of_tris)
 		{
-			draw_triangle(objects[i], objects[i].ref_obj->tri[j], data, 1);
+			draw_triangle(objects[i], objects[i].ref_obj->tri[j], data, data->d);
 			j++;
 		}
 		if (data->Q_bool)
