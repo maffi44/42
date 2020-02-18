@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:00:33 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/17 11:17:28 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/18 13:46:16 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ t_matrix	make_transform_matrix(t_camera cam, t_inst_obj obj);
 t_pt2		make_pt2_from_v3(t_vec3 vec);
 void 		put_pixel(int x, int y, int color, t_data *data);
 void		color_loop(t_ref_obj *obj, unsigned int speed);
-void		error(int error, t_data *data, t_maps *maps);
 
 #endif /* FUNCTIONS_H */

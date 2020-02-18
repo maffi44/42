@@ -6,34 +6,34 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/17 23:43:29 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/18 13:46:16 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-inline void swap_f(float *a, float *b)
+void swap_f(float *a, float *b)
 {
 	float temp = *a;
 	*a = *b;
 	*b = temp;
 }
 
-inline void swap_2pt(t_pt2 *a, t_pt2 *b)
+void swap_2pt(t_pt2 *a, t_pt2 *b)
 {
 	t_pt2 temp = *a;
 	*a = *b;
 	*b = temp;
 }
 
-inline void swap_colors(t_color *a, t_color *b)
+void swap_colors(t_color *a, t_color *b)
 {
 	t_color temp = *a;
 	*a = *b;
 	*b = temp;
 }
 
-inline void swap(int* a , int*b)
+void swap(int* a , int*b)
 {
 	int temp = *a;
 	*a = *b;
@@ -41,26 +41,26 @@ inline void swap(int* a , int*b)
 }
 
 // returns absolute value of number
-inline float absolute(float x)
+float absolute(float x )
 {
 	if (x < 0) return -x;
 	else return x;
 }
 
 //returns integer part of a floating point number
-inline int iPartOfNumber(float x)
+int iPartOfNumber(float x)
 {
 	return (int)x;
 }
 
 //rounds off a number
-inline int roundNumber(float x)
+int roundNumber(float x)
 {
 	return iPartOfNumber(x + 0.5) ;
 }
 
 //returns fractional part of a number
-inline float fPartOfNumber(float x)
+float fPartOfNumber(float x)
 {
 	if (x>0) return x - iPartOfNumber(x);
 	else return x - (iPartOfNumber(x)+1);
@@ -68,7 +68,7 @@ inline float fPartOfNumber(float x)
 }
 
 //returns 1 - fractional part of number
-inline float rfPartOfNumber(float x)
+float rfPartOfNumber(float x)
 {
 	return 1 - fPartOfNumber(x);
 }
@@ -302,24 +302,26 @@ void draw_hor_line(float x0, float x1, int y, t_data *data, float h0, float h1, 
 	float cb_g = (float)(col1.colors[1] - col0.colors[1]) / (x1 - x0);
 	float cb_b = (float)(col1.colors[0] - col0.colors[0]) / (x1 - x0);
 
-	while (x0 <= x1)
+	int x = (int)x0;
+
+	while (x <= (int)x1)
 	{
-		if ((x0 >= 0 && (int)x0 < WIDTH) && (y >= 0 && y < HIEGHT))
+		if ((x >= 0 && x < WIDTH) && (y >= 0 && y < HIEGHT))
 		{
-			if (Z0 >= data->zbuff[((int)x0 + (y * WIDTH)) - 1])
+			if (Z0 >= data->zbuff[((int)x + (y * WIDTH)) - 1])
 			{
-				data->zbuff[((int) x0 + (y * (WIDTH))) - 1] = Z0;
+				data->zbuff[((int) x + (y * (WIDTH))) - 1] = Z0;
 				col.colors[2] = (char) (C_R * h);
 				col.colors[1] = (char) (C_G * h);
 				col.colors[0] = (char) (C_B * h);
-				put_pixel((int) x0, y, col.ARGB, data);
+				put_pixel(x, y, col.ARGB, data);
 			}
 		}
 		C_R += cb_r;
 		C_G += cb_g;
 		C_B += cb_b;
 		h += a;
-		x0++;
+		x++;
 		Z0 += ZB;
 	}
 }
@@ -381,7 +383,7 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 
 	col1.ARGB = 0;
 	col2.ARGB = 0;
-	while (y < (int)p1.y)
+	while (y < p1.y)
 	{
 		col1.colors[2] = (char)C_R1;
 		col1.colors[1] = (char)C_G1;
@@ -390,7 +392,10 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 		col2.colors[1] = (char)C_G2;
 		col2.colors[0] = (char)C_B2;
 
-		draw_hor_line(X1, X2, (int)y, data, H1, H2, ZB1, ZB2, col1, col2);
+//		if (p1.y - y <= 1)
+//			draw_hor_line(p1.x, p0.x, (int)y, data, H1, H2, ZB1, ZB2, col1, col2);
+//		else
+			draw_hor_line(X1, X2, (int)y, data, H1, H2, ZB1, ZB2, col1, col2);
 
 		X1 += a1;
 		X2 += a2;
@@ -406,6 +411,9 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 		C_B2 += cb_b2;
 		y++;
 	}
+
+	if (p1.y - y < 1)
+		draw_hor_line(X1 - a1, X2 - a2, (int)y, data, H1 - b1, H2 - b2, ZB1 - zb1, ZB2 - zb2, col1, col2);
 
 	X1 = p1.x;
 	a1 = absolute(p1.x - p2.x) / (p2.y - p1.y);
@@ -426,7 +434,7 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 //	if (zb1 < 0)
 //		zb1 = -zb1;
 
-	while (y <= (int)p2.y)
+	while (y <= p2.y)
 	{
 		col1.colors[2] = (char)C_R1;
 		col2.colors[2] = (char)C_R2;
@@ -434,7 +442,12 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 		col2.colors[1] = (char)C_G2;
 		col1.colors[0] = (char)C_B1;
 		col2.colors[0] = (char)C_B2;
-		draw_hor_line(X1, X2, (int)y, data, H1, H2, ZB1, ZB2, col1, col2);
+
+//		if (p2.y - y < 1)
+//			draw_hor_line(X1, p2.x, (int)y, data, H1, H2, ZB1, ZB2, col1, col2);
+//		else
+			draw_hor_line(X1, X2, (int)y, data, H1, H2, ZB1, ZB2, col1, col2);
+
 		X1 += a1;
 		X2 += a2;
 		H1 += b1;
@@ -449,4 +462,9 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 		C_B2 += cb_b2;
 		y++;
 	}
+
+	if (p2.y - y < 1)
+		draw_hor_line(X1 - a1, X2 - a2, (int)y, data, H1 - b1, H2 - b2, ZB1 - zb1, ZB2 - zb2, col1, col2);
+//	if (p2.y - y < 1)
+//		draw_hor_line(X1 - a1, X2 - a2, (int)y, data, H1, H2, ZB1, ZB2, col1, col2);
 }
