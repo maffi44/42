@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:05:17 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/06 15:27:24 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/18 18:57:28 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static int		ft_read_to_buf(t_list *list, int fd, char **line)
 
 	while (1)
 	{
+		if ((read(fd, 0, 0)) < 0 || fd < 0)
+			return (-1);
 		if ((rd = read(fd, buf, BUFF_SIZE)) == -1)
 			return (-1);
 		buf[rd] = '\0';

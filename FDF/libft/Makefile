@@ -36,6 +36,10 @@ $(NAME):
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
+%.o: %.c
+	@gcc $(GCC_FLAGS) -c $<
+	@echo compiled $<
+
 clean:
 	rm -rf $(OBJ)
 

@@ -21,7 +21,7 @@ static char	**ft_freenewlist(char **new_list, size_t count)
 		count++;
 	}
 	free(new_list);
-	return (new_list);
+	return (NULL);
 }
 
 static char	**ft_makesstr(const char *s, size_t count, size_t i, char **nlst)

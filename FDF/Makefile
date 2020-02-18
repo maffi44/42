@@ -9,6 +9,7 @@ GCC_FLAGS = -O1 #-Wall -Werror -Wextra
 MLX_LIB = MinilibX/minilibx_macos/libmlx.a
 
 FT_LIB = libft/libft.a
+FT_DIR = libft/
 
 FRAMEWORKS = -framework OpenGL -framework AppKit
 
@@ -16,18 +17,24 @@ OBJ = $(SRC:.c=.o)
 
 .PHONY: all clean fclean re
 
-all: $(NAME)
+all: $(FT_LIB) $(NAME)
 
 $(NAME): $(OBJ)
 	gcc $(OBJ) $(FRAMEWORKS) $(MLX_LIB) $(FT_LIB) -o $(NAME) -I /Users/mcamila/MyProjects/42/42/libft
 
 %.o: %.c ${INCL}
-	gcc $(GCC_FLAGS) -c $<
+	@gcc $(GCC_FLAGS) -c $<
+	@echo compiled $<
+
+$(FT_LIB):
+	@$(MAKE) -sC $(FT_DIR)
 
 clean:
 	rm -rf $(OBJ)
+	@$(MAKE) -sC libft/ clean
 
 fclean: clean
 	rm -rf $(NAME)
+	@$(MAKE) -sC libft/ fclean
 
 re: fclean all

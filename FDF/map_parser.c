@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:18:34 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/18 14:16:40 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/18 19:04:02 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	del_maps(t_maps *maps)
 {
 	size_t i;
 	size_t j;
-
 	if (maps->temp)
 		ft_memdel((void*)&(maps->temp));
 	if (maps->big_line)
@@ -26,16 +25,23 @@ void	del_maps(t_maps *maps)
 	{
 		i = 0;
 		while ((maps->map)[i])
-			ft_memdel(((void*)&(maps->map)[i++]));
+		{
+			ft_memdel(((void *) &(maps->map)[i]));
+			i++;
+		}
 		ft_memdel((void*)&(maps->map));
 	}
 	if (maps->line)
 	{
 		i = 0;
 		while ((maps->line)[i])
-			ft_memdel((void*)&(maps->line)[i++]);
+		{
+			ft_memdel((void *) &(maps->line)[i]);
+			i++;
+		}
 		ft_memdel((void*)&(maps->line));
 	}
+
 	if (maps->big_map)
 	{
 		i = 0;
@@ -43,11 +49,18 @@ void	del_maps(t_maps *maps)
 		{
 			j = 0;
 			while ((maps->big_map)[i][j])
-				ft_memdel(((void*)&(maps->line)[i][j++]));
-			ft_memdel(((void*)&(maps->line)[i++]));
+			{
+				ft_putendl("123");
+				ft_memdel(((void *) &((maps->big_map)[i][j])));
+				j++;
+			}
+			ft_putendl("12345");
+			ft_memdel(((void*)&(maps->big_map)[i]));
+			i++;
 		}
-		ft_memdel(((void*)&(maps->line)));
+		ft_memdel(((void*)&(maps->big_map)));
 	}
+
 }
 
 void	error(int error, t_data *data, t_maps *maps)
@@ -57,7 +70,7 @@ void	error(int error, t_data *data, t_maps *maps)
 	else if (error == 1)
 		ft_putendl("ERROR: memory allocate fail");
 	else
-		ft_putendl("ERROR: invalid map");;
+		ft_putendl("ERROR: invalid map");
 	if (maps)
 		del_maps(maps);
 	go_away(data);
@@ -157,8 +170,10 @@ t_ref_obj	map_parser(char *file_name, t_data *data)
 	if (!((maps.big_line) = (char*)malloc(sizeof(char))))
 		error(1, data, &maps);
 	*(maps.big_line) = '\0';
+	*(maps.line) = NULL;
 	y = 0;
-	while (get_next_line(fd, (maps.line)))
+	int rd = -1;
+	while ((rd = get_next_line(fd, (maps.line))) > 0)
 	{
 		if (ft_strlen(*(maps.line)) == 0)
 			break;
@@ -170,20 +185,23 @@ t_ref_obj	map_parser(char *file_name, t_data *data)
 			error(1, data, &maps);
 		ft_memdel((void*)&(maps.big_line));
 		(maps.big_line) = (maps.temp);
+		maps.temp = NULL;
 		ft_memdel((void*)&*(maps.line));
 		y++;
 	}
-	ft_memdel((void*)&(maps.line));
-	if (ft_strlen((maps.big_line)) == 0)
+	printf("-->%d\n", rd);
+	if ( rd < 0 || ft_strlen((maps.big_line)) == 0)
 		error(0, data, &maps);
+	ft_memdel((void*)&(maps.line));
 	if (!((maps.line) = ft_strsplit((maps.big_line), '/')))
 		error(1, data, &maps);
 	ft_memdel((void*)&(maps.big_line));
-
+	int e = 0;
 	y = 0;
 	while ((maps.line)[y])
 		y++;
-
+	if (y <= 1)
+		e = 1;
 	if (!((maps.big_map) = (char***)malloc(sizeof(char**) * (y + 1))))
 		error(1, data, &maps);
 	(maps.big_map)[y] = NULL;
@@ -198,11 +216,11 @@ t_ref_obj	map_parser(char *file_name, t_data *data)
 		k = 0;
 		while ((maps.big_map)[i][k])
 			k++;
-		if (s != k && b)
-			error(2, data, &maps);
+		ft_memdel((void*)&(maps.line)[i]);
+		if ((s != k && b) || k == 1)
+			e = 1;
 		s = k;
 		b = 1;
-		ft_memdel((void*)&(maps.line)[i]);
 		i++;
 	}
 	ft_memdel((void*)&(maps.line));
@@ -242,9 +260,10 @@ t_ref_obj	map_parser(char *file_name, t_data *data)
 	while (i < y)
 	{
 		ft_memdel((void*)&(maps.map)[i]);
-		printf("%d\n", i + 1);
 		i++;
 	}
 	ft_memdel((void*)&(maps.map));
+	if (e)
+		error(2, data, &maps);
 	return (obj);
 }

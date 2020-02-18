@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/18 14:59:02 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/18 19:30:27 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,15 +197,11 @@ int	main(int argc, char **argv)
 	t_ref_obj main_obj = map_parser(argv[1], data);
 
 	t_inst_obj	*insts;
-	insts = make_obj_inst(&main_obj, 0.01f, 0.01f, 0.01f, 0, 0, 5);
-//	insts[1] = make_obj_inst(&obj);
-	//insts[0].rotation = make_rotation_matrix(0, 1);
+	insts = make_obj_inst(&main_obj, 0.1f, 0.1f, 0.1f, 0, 0, 5);
 
 	data->obj_inst = insts;
 	data->camera = initialize_camera(1);
 	render_frame(insts, 1, data);
-
-//	mlx_hook(data->win_ptr, 12, 0, expose, data);
 
 	mlx_hook(data->win_ptr, 2, 0, key_press, (void*)data);
 	mlx_hook(data->win_ptr, 3, 0, key_release, (void*)data);
