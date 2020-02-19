@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:18:34 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/19 11:59:44 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/19 13:47:02 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		error(int error, t_data *data, t_maps *maps)
 	go_away(data);
 }
 
-void		*super_malloc(t_data *data, t_maps *maps, size_t size)
+void		*pmalloc(t_data *data, t_maps *maps, size_t size)
 {
 	void *memory;
 
@@ -82,8 +82,8 @@ t_ref_obj	make_ref_obj_from_map(int x, int y, t_data *data, t_maps *maps)
 
 	obj.num_of_pts = x * y;
 	obj.num_of_tris = (x - 1) * (y - 1) * 2;
-	obj.vertex = (t_vec3*)super_malloc(data, maps, sizeof(t_vec3) * obj.num_of_pts);
-	obj.tri = (t_tri*)super_malloc(data, maps, sizeof(t_tri) * obj.num_of_tris);
+	obj.vertex = (t_vec3*)pmalloc(data, maps, sizeof(t_vec3) * obj.num_of_pts);
+	obj.tri = (t_tri*)pmalloc(data, maps, sizeof(t_tri) * obj.num_of_tris);
 	k = 0;
 	col.ARGB = 0;
 	j = -1;
@@ -133,10 +133,12 @@ t_ref_obj	make_ref_obj_from_map(int x, int y, t_data *data, t_maps *maps)
 
 t_ref_obj	map_parser(char *file_name, t_data *data)
 {
-	int		fd;
 	int		y;
 	int		x;
 	int		rd;
+	int		i;
+	int		k;
+	int		b;
 	t_maps	maps;
 
 	maps.big_line = NULL;
@@ -144,17 +146,17 @@ t_ref_obj	map_parser(char *file_name, t_data *data)
 	maps.line = NULL;
 	maps.map = NULL;
 	maps.temp = NULL;
-	if ((fd = open(file_name, O_RDONLY)) < 0)
+	if ((x = open(file_name, O_RDONLY)) < 0)
 		error(0, data, &maps);
-	(maps.line) = (char**)super_malloc(data, &maps, sizeof(char*));
-	(maps.big_line) = (char*)super_malloc(data, &maps, sizeof(char));
+	(maps.line) = (char**)pmalloc(data, &maps, sizeof(char*));
+	(maps.big_line) = (char*)pmalloc(data, &maps, sizeof(char));
 	*(maps.big_line) = '\0';
 	*(maps.line) = NULL;
 	y = 0;
-	while ((rd = get_next_line(fd, (maps.line))) > 0)
+	while ((rd = get_next_line(x, (maps.line))) > 0)
 	{
 		if (ft_strlen(*(maps.line)) == 0)
-			break;
+			break ;
 		if (!((maps.temp) = ft_strjoin((maps.big_line), *(maps.line))))
 			error(1, data, &maps);
 		ft_memdel((void*)&(maps.big_line));
@@ -173,12 +175,13 @@ t_ref_obj	map_parser(char *file_name, t_data *data)
 	if (!((maps.line) = ft_strsplit((maps.big_line), '/')))
 		error(1, data, &maps);
 	ft_memdel((void*)&(maps.big_line));
-	(maps.big_map) = (char***)super_malloc(data, &maps, sizeof(char**) * (y + 1));
-	(maps.big_map)[y] = NULL;
-	int i = 0;
-	int k;
+	(maps.big_map) = (char***)pmalloc(data, &maps, sizeof(char**) * (y + 1));
+	i = -1;
+	while (++i < y + 1)
+		(maps.big_map)[i] = NULL;
+	i = 0;
 	x = 0;
-	int b = 0;
+	b = 0;
 	while (i < y)
 	{
 		if (!((maps.big_map)[i] = ft_strsplit((maps.line)[i], ' ')))
@@ -192,13 +195,14 @@ t_ref_obj	map_parser(char *file_name, t_data *data)
 		b = 1;
 		i++;
 	}
-	(maps.map) = (int**)super_malloc(data, &maps, sizeof(int*) * (y + 1));
+	(maps.map) = (int**)pmalloc(data, &maps, sizeof(int*) * (y + 1));
 	(maps.map)[y] = NULL;
-	x = -1;
-	while ((maps.big_map)[0][++x]);
+	x = 0;
+	while ((maps.big_map)[0][x])
+		x++;
 	i = -1;
 	while (++i < y)
-	(maps.map)[i] = (int*)super_malloc(data, &maps, sizeof(int) * x);
+		(maps.map)[i] = (int*)pmalloc(data, &maps, sizeof(int) * x);
 	i = -1;
 	while (++i < y)
 	{

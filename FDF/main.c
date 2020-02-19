@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/18 19:30:27 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/19 15:02:51 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void	go_away(t_data *data)
 	}
 	exit(0);
 }
-
-
 
 int	key_press(int key, t_data *data)
 {
@@ -162,15 +160,8 @@ int frame_loop(t_data *data)
 	return (0);
 }
 
-int	main(int argc, char **argv)
+void	inicializate_data(t_data *data)
 {
-	t_data	*data;
-
-	data = NULL;
-	if (argc != 2)
-		error(0, data, NULL);
-	if (!(data = (t_data*)malloc(sizeof(t_data))))
-		go_away(data);
 	if (!(data->mlx_ptr = mlx_init()))
 		go_away(data);
 	if (!(data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HIEGHT, "FDF")))
@@ -180,29 +171,34 @@ int	main(int argc, char **argv)
 	if (!(data->zbuff = (float*)ft_memalloc(sizeof(float) * WIDTH * HIEGHT)))
 		go_away(data);
 	bzero(data->zbuff, sizeof(float) * WIDTH * HIEGHT);
-
 	data->dir_light.elem[0] = 0;
 	data->dir_light.elem[1] = 0;
 	data->dir_light.elem[2] = 0;
 	data->dir_light.elem[3] = 1;
-
 	data->d = 1;
-
 	data->mouse_bool = 0;
 	data->R_bool = 0;
 	data->img_data = mlx_get_data_addr(data->img_ptr,
-			&(data->bpp),
-			&(data->img_line),
-			&(data->endian));
+									   &(data->bpp),
+									   &(data->img_line),
+									   &(data->endian));
+}
+
+int	main(int argc, char **argv)
+{
+	t_data	*data;
+
+	data = NULL;
+	if (argc != 2)
+		error(0, data, NULL);
+	if (!(data = (t_data*)malloc(sizeof(t_data))))
+		go_away(data);
+	inicializate_data(data);
 	t_ref_obj main_obj = map_parser(argv[1], data);
-
 	t_inst_obj	*insts;
-	insts = make_obj_inst(&main_obj, 0.1f, 0.1f, 0.1f, 0, 0, 5);
-
+	insts = make_obj_inst(&main_obj, 0.01f, 0.01f, 0.01f, 0, 0, 5);
 	data->obj_inst = insts;
 	data->camera = initialize_camera(1);
-	render_frame(insts, 1, data);
-
 	mlx_hook(data->win_ptr, 2, 0, key_press, (void*)data);
 	mlx_hook(data->win_ptr, 3, 0, key_release, (void*)data);
 	mlx_hook(data->win_ptr, 4, 0, mouse_press, (void*)data);
@@ -210,7 +206,6 @@ int	main(int argc, char **argv)
 	mlx_hook(data->win_ptr, 6, 0, mouse_move, (void*)data);
 	mlx_loop_hook(data->mlx_ptr, frame_loop, data);
 	mlx_hook(data->win_ptr, 17, 0, x_press, data);
-
 	mlx_loop(data->mlx_ptr);
 	return (0);
 }

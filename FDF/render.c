@@ -6,66 +6,43 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/18 14:57:48 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/19 14:22:36 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-/*
-t_pt2	project_pt(t_vec3 pt3, double d)
-{
-	double xV;
-	double yV;
-	t_pt2 ptC;
 
-
-
-	xV = ((pt3.x * d) / pt3.z);
-	yV = ((pt3.y * d) / pt3.z);
-
-
-
-	ptC.x = (xV * (WIDTH / 2) / 2) + WIDTH / 2;
-	ptC.y = (yV * (HIEGHT/ 2) / 2 * (double)((double)WIDTH / (double)HIEGHT)) + HIEGHT / 2;
-	return (ptC);
-}
-*/
 void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, float d)
 {
-	t_vec3 vertex1;
-	t_vec3 vertex2;
-	t_vec3 vertex3;
-	t_vec3 normal;
-	t_vec3 cam_vector;
-	t_vec3 light_vector1;
-	t_vec3 light_vector2;
-	t_vec3 light_vector3;
-	t_vec3 edge1;
-	t_vec3 edge2;
-	t_pt2 pt1;
-	t_pt2 pt2;
-	t_pt2 pt3;
+	t_vec3	vertex1;
+	t_vec3	vertex2;
+	t_vec3	vertex3;
+	t_vec3	normal;
+	t_vec3	cam_vector;
+	t_vec3	light_vector1;
+	t_vec3	light_vector2;
+	t_vec3	light_vector3;
+	t_vec3	edge1;
+	t_vec3	edge2;
+	t_pt2	pt1;
+	t_pt2	pt2;
+	t_pt2	pt3;
 
-	vertex1 = vec3_transform(
+	if (((vertex1 = vec3_transform(
 			obj.transform,
-			obj.ref_obj->vertex[tri.pt[0]]
-			);
-	vertex2 = vec3_transform(
+			obj.ref_obj->vertex[tri.pt[0]]))
+			.elem[2] / vertex1.elem[3]) < d)
+		return ;
+	if (((vertex2 = vec3_transform(
 			obj.transform,
-			obj.ref_obj->vertex[tri.pt[1]]
-	);
-	vertex3 = vec3_transform(
+			obj.ref_obj->vertex[tri.pt[1]]))
+			.elem[2] / vertex2.elem[3]) < d)
+		return ;
+	if (((vertex3 = vec3_transform(
 			obj.transform,
-			obj.ref_obj->vertex[tri.pt[2]]
-	);
-
-	if ((vertex1.elem[2] / vertex1.elem[3]) < d)
-		return;
-	if ((vertex2.elem[2] / vertex2.elem[3]) < d)
-		return;
-	if ((vertex3.elem[2] / vertex3.elem[3]) < d)
-		return;
-
+			obj.ref_obj->vertex[tri.pt[2]]))
+			.elem[2] / vertex3.elem[3]) < d)
+		return ;
 	edge1 = vec_divide(vertex1, vertex2);
 	edge2 = vec_divide(vertex1, vertex3);
 
@@ -101,39 +78,15 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, float d)
 	pt3.color.ARGB = obj.ref_obj->vertex[tri.pt[2]].color;
 
 	draw_tri(pt1, pt2, pt3, data);
-//	draw_line(pt1.x, pt1.y, pt2.x, pt2.y, data, 0x00FFFFFF);
-//	draw_line(pt2.x, pt2.y, pt3.x, pt3.y, data, 0x00FFFFFF);
-//	draw_line(pt1.x, pt1.y, pt3.x, pt3.y, data, 0x00FFFFFF);
-
-//	ft_putnbr(tri.pt[0]);
-//	ft_putstr("  ");
-//	ft_putnbr(tri.pt[1]);
-//	ft_putstr("  ");
-//	ft_putnbr(tri.pt[02]);
-//	ft_putstr("  ");
-//	ft_putstr("\n");
-//	ft_putnbr(pt2.y);
-//	ft_putstr("  ");
-//	ft_putnbr(pt3.x);
-//	ft_putstr(" ");
-//	ft_putnbr(pt3.y);
-//	ft_putstr("\n");
 }
 
-void	render_frame(t_inst_obj *objects, int  num_of_obj, t_data *data)
+void	render_frame(t_inst_obj *objects, int num_of_obj, t_data *data)
 {
 	int i;
 	int j;
 
-//	mlx_destroy_image(data->mlx_ptr, data->img_ptr);
-//	data->img_ptr = mlx_new_image(data->mlx_ptr, WIDTH, HIEGHT);
-//	data->img_data = mlx_get_data_addr(data->img_ptr,
-//									   &(data->bpp),
-//									   &(data->img_line),
-//									   &(data->endian));
 	ft_bzero(data->img_data, WIDTH * HIEGHT * 4);
 	ft_bzero(data->zbuff, sizeof(float) * WIDTH * HIEGHT);
-//	data->camera.transform = matrix_mult(data->camera.rotation, data->camera.translation);
 	i = 0;
 	while (i < num_of_obj)
 	{
@@ -141,7 +94,8 @@ void	render_frame(t_inst_obj *objects, int  num_of_obj, t_data *data)
 		j = 0;
 		while (j < objects[i].ref_obj->num_of_tris)
 		{
-			draw_triangle(objects[i], objects[i].ref_obj->tri[j], data, data->d);
+			draw_triangle(objects[i],
+					objects[i].ref_obj->tri[j], data, data->d);
 			j++;
 		}
 		if (data->Q_bool)
