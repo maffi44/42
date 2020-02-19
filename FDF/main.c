@@ -196,7 +196,7 @@ int	main(int argc, char **argv)
 	inicializate_data(data);
 	t_ref_obj main_obj = make_ref_obj(argv[1], data);
 	t_inst_obj	*insts;
-	insts = make_obj_inst(&main_obj, 0.01f, 0.01f, 0.01f, 0, 0, 5);
+	insts = make_obj_inst(&main_obj, 0.1f, 0.1f, 0.1f, 0, 0, 5);
 	data->obj_inst = insts;
 	data->camera = initialize_camera(1);
 	mlx_hook(data->win_ptr, 2, 0, key_press, (void*)data);

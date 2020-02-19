@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/19 14:26:28 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/19 21:41:32 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, float d)
 	if (((vertex1 = vec3_transform(
 			obj.transform,
 			obj.ref_obj->vertex[tri.pt[0]]))
-			.elem[2] / vertex1.elem[3]) < d)
+				 .elem[2] / vertex1.elem[3]) < d)
 		return ;
 	if (((vertex2 = vec3_transform(
 			obj.transform,
 			obj.ref_obj->vertex[tri.pt[1]]))
-			.elem[2] / vertex2.elem[3]) < d)
+				 .elem[2] / vertex2.elem[3]) < d)
 		return ;
 	if (((vertex3 = vec3_transform(
 			obj.transform,
 			obj.ref_obj->vertex[tri.pt[2]]))
-			.elem[2] / vertex3.elem[3]) < d)
+				 .elem[2] / vertex3.elem[3]) < d)
 		return ;
 	edge1 = vec_divide(vertex1, vertex2);
 	edge2 = vec_divide(vertex1, vertex3);
@@ -95,7 +95,7 @@ void	render_frame(t_inst_obj *objects, int num_of_obj, t_data *data)
 		while (j < objects[i].ref_obj->num_of_tris)
 		{
 			draw_triangle(objects[i],
-					objects[i].ref_obj->tri[j], data, data->d);
+						  objects[i].ref_obj->tri[j], data, data->d);
 			j++;
 		}
 		if (data->Q_bool)
