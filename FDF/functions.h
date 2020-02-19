@@ -14,7 +14,7 @@
 # define FUNCTIONS_H
 
 //t_vec3	pt3_add(t_vec3 pt1, t_vec3 pt2);
-t_inst_obj	*make_obj_inst(t_ref_obj *ref, float x_sc, float y_sc, float z_sc, float x_tr, float y_tr, float z_tr);
+t_inst_obj	*make_obj_inst(t_ref_obj *ref, float x_sc, float y_sc, float z_sc);
 t_camera	initialize_camera(float d);
 t_matrix	make_transform_matrix(t_camera cam, t_inst_obj obj);
 t_pt2		make_pt2_from_v3(t_vec3 vec, float d);
