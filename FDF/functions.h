@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:00:33 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/18 14:16:40 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/20 00:17:29 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,15 @@ void		swap_colors(t_color *a, t_color *b);
 void		swap(int* a , int*b);
 float		absolute(float x );
 void		error(int error, t_data *data, t_maps *maps);
+
+int color_add_1(t_color *c, t_ref_obj *obj, int i);
+int color_add_2(t_color *c, t_ref_obj *obj, int i);
+int color_add_3(t_color *c, t_ref_obj *obj, int i);
+int color_add_4(t_color *c, t_ref_obj *obj, int i);
+int color_add_5(t_color *c, t_ref_obj *obj, int i);
+int color_add_6(t_color *c, t_ref_obj *obj, int i);
+int color_add_11(t_color *c, t_ref_obj *obj, int i);
+int color_add_22(t_color *c, t_ref_obj *obj, int i);
+int color_add_33(t_color *c, t_ref_obj *obj, int i);
 
 #endif /* FUNCTIONS_H */
