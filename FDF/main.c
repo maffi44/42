@@ -194,7 +194,7 @@ int	main(int argc, char **argv)
 	if (!(data = (t_data*)malloc(sizeof(t_data))))
 		go_away(data);
 	inicializate_data(data);
-	t_ref_obj main_obj = map_parser(argv[1], data);
+	t_ref_obj main_obj = make_ref_obj(argv[1], data);
 	t_inst_obj	*insts;
 	insts = make_obj_inst(&main_obj, 0.01f, 0.01f, 0.01f, 0, 0, 5);
 	data->obj_inst = insts;

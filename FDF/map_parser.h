@@ -14,6 +14,6 @@
 #ifndef MAP_PARSER_H
 # define MAP_PARSER_H
 
-t_ref_obj	map_parser(char *file_name, t_data *data);
+t_ref_obj	make_ref_obj(char *file_name, t_data *data);
 
 #endif /* MAP_PARSER_H */
