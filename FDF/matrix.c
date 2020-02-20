@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 20:09:24 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/19 21:22:05 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/20 16:34:46 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,7 @@ inline t_vec3		vec_divide(t_vec3 from, t_vec3 to)
 
 inline float		vec_length(t_vec3 vec)
 {
-	if (vec.elem[3] != 1 || vec.elem[3] != 0)
-	{
-		vec.elem[0] = vec.elem[0] / vec.elem[3];
-		vec.elem[1] = vec.elem[1] / vec.elem[3];
-		vec.elem[2] = vec.elem[2] / vec.elem[3];
-	}
+	vec.elem[3] = 1;
 	return (sqrtf(vec.elem[0] * vec.elem[0]
 	+ vec.elem[1] * vec.elem[1]
 	+ vec.elem[2] * vec.elem[2]));
@@ -102,6 +97,7 @@ inline t_vec3		normalize_vec(t_vec3 vec)
 	vec.elem[0] = vec.elem[0] / len;
 	vec.elem[1] = vec.elem[1] / len;
 	vec.elem[2] = vec.elem[2] / len;
+	vec.elem[3] = 1;
 	return (vec);
 }
 

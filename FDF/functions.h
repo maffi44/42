@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:00:33 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/20 00:17:29 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/20 16:41:07 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,9 @@ int color_add_6(t_color *c, t_ref_obj *obj, int i);
 int color_add_11(t_color *c, t_ref_obj *obj, int i);
 int color_add_22(t_color *c, t_ref_obj *obj, int i);
 int color_add_33(t_color *c, t_ref_obj *obj, int i);
+
+t_sc_tri	mk_sc_tri(t_sp_tri sp, t_data *data, t_inst_obj obj, t_tri tri);
+t_vec3			seek_tri_center(t_vec3 vertex1, t_vec3 vertex2, t_vec3 vertex3);
+t_sp_tri		make_tri_in_space(t_inst_obj obj, t_tri tri, float d);
 
 #endif /* FUNCTIONS_H */

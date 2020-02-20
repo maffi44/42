@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:17:48 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/18 14:24:16 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/20 16:38:51 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,27 @@ typedef struct 	s_maps
 	char		***big_map;
 	int			**map;
 }				t_maps;
+
+typedef struct		s_screen_tri
+{
+	t_pt2	pt1;
+	t_pt2	pt2;
+	t_pt2	pt3;
+}					t_sc_tri;
+
+typedef struct		s_space_tri
+{
+	t_vec3	normal;
+	t_vec3	vertex1;
+	t_vec3	vertex2;
+	t_vec3	vertex3;
+	t_vec3	light_vector1;
+	t_vec3	light_vector2;
+	t_vec3	light_vector3;
+	t_vec3	edge1;
+	t_vec3	edge2;
+	char 	bool;
+}					t_sp_tri;
 
 typedef struct	s_data
 {
