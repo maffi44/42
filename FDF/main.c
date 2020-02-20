@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/19 23:17:31 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/20 20:46:35 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ int	key_press(int key, t_data *data)
 		data->H_bool = 1;
 	else if (key == 3)
 		data->F_bool = 1;
+	else if (key == 24)
+		data->disco++;
+	else if (key == 27)
+		if (data->disco > 0)
+			data->disco--;
 	return (0);
 }
 
@@ -187,6 +192,7 @@ void	inicializate_data(t_data *data)
 	data->R_bool = 0;
 	data->F_bool = 0;
 	data->H_bool = 0;
+	data->disco = 0;
 	data->img_data = mlx_get_data_addr(data->img_ptr, &(data->bpp),
 			&(data->img_line), &(data->endian));
 }

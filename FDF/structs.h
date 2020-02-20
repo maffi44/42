@@ -122,6 +122,7 @@ typedef struct	s_data
 	int 		Q_bool;
 	int 		H_bool;
 	int 		F_bool;
+	int			disco;
 }				t_data;
 
 #endif

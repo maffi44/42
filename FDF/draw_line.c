@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/19 15:33:28 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/20 20:50:31 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,8 @@ void draw_hor_line(float x0, float x1, int y, t_data *data, float h0, float h1, 
 		{
 			if (Z0 >= data->zbuff[((int)x0 + (y * WIDTH)) - 1])
 			{
+				if (data->disco)
+					h = data->disco + 1;
 				data->zbuff[((int)x0 + (y * (WIDTH))) - 1] = Z0;
 				col.colors[2] = (char) (C_R * h);
 				col.colors[1] = (char) (C_G * h);
