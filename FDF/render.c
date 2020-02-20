@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/19 23:46:22 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/20 09:36:01 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, float d)
 	t_vec3	vertex2;
 	t_vec3	vertex3;
 	t_vec3	normal;
-	t_vec3	cam_vector;
+	t_vec3	tri_center;
 	t_vec3	light_vector1;
 	t_vec3	light_vector2;
 	t_vec3	light_vector3;
@@ -46,13 +46,13 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, float d)
 	edge1 = vec_divide(vertex1, vertex2);
 	edge2 = vec_divide(vertex1, vertex3);
 
-	cam_vector.elem[0] = (vertex1.elem[0] + vertex2.elem[0] + vertex3.elem[0]) / 3;
-	cam_vector.elem[1] = (vertex1.elem[1] + vertex2.elem[1] + vertex3.elem[1]) / 3;
-	cam_vector.elem[2] = (vertex1.elem[2] + vertex2.elem[2] + vertex3.elem[2]) / 3;
-	cam_vector.elem[3] = (vertex1.elem[3] + vertex2.elem[3] + vertex3.elem[3]) / 3;
+	tri_center.elem[0] = (vertex1.elem[0] + vertex2.elem[0] + vertex3.elem[0]) / 3;
+	tri_center.elem[1] = (vertex1.elem[1] + vertex2.elem[1] + vertex3.elem[1]) / 3;
+	tri_center.elem[2] = (vertex1.elem[2] + vertex2.elem[2] + vertex3.elem[2]) / 3;
+	tri_center.elem[3] = (vertex1.elem[3] + vertex2.elem[3] + vertex3.elem[3]) / 3;
 
 	normal = vec_mult(edge1, edge2);
-	if (vec_scalar_mult(normal, cam_vector) <= 0)
+	if (vec_scalar_mult(normal, tri_center) <= 0)
 		return;
 
 	pt1 = make_pt2_from_v3(vertex1, d);
