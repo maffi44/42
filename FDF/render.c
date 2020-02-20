@@ -6,14 +6,44 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/20 09:36:01 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/20 11:03:47 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
+typedef struct		s_screen_tri
+{
+	t_pt2	pt1;
+	t_pt2	pt2;
+	t_pt2	pt3;
+}					t_screen_tri;
+
+typedef struct		s_space_tri
+{
+	t_vec3	vertex1;
+	t_vec3	vertex2;
+	t_vec3	vertex3;
+	t_vec3	normal;
+	t_vec3	light_vector1;
+	t_vec3	light_vector2;
+	t_vec3	light_vector3;
+}					t_space_tri;
+
+t_vec3	seek_tri_center(t_vec3 vertex1, t_vec3 vertex2, t_vec3 vertex3)
+{
+	t_vec3 tri_center;
+
+	tri_center.elem[0] = (vertex1.elem[0] + vertex2.elem[0] + vertex3.elem[0]) / 3;
+	tri_center.elem[1] = (vertex1.elem[1] + vertex2.elem[1] + vertex3.elem[1]) / 3;
+	tri_center.elem[2] = (vertex1.elem[2] + vertex2.elem[2] + vertex3.elem[2]) / 3;
+	tri_center.elem[3] = (vertex1.elem[3] + vertex2.elem[3] + vertex3.elem[3]) / 3;
+	return (tri_center);
+}
+
 void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, float d)
 {
+	t_space_tri space_tri;
 	t_vec3	vertex1;
 	t_vec3	vertex2;
 	t_vec3	vertex3;
@@ -45,15 +75,10 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, float d)
 		return ;
 	edge1 = vec_divide(vertex1, vertex2);
 	edge2 = vec_divide(vertex1, vertex3);
-
-	tri_center.elem[0] = (vertex1.elem[0] + vertex2.elem[0] + vertex3.elem[0]) / 3;
-	tri_center.elem[1] = (vertex1.elem[1] + vertex2.elem[1] + vertex3.elem[1]) / 3;
-	tri_center.elem[2] = (vertex1.elem[2] + vertex2.elem[2] + vertex3.elem[2]) / 3;
-	tri_center.elem[3] = (vertex1.elem[3] + vertex2.elem[3] + vertex3.elem[3]) / 3;
-
+	tri_center = seek_tri_center(vertex1, vertex2, vertex3);
 	normal = vec_mult(edge1, edge2);
 	if (vec_scalar_mult(normal, tri_center) <= 0)
-		return;
+		return ;
 
 	pt1 = make_pt2_from_v3(vertex1, d);
 	pt2 = make_pt2_from_v3(vertex2, d);
