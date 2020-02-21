@@ -4,7 +4,7 @@ SRC = main.c draw_line.c render.c functions.c matrix.c map_parser.c draw_horizon
 
 INCL = *.h
 
-GCC_FLAGS = -Ofast #-Wall -Werror -Wextra
+GCC_FLAGS = #-Wall -Werror -Wextra
 
 MLX_LIB = MinilibX/minilibx_macos/libmlx.a
 
