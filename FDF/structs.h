@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:17:48 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/20 16:38:51 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/21 12:53:54 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,40 @@ typedef struct		s_space_tri
 	t_vec3	edge2;
 	char 	bool;
 }					t_sp_tri;
+
+typedef struct		s_cols
+{
+	t_color	col1;
+	t_color col2;
+}					t_cols;
+
+typedef struct	s_draw
+{
+	float a1;
+	float a2;
+	float X1;
+	float X2;
+	float H1;
+	float H2;
+	float b1;
+	float b2;
+	float ZB1;
+	float ZB2;
+	float zb1;
+	float zb2;
+	float C_R1;
+	float C_G1;
+	float C_B1;
+	float C_R2;
+	float C_G2;
+	float C_B2;
+	float cb_r1;
+	float cb_g1;
+	float cb_b1;
+	float cb_r2;
+	float cb_g2;
+	float cb_b2;
+}				t_draw;
 
 typedef struct	s_data
 {

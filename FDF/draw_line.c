@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/21 12:20:46 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/21 13:12:57 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ inline float absolute(float x )
 	if (x < 0) return -x;
 	else return x;
 }
-
+/*
 void	draw_line (int x0, int y0, int x1, int y1, t_data *data, int color)
 {
 	int dx;
@@ -93,13 +93,23 @@ void	draw_line (int x0, int y0, int x1, int y1, t_data *data, int color)
 			y++;
 		}
 	}
-}
+}*/
 
 void draw_hor_line(float x0, float x1, int y, t_data *data, float h0, float h1, float zb1, float zb2, t_color col0, t_color col1)
 {
-	if (x0 == x1)
-		return;
+	float h;
+	float a;
+	float Z0;
+	float ZB;
+	float C_R;
+	float C_G;
+	float C_B;
+	float cb_r;
+	float cb_g;
+	float cb_b;
 
+	if (x0 == x1)
+		return ;
 	if (x0 > x1)
 	{
 		swap_f(&x0, &x1);
@@ -107,22 +117,18 @@ void draw_hor_line(float x0, float x1, int y, t_data *data, float h0, float h1, 
 		swap_f(&zb1, &zb2);
 		swap_colors(&col0, &col1);
 	}
-	double h = h0;
-	float a = (h1 - h0) / (x1 - x0);
-
-	float Z0 = zb1;
-	float ZB =	(zb2 - zb1) / (x1 - x0);
-
+	h = h0;
+	a = (h1 - h0) / (x1 - x0);
+	Z0 = zb1;
+	ZB = (zb2 - zb1) / (x1 - x0);
 	t_color col;
 	col.ARGB = 0;
-
-	float C_R = col0.colors[2];
-	float C_G = col0.colors[1];
-	float C_B = col0.colors[0];
-	float cb_r = (float)(col1.colors[2] - col0.colors[2]) / (x1 - x0);
-	float cb_g = (float)(col1.colors[1] - col0.colors[1]) / (x1 - x0);
-	float cb_b = (float)(col1.colors[0] - col0.colors[0]) / (x1 - x0);
-
+	C_R = col0.colors[2];
+	C_G = col0.colors[1];
+	C_B = col0.colors[0];
+	cb_r = (float)(col1.colors[2] - col0.colors[2]) / (x1 - x0);
+	cb_g = (float)(col1.colors[1] - col0.colors[1]) / (x1 - x0);
+	cb_b = (float)(col1.colors[0] - col0.colors[0]) / (x1 - x0);
 	while (x0 <= x1)
 	{
 		if ((x0 >= 0 && (int)x0 < WIDTH) && (y >= 0 && y < HIEGHT))
@@ -130,18 +136,12 @@ void draw_hor_line(float x0, float x1, int y, t_data *data, float h0, float h1, 
 			if (Z0 >= data->zbuff[((int)x0 + (y * WIDTH)) - 1])
 			{
 				data->zbuff[((int)x0 + (y * (WIDTH))) - 1] = Z0;
-				col.colors[2] = (char) (C_R * data->disco);
-				col.colors[1] = (char) (C_G * data->disco);
-				col.colors[0] = (char) (C_B * data->disco);
-//				col.colors[2] *= h;
-//				col.colors[1] *= h;
-//				col.colors[0] *= h;
+				col.colors[2] = (char)(C_R * data->disco);
+				col.colors[1] = (char)(C_G * data->disco);
+				col.colors[0] = (char)(C_B * data->disco);
 				col.colors[2] = (char)(col.colors[2] * h);
 				col.colors[1] = (char)(col.colors[1] * h);
 				col.colors[0] = (char)(col.colors[0] * h);
-//				col.colors[2] = (char) (C_R * h);
-//				col.colors[1] = (char) (C_G * h);
-//				col.colors[0] = (char) (C_B * h);
 				put_pixel((int)x0, y, col.ARGB, data);
 			}
 		}
@@ -154,38 +154,7 @@ void draw_hor_line(float x0, float x1, int y, t_data *data, float h0, float h1, 
 	}
 }
 
-typedef struct	s_draw
-{
-	float a1;
-	float a2;
-	float X1;
-	float X2;
-	float H1;
-	float H2;
-	float b1;
-	float b2;
-	float ZB1;
-	float ZB2;
-	float zb1;
-	float zb2;
-	float C_R1;
-	float C_G1;
-	float C_B1;
-	float C_R2;
-	float C_G2;
-	float C_B2;
-	float cb_r1;
-	float cb_g1;
-	float cb_b1;
-	float cb_r2;
-	float cb_g2;
-	float cb_b2;
-}				t_draw;
-
-void	initializate_s_1(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
-void	initializate_s_2(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
-
-inline void	initializate_s_1(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s)
+inline void	initializate_a(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s)
 {
 	s->a1 = absolute(p0.x - p1.x) / (p1.y - p0.y);
 	s->a2 = absolute(p0.x - p2.x) / (p2.y - p0.y);
@@ -193,6 +162,11 @@ inline void	initializate_s_1(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s)
 		s->a1 = -s->a1;
 	if (p0.x > p2.x)
 		s->a2 = -s->a2;
+}
+
+inline void	initializate_s_1(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s)
+{
+	initializate_a(p0, p1, p2, s);
 	s->X1 = p0.x;
 	s->X2 = p0.x;
 	s->H1 = p0.light;
@@ -235,15 +209,16 @@ inline void	initializate_s_2(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s)
 	s->cb_b1 = (float)(p2.color.colors[0] - p1.color.colors[0]) / (p2.y - p1.y);
 }
 
-inline void	draw_tri_1(t_draw *s, t_data *data, t_color col1, t_color col2, int y)
+inline void	draw_tri_1(t_draw *s, t_data *data, t_cols c, int y)
 {
-	col1.colors[2] = (char)s->C_R1;
-	col1.colors[1] = (char)s->C_G1;
-	col1.colors[0] = (char)s->C_B1;
-	col2.colors[2] = (char)s->C_R2;
-	col2.colors[1] = (char)s->C_G2;
-	col2.colors[0] = (char)s->C_B2;
-	draw_hor_line(s->X1, s->X2, (int)y, data, s->H1, s->H2, s->ZB1, s->ZB2, col1, col2);
+	c.col1.colors[2] = (char)s->C_R1;
+	c.col1.colors[1] = (char)s->C_G1;
+	c.col1.colors[0] = (char)s->C_B1;
+	c.col2.colors[2] = (char)s->C_R2;
+	c.col2.colors[1] = (char)s->C_G2;
+	c.col2.colors[0] = (char)s->C_B2;
+	draw_hor_line(s->X1, s->X2, (int)y, data, s->H1,
+			s->H2, s->ZB1, s->ZB2, c.col1, c.col2);
 	s->X1 += s->a1;
 	s->X2 += s->a2;
 	s->H1 += s->b1;
@@ -258,15 +233,16 @@ inline void	draw_tri_1(t_draw *s, t_data *data, t_color col1, t_color col2, int 
 	s->C_B2 += s->cb_b2;
 }
 
-inline void	draw_tri_2(t_draw *s, t_data *data, t_color col1, t_color col2, int y)
+inline void	draw_tri_2(t_draw *s, t_data *data, t_cols c, int y)
 {
-	col1.colors[2] = (char)s->C_R1;
-	col2.colors[2] = (char)s->C_R2;
-	col1.colors[1] = (char)s->C_G1;
-	col2.colors[1] = (char)s->C_G2;
-	col1.colors[0] = (char)s->C_B1;
-	col2.colors[0] = (char)s->C_B2;
-	draw_hor_line(s->X1, s->X2, (int)y, data, s->H1, s->H2, s->ZB1, s->ZB2, col1, col2);
+	c.col1.colors[2] = (char)s->C_R1;
+	c.col2.colors[2] = (char)s->C_R2;
+	c.col1.colors[1] = (char)s->C_G1;
+	c.col2.colors[1] = (char)s->C_G2;
+	c.col1.colors[0] = (char)s->C_B1;
+	c.col2.colors[0] = (char)s->C_B2;
+	draw_hor_line(s->X1, s->X2, (int)y, data, s->H1,
+			s->H2, s->ZB1, s->ZB2, c.col1, c.col2);
 	s->X1 += s->a1;
 	s->X2 += s->a2;
 	s->H1 += s->b1;
@@ -281,11 +257,11 @@ inline void	draw_tri_2(t_draw *s, t_data *data, t_color col1, t_color col2, int 
 	s->C_B2 += s->cb_b2;
 }
 
-void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
-	t_draw s;
-	float y;
-	t_color col1;
-	t_color col2;
+void	draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data)
+{
+	t_draw	s;
+	float	y;
+	t_cols	c;
 
 	if (p0.y > p1.y)
 		swap_2pt(&p1, &p0);
@@ -294,18 +270,15 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 	if (p1.y > p2.y)
 		swap_2pt(&p2, &p1);
 	initializate_s_1(p0, p1, p2, &s);
-	y = p0.y;
-	col1.ARGB = 0;
-	col2.ARGB = 0;
-	while (y < (int)p1.y)
-	{
-		draw_tri_1(&s, data, col1, col2, y);
-		y++;
-	}
+	y = p0.y - 1;
+	c.col1.ARGB = 0;
+	c.col2.ARGB = 0;
+	while (++y < (float)((int)p1.y))
+		draw_tri_1(&s, data, c, y);
 	initializate_s_2(p0, p1, p2, &s);
-	while (y <= (int)p2.y)
+	while (y <= (float)((int)p2.y))
 	{
-		draw_tri_2(&s, data, col1, col2, y);
+		draw_tri_2(&s, data, c, y);
 		y++;
 	}
 }

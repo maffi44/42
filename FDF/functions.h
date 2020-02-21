@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:00:33 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/21 10:20:27 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/21 12:53:55 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int color_add_33(t_color *c, t_ref_obj *obj, int i);
 t_sc_tri	mk_sc_tri(t_sp_tri sp, t_data *data, t_inst_obj obj, t_tri tri);
 t_vec3			seek_tri_center(t_vec3 vertex1, t_vec3 vertex2, t_vec3 vertex3);
 t_sp_tri		make_tri_in_space(t_inst_obj obj, t_tri tri, float d);
+void	initializate_s_1(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
+void	initializate_s_2(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
+void	initializate_a(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
 
 
 #endif /* FUNCTIONS_H */
