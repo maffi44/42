@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/FDF.dir/render.c.o"
   "CMakeFiles/FDF.dir/matrix.c.o"
   "CMakeFiles/FDF.dir/map_parser.c.o"
+  "CMakeFiles/FDF.dir/draw_horizontal_line.c.o"
   "FDF.pdb"
   "FDF"
 )

@@ -338,6 +338,33 @@ MinilibX/minilibx_macos/mlx_xpm.c.s:
 	$(MAKE) -f CMakeFiles/mlx.dir/build.make CMakeFiles/mlx.dir/MinilibX/minilibx_macos/mlx_xpm.c.s
 .PHONY : MinilibX/minilibx_macos/mlx_xpm.c.s
 
+draw_horizontal_line.o: draw_horizontal_line.c.o
+
+.PHONY : draw_horizontal_line.o
+
+# target to build an object file
+draw_horizontal_line.c.o:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/draw_horizontal_line.c.o
+.PHONY : draw_horizontal_line.c.o
+
+draw_horizontal_line.i: draw_horizontal_line.c.i
+
+.PHONY : draw_horizontal_line.i
+
+# target to preprocess a source file
+draw_horizontal_line.c.i:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/draw_horizontal_line.c.i
+.PHONY : draw_horizontal_line.c.i
+
+draw_horizontal_line.s: draw_horizontal_line.c.s
+
+.PHONY : draw_horizontal_line.s
+
+# target to generate assembly for a file
+draw_horizontal_line.c.s:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/draw_horizontal_line.c.s
+.PHONY : draw_horizontal_line.c.s
+
 draw_line.o: draw_line.c.o
 
 .PHONY : draw_line.o
@@ -2152,6 +2179,9 @@ help:
 	@echo "... MinilibX/minilibx_macos/mlx_xpm.o"
 	@echo "... MinilibX/minilibx_macos/mlx_xpm.i"
 	@echo "... MinilibX/minilibx_macos/mlx_xpm.s"
+	@echo "... draw_horizontal_line.o"
+	@echo "... draw_horizontal_line.i"
+	@echo "... draw_horizontal_line.s"
 	@echo "... draw_line.o"
 	@echo "... draw_line.i"
 	@echo "... draw_line.s"

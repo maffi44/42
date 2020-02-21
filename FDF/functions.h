@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:00:33 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/21 12:53:55 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/21 16:49:00 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_sp_tri		make_tri_in_space(t_inst_obj obj, t_tri tri, float d);
 void	initializate_s_1(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
 void	initializate_s_2(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
 void	initializate_a(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
-
+void	draw_tri_2(t_draw *s, t_data *data, int y);
+void	draw_tri_1(t_draw *s, t_data *data, int y);
 
 #endif /* FUNCTIONS_H */

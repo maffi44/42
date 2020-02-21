@@ -6,10 +6,10 @@
 
 #IncludeRegexTransform: 
 
-/Users/mcamila/MyProjects/42/42/FDF/libft/ft_strsplit.c
+/Users/mcamila/MyProjects/42/42/FDF/libft/get_next_line.c
 libft.h
 /Users/mcamila/MyProjects/42/42/FDF/libft/libft.h
-stdlib.h
+stdio.h
 -
 
 /Users/mcamila/MyProjects/42/42/FDF/libft/libft.h
