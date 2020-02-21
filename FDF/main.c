@@ -55,7 +55,7 @@ int	key_press(int key, t_data *data)
 	else if (key == 24)
 		data->disco++;
 	else if (key == 27)
-		if (data->disco > 0)
+		if (data->disco > 1)
 			data->disco--;
 	return (0);
 }
@@ -192,7 +192,7 @@ void	inicializate_data(t_data *data)
 	data->R_bool = 0;
 	data->F_bool = 0;
 	data->H_bool = 0;
-	data->disco = 0;
+	data->disco = 1;
 	data->img_data = mlx_get_data_addr(data->img_ptr, &(data->bpp),
 			&(data->img_line), &(data->endian));
 }
