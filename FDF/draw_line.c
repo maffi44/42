@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/21 10:22:55 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/21 11:37:06 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,12 @@ void draw_hor_line(float x0, float x1, int y, t_data *data, float h0, float h1, 
 				col.colors[2] = (char) (C_R * data->disco);
 				col.colors[1] = (char) (C_G * data->disco);
 				col.colors[0] = (char) (C_B * data->disco);
-				col.colors[2] *= h;//(char) (C_R * h);
-				col.colors[1] *= h;//(char) (C_G * h);
-				col.colors[0] *= h;//(char) (C_B * h);
+				col.colors[2] = (char)(col.colors[2] * h);
+				col.colors[1] = (char)(col.colors[1] * h);
+				col.colors[0] = (char)(col.colors[0] * h);
+//				col.colors[2] = (char) (C_R * h);
+//				col.colors[1] = (char) (C_G * h);
+//				col.colors[0] = (char) (C_B * h);
 				put_pixel((int)x0, y, col.ARGB, data);
 			}
 		}
@@ -148,104 +151,148 @@ void draw_hor_line(float x0, float x1, int y, t_data *data, float h0, float h1, 
 	}
 }
 
+typedef struct	s_draw
+{
+	float a1;
+	float a2;
+	float X1;
+	float X2;
+	float H1;
+	float H2;
+	float b1;
+	float b2;
+	float ZB1;
+	float ZB2;
+	float zb1;
+	float zb2;
+	float C_R1;
+	float C_G1;
+	float C_B1;
+	float C_R2;
+	float C_G2;
+	float C_B2;
+	float cb_r1;
+	float cb_g1;
+	float cb_b1;
+	float cb_r2;
+	float cb_g2;
+	float cb_b2;
+}				t_draw;
+
+//void	initializate_s_1(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
+//void	initializate_s_2(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
+
+inline void	initializate_s_1(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s)
+{
+	s->a1 = absolute(p0.x - p1.x) / (p1.y - p0.y);
+	s->a2 = absolute(p0.x - p2.x) / (p2.y - p0.y);
+	if (p0.x > p1.x)
+		s->a1 = -s->a1;
+	if (p0.x > p2.x)
+		s->a2 = -s->a2;
+	s->X1 = p0.x;
+	s->X2 = p0.x;
+	s->H1 = p0.light;
+	s->H2 = p0.light;
+	s->b1 = (p1.light - p0.light) / (p1.y - p0.y);
+	s->b2 = (p2.light - p0.light) / (p2.y - p0.y);
+	s->ZB1 = p0.z1;
+	s->ZB2 = p0.z1;
+	s->zb1 = (p1.z1 - p0.z1) / (p1.y - p0.y);
+	s->zb2 = (p2.z1 - p0.z1) / (p2.y - p0.y);
+	s->C_R1 = p0.color.colors[2];
+	s->C_G1 = p0.color.colors[1];
+	s->C_B1 = p0.color.colors[0];
+	s->C_R2 = p0.color.colors[2];
+	s->C_G2 = p0.color.colors[1];
+	s->C_B2 = p0.color.colors[0];
+	s->cb_r1 = (float)(p1.color.colors[2] - p0.color.colors[2]) / (p1.y - p0.y);
+	s->cb_g1 = (float)(p1.color.colors[1] - p0.color.colors[1]) / (p1.y - p0.y);
+	s->cb_b1 = (float)(p1.color.colors[0] - p0.color.colors[0]) / (p1.y - p0.y);
+	s->cb_r2 = (float)(p2.color.colors[2] - p0.color.colors[2]) / (p2.y - p0.y);
+	s->cb_g2 = (float)(p2.color.colors[1] - p0.color.colors[1]) / (p2.y - p0.y);
+	s->cb_b2 = (float)(p2.color.colors[0] - p0.color.colors[0]) / (p2.y - p0.y);
+}
+
+inline void	initializate_s_2(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s)
+{
+	s->X1 = p1.x;
+	s->a1 = absolute(p1.x - p2.x) / (p2.y - p1.y);
+	if (p1.x > p2.x)
+		s->a1 = -s->a1;
+	s->H1 = p1.light;
+	s->b1 = (p1.light - p2.light) / (p1.y - p2.y);
+	s->ZB1 = p1.z1;
+	s->zb1 = (p2.z1 - p1.z1) / (p2.y - p1.y);
+	s->C_R1 = p1.color.colors[2];
+	s->C_G1 = p1.color.colors[1];
+	s->C_B1 = p1.color.colors[0];
+	s->cb_r1 = (float)(p2.color.colors[2] - p1.color.colors[2]) / (p2.y - p1.y);
+	s->cb_g1 = (float)(p2.color.colors[1] - p1.color.colors[1]) / (p2.y - p1.y);
+	s->cb_b1 = (float)(p2.color.colors[0] - p1.color.colors[0]) / (p2.y - p1.y);
+}
+
 void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
+	t_draw s;
+	float y;
+	t_color col1;
+	t_color col2;
+
 	if (p0.y > p1.y)
 		swap_2pt(&p1, &p0);
 	if (p0.y > p2.y)
 		swap_2pt(&p2, &p0);
 	if (p1.y > p2.y)
 		swap_2pt(&p2, &p1);
-	float y = p0.y;
-	float a1 = absolute(p0.x - p1.x) / (p1.y - p0.y);
-	float a2 = absolute(p0.x - p2.x) / (p2.y - p0.y);
-	if (p0.x > p1.x)
-		a1 = -a1;
-	if (p0.x > p2.x)
-		a2 = -a2;
-	float X1 = p0.x;
-	float X2 = p0.x;
-	float H1 = p0.light;
-	float H2 = p0.light;
-	float b1 = (p1.light - p0.light) / (p1.y - p0.y);
-	float b2 = (p2.light - p0.light) / (p2.y - p0.y);
-	float ZB1 = p0.z1;
-	float ZB2 = p0.z1;
-	float zb1 = (p1.z1 - p0.z1) / (p1.y - p0.y);
-	float zb2 = (p2.z1 - p0.z1) / (p2.y - p0.y);
-	float C_R1 = p0.color.colors[2];
-	float C_G1 = p0.color.colors[1];
-	float C_B1 = p0.color.colors[0];
-	float C_R2 = p0.color.colors[2];
-	float C_G2 = p0.color.colors[1];
-	float C_B2 = p0.color.colors[0];
-	float cb_r1 = (float)(p1.color.colors[2] - p0.color.colors[2]) / (p1.y - p0.y);
-	float cb_g1 = (float)(p1.color.colors[1] - p0.color.colors[1]) / (p1.y - p0.y);
-	float cb_b1 = (float)(p1.color.colors[0] - p0.color.colors[0]) / (p1.y - p0.y);
-	float cb_r2 = (float)(p2.color.colors[2] - p0.color.colors[2]) / (p2.y - p0.y);
-	float cb_g2 = (float)(p2.color.colors[1] - p0.color.colors[1]) / (p2.y - p0.y);
-	float cb_b2 = (float)(p2.color.colors[0] - p0.color.colors[0]) / (p2.y - p0.y);
-	t_color col1;
-	t_color col2;
+	initializate_s_1(p0, p1, p2, &s);
+	y = p0.y;
 	col1.ARGB = 0;
 	col2.ARGB = 0;
 	while (y < (int)p1.y)
 	{
-		col1.colors[2] = (char)C_R1;
-		col1.colors[1] = (char)C_G1;
-		col1.colors[0] = (char)C_B1;
-		col2.colors[2] = (char)C_R2;
-		col2.colors[1] = (char)C_G2;
-		col2.colors[0] = (char)C_B2;
-		draw_hor_line(X1, X2, (int)y, data, H1, H2, ZB1, ZB2, col1, col2);
-		X1 += a1;
-		X2 += a2;
-		H1 += b1;
-		H2 += b2;
-		ZB1 += zb1;
-		ZB2 += zb2;
-		C_R1 += cb_r1;
-		C_R2 += cb_r2;
-		C_G1 += cb_g1;
-		C_G2 += cb_g2;
-		C_B1 += cb_b1;
-		C_B2 += cb_b2;
+		col1.colors[2] = (char)s.C_R1;
+		col1.colors[1] = (char)s.C_G1;
+		col1.colors[0] = (char)s.C_B1;
+		col2.colors[2] = (char)s.C_R2;
+		col2.colors[1] = (char)s.C_G2;
+		col2.colors[0] = (char)s.C_B2;
+		draw_hor_line(s.X1, s.X2, (int)y, data, s.H1, s.H2, s.ZB1, s.ZB2, col1, col2);
+		s.X1 += s.a1;
+		s.X2 += s.a2;
+		s.H1 += s.b1;
+		s.H2 += s.b2;
+		s.ZB1 += s.zb1;
+		s.ZB2 += s.zb2;
+		s.C_R1 += s.cb_r1;
+		s.C_R2 += s.cb_r2;
+		s.C_G1 += s.cb_g1;
+		s.C_G2 += s.cb_g2;
+		s.C_B1 += s.cb_b1;
+		s.C_B2 += s.cb_b2;
 		y++;
 	}
-	X1 = p1.x;
-	a1 = absolute(p1.x - p2.x) / (p2.y - p1.y);
-	if (p1.x > p2.x)
-		a1 = -a1;
-	H1 = p1.light;
-	b1 = (p1.light - p2.light) / (p1.y - p2.y);
-	ZB1 = p1.z1;
-	zb1 = (p2.z1 - p1.z1) / (p2.y - p1.y);
-	C_R1 = p1.color.colors[2];
-	C_G1 = p1.color.colors[1];
-	C_B1 = p1.color.colors[0];
-	cb_r1 = (float)(p2.color.colors[2] - p1.color.colors[2]) / (p2.y - p1.y);
-	cb_g1 = (float)(p2.color.colors[1] - p1.color.colors[1]) / (p2.y - p1.y);
-	cb_b1 = (float)(p2.color.colors[0] - p1.color.colors[0]) / (p2.y - p1.y);
+	initializate_s_2(p0, p1, p2, &s);
 	while (y <= (int)p2.y)
 	{
-		col1.colors[2] = (char)C_R1;
-		col2.colors[2] = (char)C_R2;
-		col1.colors[1] = (char)C_G1;
-		col2.colors[1] = (char)C_G2;
-		col1.colors[0] = (char)C_B1;
-		col2.colors[0] = (char)C_B2;
-		draw_hor_line(X1, X2, (int)y, data, H1, H2, ZB1, ZB2, col1, col2);
-		X1 += a1;
-		X2 += a2;
-		H1 += b1;
-		H2 += b2;
-		ZB1 += zb1;
-		ZB2 += zb2;
-		C_R1 += cb_r1;
-		C_R2 += cb_r2;
-		C_G1 += cb_g1;
-		C_G2 += cb_g2;
-		C_B1 += cb_b1;
-		C_B2 += cb_b2;
+		col1.colors[2] = (char)s.C_R1;
+		col2.colors[2] = (char)s.C_R2;
+		col1.colors[1] = (char)s.C_G1;
+		col2.colors[1] = (char)s.C_G2;
+		col1.colors[0] = (char)s.C_B1;
+		col2.colors[0] = (char)s.C_B2;
+		draw_hor_line(s.X1, s.X2, (int)y, data, s.H1, s.H2, s.ZB1, s.ZB2, col1, col2);
+		s.X1 += s.a1;
+		s.X2 += s.a2;
+		s.H1 += s.b1;
+		s.H2 += s.b2;
+		s.ZB1 += s.zb1;
+		s.ZB2 += s.zb2;
+		s.C_R1 += s.cb_r1;
+		s.C_R2 += s.cb_r2;
+		s.C_G1 += s.cb_g1;
+		s.C_G2 += s.cb_g2;
+		s.C_B1 += s.cb_b1;
+		s.C_B2 += s.cb_b2;
 		y++;
 	}
 }
