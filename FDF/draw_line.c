@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/21 11:37:06 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/21 12:20:46 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,9 @@ void draw_hor_line(float x0, float x1, int y, t_data *data, float h0, float h1, 
 				col.colors[2] = (char) (C_R * data->disco);
 				col.colors[1] = (char) (C_G * data->disco);
 				col.colors[0] = (char) (C_B * data->disco);
+//				col.colors[2] *= h;
+//				col.colors[1] *= h;
+//				col.colors[0] *= h;
 				col.colors[2] = (char)(col.colors[2] * h);
 				col.colors[1] = (char)(col.colors[1] * h);
 				col.colors[0] = (char)(col.colors[0] * h);
@@ -179,8 +182,8 @@ typedef struct	s_draw
 	float cb_b2;
 }				t_draw;
 
-//void	initializate_s_1(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
-//void	initializate_s_2(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
+void	initializate_s_1(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
+void	initializate_s_2(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s);
 
 inline void	initializate_s_1(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s)
 {
@@ -232,6 +235,52 @@ inline void	initializate_s_2(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_draw *s)
 	s->cb_b1 = (float)(p2.color.colors[0] - p1.color.colors[0]) / (p2.y - p1.y);
 }
 
+inline void	draw_tri_1(t_draw *s, t_data *data, t_color col1, t_color col2, int y)
+{
+	col1.colors[2] = (char)s->C_R1;
+	col1.colors[1] = (char)s->C_G1;
+	col1.colors[0] = (char)s->C_B1;
+	col2.colors[2] = (char)s->C_R2;
+	col2.colors[1] = (char)s->C_G2;
+	col2.colors[0] = (char)s->C_B2;
+	draw_hor_line(s->X1, s->X2, (int)y, data, s->H1, s->H2, s->ZB1, s->ZB2, col1, col2);
+	s->X1 += s->a1;
+	s->X2 += s->a2;
+	s->H1 += s->b1;
+	s->H2 += s->b2;
+	s->ZB1 += s->zb1;
+	s->ZB2 += s->zb2;
+	s->C_R1 += s->cb_r1;
+	s->C_R2 += s->cb_r2;
+	s->C_G1 += s->cb_g1;
+	s->C_G2 += s->cb_g2;
+	s->C_B1 += s->cb_b1;
+	s->C_B2 += s->cb_b2;
+}
+
+inline void	draw_tri_2(t_draw *s, t_data *data, t_color col1, t_color col2, int y)
+{
+	col1.colors[2] = (char)s->C_R1;
+	col2.colors[2] = (char)s->C_R2;
+	col1.colors[1] = (char)s->C_G1;
+	col2.colors[1] = (char)s->C_G2;
+	col1.colors[0] = (char)s->C_B1;
+	col2.colors[0] = (char)s->C_B2;
+	draw_hor_line(s->X1, s->X2, (int)y, data, s->H1, s->H2, s->ZB1, s->ZB2, col1, col2);
+	s->X1 += s->a1;
+	s->X2 += s->a2;
+	s->H1 += s->b1;
+	s->H2 += s->b2;
+	s->ZB1 += s->zb1;
+	s->ZB2 += s->zb2;
+	s->C_R1 += s->cb_r1;
+	s->C_R2 += s->cb_r2;
+	s->C_G1 += s->cb_g1;
+	s->C_G2 += s->cb_g2;
+	s->C_B1 += s->cb_b1;
+	s->C_B2 += s->cb_b2;
+}
+
 void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 	t_draw s;
 	float y;
@@ -250,49 +299,13 @@ void draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data) {
 	col2.ARGB = 0;
 	while (y < (int)p1.y)
 	{
-		col1.colors[2] = (char)s.C_R1;
-		col1.colors[1] = (char)s.C_G1;
-		col1.colors[0] = (char)s.C_B1;
-		col2.colors[2] = (char)s.C_R2;
-		col2.colors[1] = (char)s.C_G2;
-		col2.colors[0] = (char)s.C_B2;
-		draw_hor_line(s.X1, s.X2, (int)y, data, s.H1, s.H2, s.ZB1, s.ZB2, col1, col2);
-		s.X1 += s.a1;
-		s.X2 += s.a2;
-		s.H1 += s.b1;
-		s.H2 += s.b2;
-		s.ZB1 += s.zb1;
-		s.ZB2 += s.zb2;
-		s.C_R1 += s.cb_r1;
-		s.C_R2 += s.cb_r2;
-		s.C_G1 += s.cb_g1;
-		s.C_G2 += s.cb_g2;
-		s.C_B1 += s.cb_b1;
-		s.C_B2 += s.cb_b2;
+		draw_tri_1(&s, data, col1, col2, y);
 		y++;
 	}
 	initializate_s_2(p0, p1, p2, &s);
 	while (y <= (int)p2.y)
 	{
-		col1.colors[2] = (char)s.C_R1;
-		col2.colors[2] = (char)s.C_R2;
-		col1.colors[1] = (char)s.C_G1;
-		col2.colors[1] = (char)s.C_G2;
-		col1.colors[0] = (char)s.C_B1;
-		col2.colors[0] = (char)s.C_B2;
-		draw_hor_line(s.X1, s.X2, (int)y, data, s.H1, s.H2, s.ZB1, s.ZB2, col1, col2);
-		s.X1 += s.a1;
-		s.X2 += s.a2;
-		s.H1 += s.b1;
-		s.H2 += s.b2;
-		s.ZB1 += s.zb1;
-		s.ZB2 += s.zb2;
-		s.C_R1 += s.cb_r1;
-		s.C_R2 += s.cb_r2;
-		s.C_G1 += s.cb_g1;
-		s.C_G2 += s.cb_g2;
-		s.C_B1 += s.cb_b1;
-		s.C_B2 += s.cb_b2;
+		draw_tri_2(&s, data, col1, col2, y);
 		y++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/20 20:40:44 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/21 12:19:34 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,12 @@ inline t_sc_tri	mk_sc_tri(t_sp_tri sp, t_data *data, t_inst_obj obj, t_tri tri)
 	return (sc);
 }
 
-void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data, float d)
+void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data)
 {
 	t_sp_tri	space_tri;
 	t_sc_tri	screen_tri;
 
-	if ((space_tri = make_tri_in_space(obj, tri, d)).bool)
+	if ((space_tri = make_tri_in_space(obj, tri, data->d)).bool)
 		return ;
 	screen_tri = mk_sc_tri(space_tri, data, obj, tri);
 	draw_tri(screen_tri.pt1, screen_tri.pt2, screen_tri.pt3, data);
@@ -101,13 +101,10 @@ void	render_frame(t_inst_obj *objects, int num_of_obj, t_data *data)
 	while (i < num_of_obj)
 	{
 		objects[i].transform = make_transform_matrix(data->camera, objects[i]);
-		j = 0;
-		while (j < objects[i].ref_obj->num_of_tris)
-		{
+		j = -1;
+		while (++j < objects[i].ref_obj->num_of_tris)
 			draw_triangle(objects[i],
-					objects[i].ref_obj->tri[j], data, data->d);
-			j++;
-		}
+					objects[i].ref_obj->tri[j], data);
 		if (data->Q_bool)
 			color_loop(objects[i].ref_obj, 4);
 		i++;
