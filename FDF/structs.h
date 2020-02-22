@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:17:48 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/21 16:15:01 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/22 03:34:24 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct	s_pt2
 	float		x;
 	float		y;
 	float 		z1;
-	t_color		color;
+	t_color		c;
 	float 		light;
 }				t_pt2;
 
@@ -103,41 +103,49 @@ typedef struct		s_space_tri
 
 typedef struct	s_draw
 {
-	float		a1;
-	float		a2;
-	float		X1;
-	float		X2;
-	float		H1;
-	float		H2;
-	float		b1;
-	float		b2;
-	float		ZB1;
-	float		ZB2;
-	float		zb1;
-	float		zb2;
-	float		C_R1;
-	float		C_G1;
-	float		C_B1;
-	float		C_R2;
-	float		C_G2;
-	float		C_B2;
-	float		cb_r1;
-	float		cb_g1;
-	float		cb_b1;
-	float		cb_r2;
-	float		cb_g2;
-	float		cb_b2;
-	t_color		col1;
-	t_color		col2;
+	float a1;
+	float a2;
+	float X1;
+	float X2;
+	float H1;
+	float H2;
+	float b1;
+	float b2;
+	float ZB1;
+	float ZB2;
+	float zb1;
+	float zb2;
+	float C_R1;
+	float C_G1;
+	float C_B1;
+	float C_R2;
+	float C_G2;
+	float C_B2;
+	float cb_r1;
+	float cb_g1;
+	float cb_b1;
+	float cb_r2;
+	float cb_g2;
+	float cb_b2;
+	t_color	col1;
+	t_color col2;
 }				t_draw;
 
-typedef struct		s_screen_pt
+typedef struct	s_hln
 {
-	float 			x;
-	float 			h;
-	float 			z;
-	t_color			col;
-}					t_screen_pt;
+	float		x;
+	float		h;
+	float		a;
+	float		z0;
+	float		zb;
+	float		c_r;
+	float		c_g;
+	float		c_b;
+	float		cb_r;
+	float		cb_g;
+	float		cb_b;
+	t_color		col;
+}				t_hln;
 
 typedef struct	s_data
 {
@@ -160,7 +168,7 @@ typedef struct	s_data
 	int 		Q_bool;
 	int 		H_bool;
 	int 		F_bool;
-	float		disco;
+	int			disco;
 }				t_data;
 
 #endif

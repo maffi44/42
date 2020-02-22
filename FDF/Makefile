@@ -1,10 +1,10 @@
 NAME = fdf
 
-SRC = main.c draw_line.c render.c functions.c matrix.c map_parser.c draw_horizontal_line.c
+SRC = main.c draw_line.c render.c functions.c matrix.c map_parser.c #draw_horizontal_line.c
 
 INCL = *.h
 
-GCC_FLAGS = #-Wall -Werror -Wextra
+GCC_FLAGS = #-Ofast #-Wall -Werror -Wextra
 
 MLX_LIB = MinilibX/minilibx_macos/libmlx.a
 

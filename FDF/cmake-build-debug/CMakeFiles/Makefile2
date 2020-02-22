@@ -105,8 +105,8 @@ clean: CMakeFiles/libft.dir/clean
 # Target rules for target CMakeFiles/FDF.dir
 
 # All Build rule for target.
-CMakeFiles/FDF.dir/all: CMakeFiles/mlx.dir/all
 CMakeFiles/FDF.dir/all: CMakeFiles/libft.dir/all
+CMakeFiles/FDF.dir/all: CMakeFiles/mlx.dir/all
 	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/depend
 	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target FDF"

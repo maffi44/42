@@ -73,9 +73,9 @@ inline t_sc_tri	mk_sc_tri(t_sp_tri sp, t_data *data, t_inst_obj obj, t_tri tri)
 	sc.pt1.light = vec_scalar_mult(sp.normal, sp.light_vector1) * 0.95f;
 	sc.pt2.light = vec_scalar_mult(sp.normal, sp.light_vector2) * 0.95f;
 	sc.pt3.light = vec_scalar_mult(sp.normal, sp.light_vector3) * 0.95f;
-	sc.pt1.color.ARGB = obj.ref_obj->vertex[tri.pt[0]].color;
-	sc.pt2.color.ARGB = obj.ref_obj->vertex[tri.pt[1]].color;
-	sc.pt3.color.ARGB = obj.ref_obj->vertex[tri.pt[2]].color;
+	sc.pt1.c.ARGB = obj.ref_obj->vertex[tri.pt[0]].color;
+	sc.pt2.c.ARGB = obj.ref_obj->vertex[tri.pt[1]].color;
+	sc.pt3.c.ARGB = obj.ref_obj->vertex[tri.pt[2]].color;
 	return (sc);
 }
 
