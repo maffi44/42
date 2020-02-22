@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/21 12:19:34 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/22 04:32:33 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ inline t_vec3	seek_tri_center(t_vec3 vertex1, t_vec3 vertex2, t_vec3 vertex3)
 	return (tri_center);
 }
 
-inline t_sp_tri		make_tri_in_space(t_inst_obj obj, t_tri tri, float d)
+inline t_sp_tri	make_tri_in_space(t_inst_obj obj, t_tri tri, float d)
 {
 	t_sp_tri	tr;
 	t_vec3		tri_center;
@@ -79,7 +79,7 @@ inline t_sc_tri	mk_sc_tri(t_sp_tri sp, t_data *data, t_inst_obj obj, t_tri tri)
 	return (sc);
 }
 
-void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data)
+void			draw_triangle(t_inst_obj obj, t_tri tri, t_data *data)
 {
 	t_sp_tri	space_tri;
 	t_sc_tri	screen_tri;
@@ -90,7 +90,7 @@ void	draw_triangle(t_inst_obj obj, t_tri tri, t_data *data)
 	draw_tri(screen_tri.pt1, screen_tri.pt2, screen_tri.pt3, data);
 }
 
-void	render_frame(t_inst_obj *objects, int num_of_obj, t_data *data)
+void			render_frame(t_inst_obj *objects, int num_of_obj, t_data *data)
 {
 	int i;
 	int j;
