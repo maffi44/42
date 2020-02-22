@@ -92,6 +92,14 @@ add_executable(FDF
         matrix.h
         map_parser.c
         map_parser.h
-        draw_horizontal_line.c)
+        draw_horizontal_line.c
+        color_loop_helper_1.c
+        draw_tri_helper.c
+        error.c
+        hooks.c
+        initializate_camera.c
+        make_triangles.c
+        make_ref_obj.c
+        color_loop.c)
 
 target_link_libraries(FDF mlx libft  "-framework OpenGL" "-framework AppKit" )

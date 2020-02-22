@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/22 04:32:33 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/22 06:29:02 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ inline t_sc_tri	mk_sc_tri(t_sp_tri sp, t_data *data, t_inst_obj obj, t_tri tri)
 	sc.pt1.light = vec_scalar_mult(sp.normal, sp.light_vector1) * 0.95f;
 	sc.pt2.light = vec_scalar_mult(sp.normal, sp.light_vector2) * 0.95f;
 	sc.pt3.light = vec_scalar_mult(sp.normal, sp.light_vector3) * 0.95f;
-	sc.pt1.c.ARGB = obj.ref_obj->vertex[tri.pt[0]].color;
-	sc.pt2.c.ARGB = obj.ref_obj->vertex[tri.pt[1]].color;
-	sc.pt3.c.ARGB = obj.ref_obj->vertex[tri.pt[2]].color;
+	sc.pt1.c.argb = obj.ref_obj->vertex[tri.pt[0]].color;
+	sc.pt2.c.argb = obj.ref_obj->vertex[tri.pt[1]].color;
+	sc.pt3.c.argb = obj.ref_obj->vertex[tri.pt[2]].color;
 	return (sc);
 }
 
@@ -100,12 +100,12 @@ void			render_frame(t_inst_obj *objects, int num_of_obj, t_data *data)
 	i = 0;
 	while (i < num_of_obj)
 	{
-		objects[i].transform = make_transform_matrix(data->camera, objects[i]);
+		objects[i].transform = make_transform_matrix(objects[i]);
 		j = -1;
 		while (++j < objects[i].ref_obj->num_of_tris)
 			draw_triangle(objects[i],
 					objects[i].ref_obj->tri[j], data);
-		if (data->Q_bool)
+		if (data->q_bool)
 			color_loop(objects[i].ref_obj, 4);
 		i++;
 	}

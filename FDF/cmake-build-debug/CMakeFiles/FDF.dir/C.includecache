@@ -8,18 +8,6 @@
 
 /Users/mcamila/MyProjects/42/42/FDF/MinilibX/minilibx_macos/mlx.h
 
-/Users/mcamila/MyProjects/42/42/FDF/draw_horizontal_line.c
-header.h
-/Users/mcamila/MyProjects/42/42/FDF/header.h
-
-/Users/mcamila/MyProjects/42/42/FDF/draw_line.c
-header.h
-/Users/mcamila/MyProjects/42/42/FDF/header.h
-
-/Users/mcamila/MyProjects/42/42/FDF/functions.c
-header.h
-/Users/mcamila/MyProjects/42/42/FDF/header.h
-
 /Users/mcamila/MyProjects/42/42/FDF/functions.h
 
 /Users/mcamila/MyProjects/42/42/FDF/header.h
@@ -56,25 +44,11 @@ unistd.h
 header.h
 /Users/mcamila/MyProjects/42/42/FDF/header.h
 
-/Users/mcamila/MyProjects/42/42/FDF/map_parser.c
-header.h
-/Users/mcamila/MyProjects/42/42/FDF/header.h
-fcntl.h
--
-
 /Users/mcamila/MyProjects/42/42/FDF/map_parser.h
 structs.h
 /Users/mcamila/MyProjects/42/42/FDF/structs.h
 
-/Users/mcamila/MyProjects/42/42/FDF/matrix.c
-header.h
-/Users/mcamila/MyProjects/42/42/FDF/header.h
-
 /Users/mcamila/MyProjects/42/42/FDF/matrix.h
-
-/Users/mcamila/MyProjects/42/42/FDF/render.c
-header.h
-/Users/mcamila/MyProjects/42/42/FDF/header.h
 
 /Users/mcamila/MyProjects/42/42/FDF/structs.h
 header.h

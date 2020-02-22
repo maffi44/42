@@ -16,7 +16,7 @@ inline int	color_add_1(t_color *c, t_ref_obj *obj, int i)
 {
 	c->colors[1]--;
 	c->colors[2]++;
-	obj->vertex[i].color = c->ARGB;
+	obj->vertex[i].color = c->argb;
 	return (1);
 }
 
@@ -24,7 +24,7 @@ inline int	color_add_2(t_color *c, t_ref_obj *obj, int i)
 {
 	c->colors[2]--;
 	c->colors[0]++;
-	obj->vertex[i].color = c->ARGB;
+	obj->vertex[i].color = c->argb;
 	return (1);
 }
 
@@ -32,7 +32,7 @@ inline int	color_add_3(t_color *c, t_ref_obj *obj, int i)
 {
 	c->colors[0]--;
 	c->colors[1]++;
-	obj->vertex[i].color = c->ARGB;
+	obj->vertex[i].color = c->argb;
 	return (1);
 }
 
@@ -40,7 +40,7 @@ inline int	color_add_4(t_color *c, t_ref_obj *obj, int i)
 {
 	c->colors[1]--;
 	c->colors[2]++;
-	obj->vertex[i].color = c->ARGB;
+	obj->vertex[i].color = c->argb;
 	return (1);
 }
 
@@ -48,6 +48,6 @@ inline int	color_add_5(t_color *c, t_ref_obj *obj, int i)
 {
 	c->colors[2]--;
 	c->colors[0]++;
-	obj->vertex[i].color = c->ARGB;
+	obj->vertex[i].color = c->argb;
 	return (1);
 }

@@ -212,10 +212,22 @@
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/MinilibX/minilibx_macos/mlx_xpm.c">
 			<Option target="mlx"/>
 		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/color_loop.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/color_loop_helper_1.c">
+			<Option target="FDF"/>
+		</Unit>
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/draw_horizontal_line.c">
 			<Option target="FDF"/>
 		</Unit>
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/draw_line.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/draw_tri_helper.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/error.c">
 			<Option target="FDF"/>
 		</Unit>
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/functions.c">
@@ -225,6 +237,12 @@
 			<Option target="FDF"/>
 		</Unit>
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/header.h">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/hooks.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/initializate_camera.c">
 			<Option target="FDF"/>
 		</Unit>
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/libft/ft_atoi.c">
@@ -411,6 +429,12 @@
 			<Option target="libft"/>
 		</Unit>
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/main.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/make_ref_obj.c">
+			<Option target="FDF"/>
+		</Unit>
+		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/make_triangles.c">
 			<Option target="FDF"/>
 		</Unit>
 		<Unit filename="/Users/mcamila/MyProjects/42/42/FDF/map_parser.c">

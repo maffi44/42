@@ -72,8 +72,6 @@ static int		ft_read_to_buf(t_list *list, int fd, char **line)
 
 	while (1)
 	{
-		if ((read(fd, 0, 0)) < 0 || fd < 0)
-			return (-1);
 		if ((rd = read(fd, buf, BUFF_SIZE)) == -1)
 			return (-1);
 		buf[rd] = '\0';

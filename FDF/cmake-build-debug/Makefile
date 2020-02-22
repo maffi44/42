@@ -338,6 +338,60 @@ MinilibX/minilibx_macos/mlx_xpm.c.s:
 	$(MAKE) -f CMakeFiles/mlx.dir/build.make CMakeFiles/mlx.dir/MinilibX/minilibx_macos/mlx_xpm.c.s
 .PHONY : MinilibX/minilibx_macos/mlx_xpm.c.s
 
+color_loop.o: color_loop.c.o
+
+.PHONY : color_loop.o
+
+# target to build an object file
+color_loop.c.o:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/color_loop.c.o
+.PHONY : color_loop.c.o
+
+color_loop.i: color_loop.c.i
+
+.PHONY : color_loop.i
+
+# target to preprocess a source file
+color_loop.c.i:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/color_loop.c.i
+.PHONY : color_loop.c.i
+
+color_loop.s: color_loop.c.s
+
+.PHONY : color_loop.s
+
+# target to generate assembly for a file
+color_loop.c.s:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/color_loop.c.s
+.PHONY : color_loop.c.s
+
+color_loop_helper_1.o: color_loop_helper_1.c.o
+
+.PHONY : color_loop_helper_1.o
+
+# target to build an object file
+color_loop_helper_1.c.o:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/color_loop_helper_1.c.o
+.PHONY : color_loop_helper_1.c.o
+
+color_loop_helper_1.i: color_loop_helper_1.c.i
+
+.PHONY : color_loop_helper_1.i
+
+# target to preprocess a source file
+color_loop_helper_1.c.i:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/color_loop_helper_1.c.i
+.PHONY : color_loop_helper_1.c.i
+
+color_loop_helper_1.s: color_loop_helper_1.c.s
+
+.PHONY : color_loop_helper_1.s
+
+# target to generate assembly for a file
+color_loop_helper_1.c.s:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/color_loop_helper_1.c.s
+.PHONY : color_loop_helper_1.c.s
+
 draw_horizontal_line.o: draw_horizontal_line.c.o
 
 .PHONY : draw_horizontal_line.o
@@ -392,6 +446,60 @@ draw_line.c.s:
 	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/draw_line.c.s
 .PHONY : draw_line.c.s
 
+draw_tri_helper.o: draw_tri_helper.c.o
+
+.PHONY : draw_tri_helper.o
+
+# target to build an object file
+draw_tri_helper.c.o:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/draw_tri_helper.c.o
+.PHONY : draw_tri_helper.c.o
+
+draw_tri_helper.i: draw_tri_helper.c.i
+
+.PHONY : draw_tri_helper.i
+
+# target to preprocess a source file
+draw_tri_helper.c.i:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/draw_tri_helper.c.i
+.PHONY : draw_tri_helper.c.i
+
+draw_tri_helper.s: draw_tri_helper.c.s
+
+.PHONY : draw_tri_helper.s
+
+# target to generate assembly for a file
+draw_tri_helper.c.s:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/draw_tri_helper.c.s
+.PHONY : draw_tri_helper.c.s
+
+error.o: error.c.o
+
+.PHONY : error.o
+
+# target to build an object file
+error.c.o:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/error.c.o
+.PHONY : error.c.o
+
+error.i: error.c.i
+
+.PHONY : error.i
+
+# target to preprocess a source file
+error.c.i:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/error.c.i
+.PHONY : error.c.i
+
+error.s: error.c.s
+
+.PHONY : error.s
+
+# target to generate assembly for a file
+error.c.s:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/error.c.s
+.PHONY : error.c.s
+
 functions.o: functions.c.o
 
 .PHONY : functions.o
@@ -418,6 +526,60 @@ functions.s: functions.c.s
 functions.c.s:
 	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/functions.c.s
 .PHONY : functions.c.s
+
+hooks.o: hooks.c.o
+
+.PHONY : hooks.o
+
+# target to build an object file
+hooks.c.o:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/hooks.c.o
+.PHONY : hooks.c.o
+
+hooks.i: hooks.c.i
+
+.PHONY : hooks.i
+
+# target to preprocess a source file
+hooks.c.i:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/hooks.c.i
+.PHONY : hooks.c.i
+
+hooks.s: hooks.c.s
+
+.PHONY : hooks.s
+
+# target to generate assembly for a file
+hooks.c.s:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/hooks.c.s
+.PHONY : hooks.c.s
+
+initializate_camera.o: initializate_camera.c.o
+
+.PHONY : initializate_camera.o
+
+# target to build an object file
+initializate_camera.c.o:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/initializate_camera.c.o
+.PHONY : initializate_camera.c.o
+
+initializate_camera.i: initializate_camera.c.i
+
+.PHONY : initializate_camera.i
+
+# target to preprocess a source file
+initializate_camera.c.i:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/initializate_camera.c.i
+.PHONY : initializate_camera.c.i
+
+initializate_camera.s: initializate_camera.c.s
+
+.PHONY : initializate_camera.s
+
+# target to generate assembly for a file
+initializate_camera.c.s:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/initializate_camera.c.s
+.PHONY : initializate_camera.c.s
 
 libft/ft_atoi.o: libft/ft_atoi.c.o
 
@@ -2066,6 +2228,60 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/main.c.s
 .PHONY : main.c.s
 
+make_ref_obj.o: make_ref_obj.c.o
+
+.PHONY : make_ref_obj.o
+
+# target to build an object file
+make_ref_obj.c.o:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/make_ref_obj.c.o
+.PHONY : make_ref_obj.c.o
+
+make_ref_obj.i: make_ref_obj.c.i
+
+.PHONY : make_ref_obj.i
+
+# target to preprocess a source file
+make_ref_obj.c.i:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/make_ref_obj.c.i
+.PHONY : make_ref_obj.c.i
+
+make_ref_obj.s: make_ref_obj.c.s
+
+.PHONY : make_ref_obj.s
+
+# target to generate assembly for a file
+make_ref_obj.c.s:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/make_ref_obj.c.s
+.PHONY : make_ref_obj.c.s
+
+make_triangles.o: make_triangles.c.o
+
+.PHONY : make_triangles.o
+
+# target to build an object file
+make_triangles.c.o:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/make_triangles.c.o
+.PHONY : make_triangles.c.o
+
+make_triangles.i: make_triangles.c.i
+
+.PHONY : make_triangles.i
+
+# target to preprocess a source file
+make_triangles.c.i:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/make_triangles.c.i
+.PHONY : make_triangles.c.i
+
+make_triangles.s: make_triangles.c.s
+
+.PHONY : make_triangles.s
+
+# target to generate assembly for a file
+make_triangles.c.s:
+	$(MAKE) -f CMakeFiles/FDF.dir/build.make CMakeFiles/FDF.dir/make_triangles.c.s
+.PHONY : make_triangles.c.s
+
 map_parser.o: map_parser.c.o
 
 .PHONY : map_parser.o
@@ -2179,15 +2395,33 @@ help:
 	@echo "... MinilibX/minilibx_macos/mlx_xpm.o"
 	@echo "... MinilibX/minilibx_macos/mlx_xpm.i"
 	@echo "... MinilibX/minilibx_macos/mlx_xpm.s"
+	@echo "... color_loop.o"
+	@echo "... color_loop.i"
+	@echo "... color_loop.s"
+	@echo "... color_loop_helper_1.o"
+	@echo "... color_loop_helper_1.i"
+	@echo "... color_loop_helper_1.s"
 	@echo "... draw_horizontal_line.o"
 	@echo "... draw_horizontal_line.i"
 	@echo "... draw_horizontal_line.s"
 	@echo "... draw_line.o"
 	@echo "... draw_line.i"
 	@echo "... draw_line.s"
+	@echo "... draw_tri_helper.o"
+	@echo "... draw_tri_helper.i"
+	@echo "... draw_tri_helper.s"
+	@echo "... error.o"
+	@echo "... error.i"
+	@echo "... error.s"
 	@echo "... functions.o"
 	@echo "... functions.i"
 	@echo "... functions.s"
+	@echo "... hooks.o"
+	@echo "... hooks.i"
+	@echo "... hooks.s"
+	@echo "... initializate_camera.o"
+	@echo "... initializate_camera.i"
+	@echo "... initializate_camera.s"
 	@echo "... libft/ft_atoi.o"
 	@echo "... libft/ft_atoi.i"
 	@echo "... libft/ft_atoi.s"
@@ -2371,6 +2605,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... make_ref_obj.o"
+	@echo "... make_ref_obj.i"
+	@echo "... make_ref_obj.s"
+	@echo "... make_triangles.o"
+	@echo "... make_triangles.i"
+	@echo "... make_triangles.s"
 	@echo "... map_parser.o"
 	@echo "... map_parser.i"
 	@echo "... map_parser.s"
