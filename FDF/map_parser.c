@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:18:34 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/22 07:29:16 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/22 07:30:19 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int			read_file(t_maps *maps, t_data *data, int x)
 		y++;
 	}
 	if (rd < 0 || ft_strlen((maps->big_line)) == 0 || y <= 1)
-		error(y, data, NULL);
+		error(2
+				, data, NULL);
 	ft_memdel((void*)&(maps->line));
 	if (!((maps->line) = ft_strsplit((maps->big_line), '/')))
 		error(1, data, maps);
