@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="35ec23c5-8782-4774-a02f-aa1ee8a8886e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test13/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test13/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test13/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test13/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test14/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test14/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test14/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test14/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test15/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test15/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test15/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test15/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test16/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test16/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test16/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test16/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test17/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test17/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test17/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test17/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test18/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test18/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test18/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test18/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test20/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test20/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test20/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test20/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test21/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test21/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test21/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test21/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test22/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test22/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test22/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test22/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test23/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test23/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test23/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test23/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test24/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test24/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test24/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test24/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test27/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test27/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test27/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test27/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test28/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test28/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test28/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test28/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test29/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test29/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test29/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test29/traces/user_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test30/traces/diff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test30/traces/diff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/part1/atoi/test30/traces/user_output" beforeDir="false" afterPath="$PROJECT_DIR$/checker/part1/atoi/test30/traces/user_output" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/checker" />
+  </component>
+  <component name="ProjectId" id="1QgNwPnkpxGx8gCl0Tz7dHsZe0n" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Libftest" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Libftest" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="35ec23c5-8782-4774-a02f-aa1ee8a8886e" name="Default Changelist" comment="" />
+      <created>1568188516155</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1568188516155</updated>
+      <workItem from="1568188517341" duration="367000" />
+      <workItem from="1568194331725" duration="1757000" />
+      <workItem from="1568199555860" duration="1742000" />
+      <workItem from="1568206667354" duration="2904000" />
+      <workItem from="1568215415757" duration="2619000" />
+      <workItem from="1568219029102" duration="2815000" />
+      <workItem from="1568225411540" duration="2508000" />
+      <workItem from="1568232032089" duration="1051000" />
+      <workItem from="1568234023280" duration="3243000" />
+      <workItem from="1568270023800" duration="1567000" />
+      <workItem from="1568275819536" duration="859000" />
+      <workItem from="1568285768575" duration="63000" />
+      <workItem from="1568292409817" duration="1158000" />
+      <workItem from="1568380617144" duration="496000" />
+      <workItem from="1568383740457" duration="839000" />
+      <workItem from="1568385070153" duration="884000" />
+      <workItem from="1568387396944" duration="210000" />
+      <workItem from="1568391100882" duration="1595000" />
+      <workItem from="1568457467926" duration="1256000" />
+      <workItem from="1568461848104" duration="2231000" />
+      <workItem from="1568467088659" duration="3349000" />
+      <workItem from="1568473271303" duration="2961000" />
+      <workItem from="1568540845448" duration="44000" />
+      <workItem from="1568541851249" duration="55000" />
+      <workItem from="1568541908592" duration="1254000" />
+      <workItem from="1568544181099" duration="3024000" />
+      <workItem from="1568549234998" duration="3027000" />
+      <workItem from="1568553059435" duration="2786000" />
+      <workItem from="1568560344745" duration="2046000" />
+      <workItem from="1568562825384" duration="2469000" />
+      <workItem from="1568627306928" duration="2344000" />
+      <workItem from="1568630926637" duration="2067000" />
+      <workItem from="1568634080006" duration="3210000" />
+      <workItem from="1568639514908" duration="3612000" />
+      <workItem from="1568644192081" duration="2412000" />
+      <workItem from="1568648917838" duration="4029000" />
+      <workItem from="1568720374883" duration="1514000" />
+      <workItem from="1568724034709" duration="2789000" />
+      <workItem from="1568729700245" duration="2866000" />
+      <workItem from="1568735793679" duration="2200000" />
+      <workItem from="1568744839182" duration="3408000" />
+      <workItem from="1568793857999" duration="2123000" />
+      <workItem from="1568797652584" duration="3291000" />
+      <workItem from="1568801662111" duration="2760000" />
+      <workItem from="1568806113124" duration="1650000" />
+      <workItem from="1568810505827" duration="1907000" />
+      <workItem from="1568813259286" duration="1085000" />
+      <workItem from="1568815652921" duration="2926000" />
+      <workItem from="1568822122156" duration="3821000" />
+      <workItem from="1568827996474" duration="1570000" />
+      <workItem from="1568830875103" duration="3758000" />
+      <workItem from="1568887476282" duration="2087000" />
+      <workItem from="1568890525839" duration="1698000" />
+      <workItem from="1568893907902" duration="3401000" />
+      <workItem from="1568914833329" duration="1758000" />
+      <workItem from="1568918094334" duration="24000" />
+      <workItem from="1568918121034" duration="1965000" />
+      <workItem from="1568921333297" duration="2476000" />
+      <workItem from="1568924871054" duration="1054000" />
+      <workItem from="1568971412072" duration="2138000" />
+      <workItem from="1568977406059" duration="1194000" />
+      <workItem from="1568982033923" duration="3628000" />
+      <workItem from="1568989451609" duration="15000" />
+      <workItem from="1568989468866" duration="1437000" />
+      <workItem from="1568993255005" duration="860000" />
+      <workItem from="1568999087084" duration="1331000" />
+      <workItem from="1569005439479" duration="1549000" />
+      <workItem from="1569055475969" duration="1836000" />
+      <workItem from="1569060117106" duration="3050000" />
+      <workItem from="1569066035482" duration="775000" />
+      <workItem from="1569066963031" duration="1655000" />
+      <workItem from="1569069856635" duration="2652000" />
+      <workItem from="1569075281875" duration="2658000" />
+      <workItem from="1569085851075" duration="496000" />
+      <workItem from="1569094585677" duration="1629000" />
+      <workItem from="1569230020492" duration="612000" />
+      <workItem from="1569321356319" duration="1859000" />
+      <workItem from="1569339708569" duration="131000" />
+      <workItem from="1569490572338" duration="937000" />
+      <workItem from="1569507306612" duration="4000" />
+      <workItem from="1569556814736" duration="174000" />
+      <workItem from="1569558952351" duration="92000" />
+      <workItem from="1569596591019" duration="94000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/ft_strtrim.c</url>
+          <line>26</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
