@@ -135,6 +135,123 @@ CMakeFiles/FDF.dir/map_parser.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FDF.dir/map_parser.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mcamila/MyProjects/42/42/FDF/map_parser.c -o CMakeFiles/FDF.dir/map_parser.c.s
 
+CMakeFiles/FDF.dir/draw_horizontal_line.c.o: CMakeFiles/FDF.dir/flags.make
+CMakeFiles/FDF.dir/draw_horizontal_line.c.o: ../draw_horizontal_line.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/FDF.dir/draw_horizontal_line.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FDF.dir/draw_horizontal_line.c.o   -c /Users/mcamila/MyProjects/42/42/FDF/draw_horizontal_line.c
+
+CMakeFiles/FDF.dir/draw_horizontal_line.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FDF.dir/draw_horizontal_line.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mcamila/MyProjects/42/42/FDF/draw_horizontal_line.c > CMakeFiles/FDF.dir/draw_horizontal_line.c.i
+
+CMakeFiles/FDF.dir/draw_horizontal_line.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FDF.dir/draw_horizontal_line.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mcamila/MyProjects/42/42/FDF/draw_horizontal_line.c -o CMakeFiles/FDF.dir/draw_horizontal_line.c.s
+
+CMakeFiles/FDF.dir/color_loop_helper_1.c.o: CMakeFiles/FDF.dir/flags.make
+CMakeFiles/FDF.dir/color_loop_helper_1.c.o: ../color_loop_helper_1.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/FDF.dir/color_loop_helper_1.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FDF.dir/color_loop_helper_1.c.o   -c /Users/mcamila/MyProjects/42/42/FDF/color_loop_helper_1.c
+
+CMakeFiles/FDF.dir/color_loop_helper_1.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FDF.dir/color_loop_helper_1.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mcamila/MyProjects/42/42/FDF/color_loop_helper_1.c > CMakeFiles/FDF.dir/color_loop_helper_1.c.i
+
+CMakeFiles/FDF.dir/color_loop_helper_1.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FDF.dir/color_loop_helper_1.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mcamila/MyProjects/42/42/FDF/color_loop_helper_1.c -o CMakeFiles/FDF.dir/color_loop_helper_1.c.s
+
+CMakeFiles/FDF.dir/draw_tri_helper.c.o: CMakeFiles/FDF.dir/flags.make
+CMakeFiles/FDF.dir/draw_tri_helper.c.o: ../draw_tri_helper.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/FDF.dir/draw_tri_helper.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FDF.dir/draw_tri_helper.c.o   -c /Users/mcamila/MyProjects/42/42/FDF/draw_tri_helper.c
+
+CMakeFiles/FDF.dir/draw_tri_helper.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FDF.dir/draw_tri_helper.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mcamila/MyProjects/42/42/FDF/draw_tri_helper.c > CMakeFiles/FDF.dir/draw_tri_helper.c.i
+
+CMakeFiles/FDF.dir/draw_tri_helper.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FDF.dir/draw_tri_helper.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mcamila/MyProjects/42/42/FDF/draw_tri_helper.c -o CMakeFiles/FDF.dir/draw_tri_helper.c.s
+
+CMakeFiles/FDF.dir/error.c.o: CMakeFiles/FDF.dir/flags.make
+CMakeFiles/FDF.dir/error.c.o: ../error.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/FDF.dir/error.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FDF.dir/error.c.o   -c /Users/mcamila/MyProjects/42/42/FDF/error.c
+
+CMakeFiles/FDF.dir/error.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FDF.dir/error.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mcamila/MyProjects/42/42/FDF/error.c > CMakeFiles/FDF.dir/error.c.i
+
+CMakeFiles/FDF.dir/error.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FDF.dir/error.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mcamila/MyProjects/42/42/FDF/error.c -o CMakeFiles/FDF.dir/error.c.s
+
+CMakeFiles/FDF.dir/hooks.c.o: CMakeFiles/FDF.dir/flags.make
+CMakeFiles/FDF.dir/hooks.c.o: ../hooks.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/FDF.dir/hooks.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FDF.dir/hooks.c.o   -c /Users/mcamila/MyProjects/42/42/FDF/hooks.c
+
+CMakeFiles/FDF.dir/hooks.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FDF.dir/hooks.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mcamila/MyProjects/42/42/FDF/hooks.c > CMakeFiles/FDF.dir/hooks.c.i
+
+CMakeFiles/FDF.dir/hooks.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FDF.dir/hooks.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mcamila/MyProjects/42/42/FDF/hooks.c -o CMakeFiles/FDF.dir/hooks.c.s
+
+CMakeFiles/FDF.dir/initializate_camera.c.o: CMakeFiles/FDF.dir/flags.make
+CMakeFiles/FDF.dir/initializate_camera.c.o: ../initializate_camera.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/FDF.dir/initializate_camera.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FDF.dir/initializate_camera.c.o   -c /Users/mcamila/MyProjects/42/42/FDF/initializate_camera.c
+
+CMakeFiles/FDF.dir/initializate_camera.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FDF.dir/initializate_camera.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mcamila/MyProjects/42/42/FDF/initializate_camera.c > CMakeFiles/FDF.dir/initializate_camera.c.i
+
+CMakeFiles/FDF.dir/initializate_camera.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FDF.dir/initializate_camera.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mcamila/MyProjects/42/42/FDF/initializate_camera.c -o CMakeFiles/FDF.dir/initializate_camera.c.s
+
+CMakeFiles/FDF.dir/make_triangles.c.o: CMakeFiles/FDF.dir/flags.make
+CMakeFiles/FDF.dir/make_triangles.c.o: ../make_triangles.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/FDF.dir/make_triangles.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FDF.dir/make_triangles.c.o   -c /Users/mcamila/MyProjects/42/42/FDF/make_triangles.c
+
+CMakeFiles/FDF.dir/make_triangles.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FDF.dir/make_triangles.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mcamila/MyProjects/42/42/FDF/make_triangles.c > CMakeFiles/FDF.dir/make_triangles.c.i
+
+CMakeFiles/FDF.dir/make_triangles.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FDF.dir/make_triangles.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mcamila/MyProjects/42/42/FDF/make_triangles.c -o CMakeFiles/FDF.dir/make_triangles.c.s
+
+CMakeFiles/FDF.dir/make_ref_obj.c.o: CMakeFiles/FDF.dir/flags.make
+CMakeFiles/FDF.dir/make_ref_obj.c.o: ../make_ref_obj.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/FDF.dir/make_ref_obj.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FDF.dir/make_ref_obj.c.o   -c /Users/mcamila/MyProjects/42/42/FDF/make_ref_obj.c
+
+CMakeFiles/FDF.dir/make_ref_obj.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FDF.dir/make_ref_obj.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mcamila/MyProjects/42/42/FDF/make_ref_obj.c > CMakeFiles/FDF.dir/make_ref_obj.c.i
+
+CMakeFiles/FDF.dir/make_ref_obj.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FDF.dir/make_ref_obj.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mcamila/MyProjects/42/42/FDF/make_ref_obj.c -o CMakeFiles/FDF.dir/make_ref_obj.c.s
+
+CMakeFiles/FDF.dir/color_loop.c.o: CMakeFiles/FDF.dir/flags.make
+CMakeFiles/FDF.dir/color_loop.c.o: ../color_loop.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/FDF.dir/color_loop.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FDF.dir/color_loop.c.o   -c /Users/mcamila/MyProjects/42/42/FDF/color_loop.c
+
+CMakeFiles/FDF.dir/color_loop.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FDF.dir/color_loop.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mcamila/MyProjects/42/42/FDF/color_loop.c > CMakeFiles/FDF.dir/color_loop.c.i
+
+CMakeFiles/FDF.dir/color_loop.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FDF.dir/color_loop.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mcamila/MyProjects/42/42/FDF/color_loop.c -o CMakeFiles/FDF.dir/color_loop.c.s
+
 # Object files for target FDF
 FDF_OBJECTS = \
 "CMakeFiles/FDF.dir/draw_line.c.o" \
@@ -142,7 +259,16 @@ FDF_OBJECTS = \
 "CMakeFiles/FDF.dir/main.c.o" \
 "CMakeFiles/FDF.dir/render.c.o" \
 "CMakeFiles/FDF.dir/matrix.c.o" \
-"CMakeFiles/FDF.dir/map_parser.c.o"
+"CMakeFiles/FDF.dir/map_parser.c.o" \
+"CMakeFiles/FDF.dir/draw_horizontal_line.c.o" \
+"CMakeFiles/FDF.dir/color_loop_helper_1.c.o" \
+"CMakeFiles/FDF.dir/draw_tri_helper.c.o" \
+"CMakeFiles/FDF.dir/error.c.o" \
+"CMakeFiles/FDF.dir/hooks.c.o" \
+"CMakeFiles/FDF.dir/initializate_camera.c.o" \
+"CMakeFiles/FDF.dir/make_triangles.c.o" \
+"CMakeFiles/FDF.dir/make_ref_obj.c.o" \
+"CMakeFiles/FDF.dir/color_loop.c.o"
 
 # External object files for target FDF
 FDF_EXTERNAL_OBJECTS =
@@ -153,11 +279,20 @@ FDF: CMakeFiles/FDF.dir/main.c.o
 FDF: CMakeFiles/FDF.dir/render.c.o
 FDF: CMakeFiles/FDF.dir/matrix.c.o
 FDF: CMakeFiles/FDF.dir/map_parser.c.o
+FDF: CMakeFiles/FDF.dir/draw_horizontal_line.c.o
+FDF: CMakeFiles/FDF.dir/color_loop_helper_1.c.o
+FDF: CMakeFiles/FDF.dir/draw_tri_helper.c.o
+FDF: CMakeFiles/FDF.dir/error.c.o
+FDF: CMakeFiles/FDF.dir/hooks.c.o
+FDF: CMakeFiles/FDF.dir/initializate_camera.c.o
+FDF: CMakeFiles/FDF.dir/make_triangles.c.o
+FDF: CMakeFiles/FDF.dir/make_ref_obj.c.o
+FDF: CMakeFiles/FDF.dir/color_loop.c.o
 FDF: CMakeFiles/FDF.dir/build.make
 FDF: libmlx.a
 FDF: liblibft.a
 FDF: CMakeFiles/FDF.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable FDF"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking C executable FDF"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FDF.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

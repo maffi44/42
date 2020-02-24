@@ -1,0 +1,5 @@
+/Users/mcamila/MyProjects/42/42/Fractal/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/mcamila/MyProjects/42/42/Fractal/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/mcamila/MyProjects/42/42/Fractal/cmake-build-debug/CMakeFiles/libft.dir
+/Users/mcamila/MyProjects/42/42/Fractal/cmake-build-debug/CMakeFiles/FDF.dir
+/Users/mcamila/MyProjects/42/42/Fractal/cmake-build-debug/CMakeFiles/mlx.dir
