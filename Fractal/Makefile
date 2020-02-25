@@ -1,10 +1,8 @@
 NAME = fdf
 
-SRC =   main.c draw_line.c render.c functions.c matrix.c map_parser.c draw_horizontal_line.c\
-        error.c hooks.c make_ref_obj.c make_triangles.c initializate_camera.c color_loop.c\
-        color_loop_helper_1.c draw_tri_helper.c matrix_2.c fractol.c
+SRC =   main.c error.c hooks.c fractol.c color_loop_helper_1.c color_loop.c
 
-INCL = header.h matrix.h structs.h functions.h map_parser.h fractol.h
+INCL = header.h fractol.h
 
 GCC_FLAGS = #-Wall -Werror -Wextra
 
@@ -14,7 +12,7 @@ MLX_DIR = MinilibX/minilibx_macos/
 FT_LIB = libft/libft.a
 FT_DIR = libft/
 
-FRAMEWORKS = -framework OpenGL -framework AppKit
+FRAMEWORKS = -framework OpenGL -framework AppKit -framework OpenCL
 
 OBJ = $(SRC:.c=.o)
 

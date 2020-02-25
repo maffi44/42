@@ -6,13 +6,21 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 12:42:03 by mcamila           #+#    #+#             */
+/*   Updated: 2020/02/24 19:28:54 by mcamila          ###   ########.fr       */
+.fr       */
+=======
 /*   Updated: 2020/02/22 05:09:35 by mcamila          ###   ########.fr       */
+>>>>>>> new_branch
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
+<<<<<<< HEAD
+void		color_loop(t_ref_obj *obj, unsigned int speed)
+=======
 void		make_sc_matrix(t_inst_obj *n, float x_sc, float y_sc, float z_sc)
+>>>>>>> new_branch
 {
 	n->scale.elem[0][0] = x_sc;
 	n->scale.elem[0][1] = 0;
@@ -86,7 +94,11 @@ t_inst_obj	*make_obj_inst(t_ref_obj *ref, float x_sc, float y_sc, float z_sc)
 	return (new_inst);
 }
 
+<<<<<<< HEAD
+t_pt2		make_pt2_from_v3(t_vec3 vec)
+=======
 t_pt2		make_pt2_from_v3(t_vec3 vec, float d)
+>>>>>>> new_branch
 {
 	t_pt2 pt2;
 	float x;
@@ -103,3 +115,13 @@ t_pt2		make_pt2_from_v3(t_vec3 vec, float d)
 	pt2.z1 = 1 / vec.elem[2];
 	return (pt2);
 }
+<<<<<<< HEAD
+
+void 		put_pixel(int x, int y, int color, t_data *data)
+{
+	if (x >= WIDTH || x < 0 || y >= HIEGHT || y < 0)
+		return;
+	((int*)(data->img_data))[x + (y * WIDTH)] = color;
+}
+=======
+>>>>>>> new_branch

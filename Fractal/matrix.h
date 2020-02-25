@@ -13,12 +13,6 @@
 #ifndef MATRIX_H
 # define MATRIX_H
 
-typedef union		u_color
-{
-	unsigned int	argb;
-	unsigned char	colors[4];
-}					t_color;
-
 typedef struct		s_matrix
 {
 	float			elem[4][4];

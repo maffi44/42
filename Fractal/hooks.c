@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 05:22:04 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/24 19:27:52 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/26 01:38:48 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,88 +16,73 @@ int		key_press(int key, t_data *data)
 {
 	if (key == 53)
 		go_away(data);
-//	else if (key == 15)
-//		data->r_bool = 1;
-//	else if (key == 12)
-//		data->q_bool = !(data->q_bool);
-//	else if (key == 4)
-//		data->h_bool = 1;
-//	else if (key == 3)
-//		data->f_bool = 1;
-//	else if (key == 24)
-//		data->disco++;
-//	else if (key == 27)
-//		if (data->disco > 1)
-//			data->disco--;
+	if (key == 27)
+	{
+		data->p.sc *= 1.02f;
+		if (data->p.sc > 1.f)
+			data->p.sc = 1.f;
+	}
+	if (key == 24)
+	{
+		data->p.sc *= 0.98f;
+	}
+	if (key == 33)
+	{
+		if (data->p.max_iteration > 10)
+			data->p.max_iteration -= 10;
+	}
+	if (key == 30)
+	{
+		data->p.max_iteration += 10;
+	}
+	ft_render(data);
 	return (0);
 }
 
 int		key_release(int key, t_data *data)
 {
-	if (key == 15)
-		data->r_bool = 0;
-	else if (key == 4)
-		data->h_bool = 0;
-	else if (key == 3)
-		data->f_bool = 0;
+	if (key == 3)
+	{
+		if (data->p.fract == 1)
+			data->p.fract = 2;
+		else if (data->p.fract == 2)
+			data->p.fract = 3;
+		else if (data->p.fract == 3)
+			data->p.fract = 4;
+		else
+			data->p.fract = 1;
+	}
+	ft_render(data);
 	return (0);
-}
-
-void	mouse_scale_p(t_data *data)
-{
-	if (data->h_bool)
-	{
-		data->obj_inst->scale.elem[1][1] *= 0.95f;
-	}
-	else if (data->f_bool)
-	{
-		if ((data->d += 0.05f) > 4)
-			data->d = 4;
-	}
-	else
-	{
-		data->obj_inst->scale.elem[0][0] *= 0.95f;
-		data->obj_inst->scale.elem[1][1] *= 0.95f;
-		data->obj_inst->scale.elem[2][2] *= 0.95f;
-	}
-}
-
-void	mouse_scale_m(t_data *data)
-{
-	if (data->h_bool)
-	{
-		data->obj_inst->scale.elem[1][1] *= 1.05f;
-	}
-	else if (data->f_bool)
-	{
-		if ((data->d -= 0.05f) < 0.1f)
-			data->d = 0.1f;
-	}
-	else
-	{
-		data->obj_inst->scale.elem[0][0] *= 1.05f;
-		data->obj_inst->scale.elem[1][1] *= 1.05f;
-		data->obj_inst->scale.elem[2][2] *= 1.05f;
-	}
 }
 
 int		mouse_press(int button, int x, int y, t_data *data)
 {
-	if (button == 1)
-	{
-		((t_data *)data)->mouse_bool = 1;
-		((t_data *)data)->x = x;
-		((t_data *)data)->y = y;
-	}
+
 	if (button == 4)
 	{
-		mouse_scale_m(data);
-		render_frame(data->obj_inst, 1, data);
+		data->p.sc *= 0.95f;
+
 	}
 	if (button == 5)
 	{
-		mouse_scale_p(data);
-		render_frame(data->obj_inst, 1, data);
+		data->p.sc *= 1.05f;
+		if (data->p.sc > 1.f)
+			data->p.sc = 1.f;
 	}
+	if (button == 3)
+	{
+		data->p.x = x;
+		data->p.y = y;
+		data->p.m_bool = 1;
+	}
+	ft_render(data);
 	return (0);
 }
+
+int			x_press(void *data)
+{
+	go_away(data);
+	return (0);
+}
+

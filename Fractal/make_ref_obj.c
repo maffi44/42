@@ -50,9 +50,3 @@ t_ref_obj	make_ref_obj_from_map(int x, int y, t_data *data, t_maps *maps)
 	del_maps(maps);
 	return (obj);
 }
-
-int			x_press(void *data)
-{
-	go_away(data);
-	return (0);
-}
