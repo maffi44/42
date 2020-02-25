@@ -2,9 +2,9 @@ NAME = fdf
 
 SRC =   main.c draw_line.c render.c functions.c matrix.c map_parser.c draw_horizontal_line.c\
         error.c hooks.c make_ref_obj.c make_triangles.c initializate_camera.c color_loop.c\
-        color_loop_helper_1.c draw_tri_helper.c matrix_2.c
+        color_loop_helper_1.c draw_tri_helper.c matrix_2.c fractol.c
 
-INCL = header.h matrix.h structs.h functions.h map_parser.h
+INCL = header.h matrix.h structs.h functions.h map_parser.h fractol.h
 
 GCC_FLAGS = #-Wall -Werror -Wextra
 

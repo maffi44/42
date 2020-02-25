@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 05:22:04 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/22 05:23:23 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/24 19:27:52 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ int		key_press(int key, t_data *data)
 {
 	if (key == 53)
 		go_away(data);
-	else if (key == 15)
-		data->r_bool = 1;
-	else if (key == 12)
-		data->q_bool = !(data->q_bool);
-	else if (key == 4)
-		data->h_bool = 1;
-	else if (key == 3)
-		data->f_bool = 1;
-	else if (key == 24)
-		data->disco++;
-	else if (key == 27)
-		if (data->disco > 1)
-			data->disco--;
+//	else if (key == 15)
+//		data->r_bool = 1;
+//	else if (key == 12)
+//		data->q_bool = !(data->q_bool);
+//	else if (key == 4)
+//		data->h_bool = 1;
+//	else if (key == 3)
+//		data->f_bool = 1;
+//	else if (key == 24)
+//		data->disco++;
+//	else if (key == 27)
+//		if (data->disco > 1)
+//			data->disco--;
 	return (0);
 }
 

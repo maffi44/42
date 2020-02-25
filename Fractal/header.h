@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 16:16:54 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/22 06:04:50 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/24 19:27:52 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include "structs.h"
 # include "matrix.h"
 # include "functions.h"
+
+#include "fractol.h"
 
 # define HIEGHT	1080
 # define WIDTH	1920

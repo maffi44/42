@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:37 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/22 06:29:02 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/24 19:27:52 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void			render_frame(t_inst_obj *objects, int num_of_obj, t_data *data)
 		j = -1;
 		while (++j < objects[i].ref_obj->num_of_tris)
 			draw_triangle(objects[i],
-					objects[i].ref_obj->tri[j], data);
+						  objects[i].ref_obj->tri[j], data);
 		if (data->q_bool)
 			color_loop(objects[i].ref_obj, 4);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/22 06:29:24 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/25 14:19:25 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,37 @@ int		mouse_release(int button, int x, int y, void *data)
 
 int		mouse_move(int x, int y, t_data *data)
 {
-	if (((t_data*)data)->mouse_bool)
-	{
-		if (data->r_bool)
-		{
-			data->obj_inst->rotation = make_rotation_matrix(
-					data->obj_inst->y_ang -= (float)(y - data->y) / 150,
-					data->obj_inst->x_ang += (float)(x - data->x) / 150);
-		}
-		else
-		{
-			data->obj_inst->translate.elem[0][3] += (float)(x - data->x) / 50;
-			data->obj_inst->translate.elem[1][3] += (float)(y - data->y) / 50;
-		}
-		mlx_clear_window(data->mlx_ptr, data->win_ptr);
-		render_frame(data->obj_inst, 1, data);
-		((t_data*)data)->x = x;
-		((t_data*)data)->y = y;
-	}
+	data->k_re = (x - (WIDTH / 2) - 1) * 4.0f / WIDTH;
+	data->k_im = (y - (HIEGHT / 2) - 1) * 4.0f / WIDTH;
+
+//	data->k_re = (float)x / HIEGHT - 0.5f;
+//	data->k_im = (float)(WIDTH - y) / WIDTH - 0.5f;
+//	if (((t_data*)data)->mouse_bool)
+//	{
+//		if (data->r_bool)
+//		{
+//			data->obj_inst->rotation = make_rotation_matrix(
+//					data->obj_inst->y_ang -= (float)(y - data->y) / 150,
+//					data->obj_inst->x_ang += (float)(x - data->x) / 150);
+//		}
+//		else
+//		{
+//			data->obj_inst->translate.elem[0][3] += (float)(x - data->x) / 50;
+//			data->obj_inst->translate.elem[1][3] += (float)(y - data->y) / 50;
+//		}
+//		mlx_clear_window(data->mlx_ptr, data->win_ptr);
+//		render_frame(data->obj_inst, 1, data);
+//		((t_data*)data)->x = x;
+//		((t_data*)data)->y = y;
+//	}
+	fractol_frame(data);
 	return (0);
 }
 
 int		frame_loop(t_data *data)
 {
-	render_frame(data->obj_inst, 1, (void*)data);
+	fractol_frame(data);
+//	render_frame(data->obj_inst, 1, (void*)data);
 	return (0);
 }
 
@@ -72,6 +79,8 @@ void	inicializate_data(t_data *data)
 	data->disco = 1;
 	data->img_data = mlx_get_data_addr(data->img_ptr, &(data->bpp),
 			&(data->img_line), &(data->endian));
+	data->k_re = 0;
+	data->k_im = 0;
 }
 
 int		main(int argc, char **argv)
@@ -81,21 +90,23 @@ int		main(int argc, char **argv)
 	t_ref_obj	main_obj;
 
 	data = NULL;
-	if (argc != 2)
-		error(0, data, NULL);
+//	if (argc != 2)
+//		error(0, data, NULL);
 	if (!(data = (t_data*)malloc(sizeof(t_data))))
 		go_away(data);
 	inicializate_data(data);
-	main_obj = make_ref_obj(argv[1], data);
-	insts = make_obj_inst(&main_obj, 0.1f, 0.1f, 0.1f);
-	data->obj_inst = insts;
-	data->camera = initialize_camera(1);
+//	main_obj = make_ref_obj(argv[1], data);
+//	insts = make_obj_inst(&main_obj, 0.1f, 0.1f, 0.1f);
+//	data->obj_inst = insts;
+//	data->camera = initialize_camera(1);
+
+	fractol_frame(data);
 	mlx_hook(data->win_ptr, 2, 0, key_press, (void*)data);
-	mlx_hook(data->win_ptr, 3, 0, key_release, (void*)data);
-	mlx_hook(data->win_ptr, 4, 0, mouse_press, (void*)data);
-	mlx_hook(data->win_ptr, 5, 0, mouse_release, (void*)data);
+//	mlx_hook(data->win_ptr, 3, 0, key_release, (void*)data);
+//	mlx_hook(data->win_ptr, 4, 0, mouse_press, (void*)data);
+//	mlx_hook(data->win_ptr, 5, 0, mouse_release, (void*)data);
 	mlx_hook(data->win_ptr, 6, 0, mouse_move, (void*)data);
-	mlx_loop_hook(data->mlx_ptr, frame_loop, data);
+//	mlx_loop_hook(data->mlx_ptr, frame_loop, data);
 	mlx_hook(data->win_ptr, 17, 0, x_press, data);
 	mlx_loop(data->mlx_ptr);
 	return (0);

@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/14 16:38:33 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/24 19:27:52 by mcamila          ###   ########.fr       */
+/*   Created: 2020/02/25 13:04:33 by mcamila           #+#    #+#             */
+/*   Updated: 2020/02/25 13:04:33 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
-char	*ft_strstr(const char *big, const char *lit)
+typedef struct	s_complex
 {
-	int i;
-	int j;
+	float		re;
+	float		im;
+}				t_complex;
 
-	if (lit[0] == '\0')
-		return ((char*)big);
-	i = 0;
-	while (big[i] != '\0')
-	{
-		j = 0;
-		while (big[i + j] == lit[j] && big[i + j] != '\0')
-		{
-			if (lit[j + 1] == '\0')
-				return ((char*)(&big[i]));
-			if (big[i + j + 1] == '\0')
-				return (NULL);
-			j++;
-		}
-		i++;
-	}
-	return (NULL);
-}
+void	fractol_frame(t_data *data);
+
+#endif

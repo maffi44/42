@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:17:48 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/22 06:40:46 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/25 13:53:57 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,8 @@ typedef struct	s_data
 	int			h_bool;
 	int			f_bool;
 	int			disco;
+	float		k_re;
+	float_t 	k_im;
 }				t_data;
 
 #endif
