@@ -24,6 +24,7 @@ typedef struct 	s_params
 	int			m_bool;
 	int 		sc_bool;
 	t_color		col;
+	int 		jul_bool;
 }				t_params;
 
 typedef struct	s_complex
@@ -32,6 +33,21 @@ typedef struct	s_complex
 	float		im;
 }				t_complex;
 
+t_complex	init_complex(float re, float im);
+t_complex	julia(t_complex z, t_complex c);
+t_complex	mandelbar_2(t_complex z, t_complex c);
+t_complex	mandelbar(t_complex z, t_complex c);
+int			fractol_frame(t_params *params, int x, int y);
+t_complex	f1(t_complex z, t_complex c);
+t_complex	f2(t_complex z, t_complex c);
+float 		f_abs(float f);
+
+float 		f_abs(float f)
+{
+	if (f < 0)
+		return (f * -1);
+	return (f);
+}
 
 t_complex	init_complex(float re, float im)
 {
@@ -63,6 +79,27 @@ t_complex	mandelbar(t_complex z, t_complex c)
 	return (z);
 }
 
+t_complex	f1(t_complex z, t_complex c)
+{
+	z = init_complex(z.re * z.re - z.im * z.im + c.re,
+					 f_abs(2.0f * z.re * z.im + c.im));
+	return (z);
+}
+
+t_complex	f2(t_complex z, t_complex c)
+{
+	z = init_complex(f_abs(z.re * z.re - z.im * z.im + c.re),
+					 f_abs(2.0f * z.re * z.im + c.im));
+	return (z);
+}
+
+t_complex	f3(t_complex z, t_complex c)
+{
+	z = init_complex(f_abs(z.re * z.re - z.im * z.im + c.re),
+					 (2.0f * z.re * z.im + c.im));
+	return (z);
+}
+
 int	fractol_frame(t_params *params, int x, int y)
 {
 	int max_iteration;
@@ -91,12 +128,20 @@ int	fractol_frame(t_params *params, int x, int y)
     while((z.re * z.re + z.im * z.im <= 4)
         && (iteration < max_iteration))
     {
-        if (params->fract == 1)
+        if (params->fract == 0)
             z = mandelbar(z, c);
-        else if (params->fract == 2)
+        else if (params->fract == 1)
             z = mandelbar_2(z, c);
-        else
+        else if (params->fract == 2)
             z = julia(z, k);
+		else if (params->fract == 3)
+			z = f1(z, c);
+		else if (params->fract == 4)
+			z = f2(z, k);
+		else if (params->fract == 5)
+			z = f3(z, c);
+		else
+			z = julia(z, k);
         iteration++;
     }
     col.colors[0] = params->col.colors[0] * (float)iteration / max_iteration;

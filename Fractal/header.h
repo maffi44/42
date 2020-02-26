@@ -47,7 +47,7 @@ int		color_add_11(t_color *c);
 int		color_add_22(t_color *c);
 int		color_add_33(t_color *c);
 
-# define HIEGHT	1600
-# define WIDTH	1600
+# define HIEGHT	1500
+# define WIDTH	1500
 
 #endif

@@ -56,6 +56,7 @@ typedef struct 	s_params
 	int			m_bool;
 	int 		sc_bool;
 	t_color		col;
+	int 		jul_bool;
 }				t_params;
 
 

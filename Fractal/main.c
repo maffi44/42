@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:21:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/26 05:31:49 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/26 05:47:31 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ int		mouse_move(int x0, int y0, t_data *data)
 	int x;
 	int y;
 
-	data->p.k_re =(x0 - (float)WIDTH / 2) * 4 / WIDTH;
-	data->p.k_im = (y0 - (float)HIEGHT / 2) * 4 / HIEGHT;
+	if (data->p.jul_bool)
+	{
+		data->p.k_re = (x0 - (float) WIDTH / 2) * 4 / WIDTH;
+		data->p.k_im = (y0 - (float) HIEGHT / 2) * 4 / HIEGHT;
+	}
 	if (((t_data*)data)->p.m_bool)
 	{
 		x = x0 - data->p.x;
@@ -58,12 +61,13 @@ void	inicializate_data(t_data *data)
 	data->p.k_im = 0;
 	data->p.fract = 1;
 	data->p.sc = 1;
-	data->p.max_iteration = 25;
+	data->p.max_iteration = 70;
 	data->p.re_off = 0;
 	data->p.im_off = 0;
 	data->p.m_bool = 0;
 	data->p.sc_bool = 0;
 	data->p.col.argb = 0x00FF00FF;
+	data->p.jul_bool = 1;
 }
 
 char		*read_file(int fd, size_t *size)
@@ -161,7 +165,7 @@ inline void	put_pixel(int x, int y, int color, t_data *data)
 
 void	error(t_data *data)
 {
-	ft_putendl("fractol: Must specify one of - maledenbrot, maldenbrot2, julia");
+	ft_putendl("fractol: Must specify one of - mandelbrot, mandelbrot2, julia");
 	go_away(data);
 }
 
@@ -174,15 +178,15 @@ void inicializate_fractol(t_data *data, char *str)
 	else if (((ft_strcmp(str, "julia")) == 0))
 		data->p.fract = 2;
 	else if (((ft_strcmp(str, "mandelbrot2")) == 0))
-		data->p.fract = 0;
+		data->p.fract = 3;
 	else if (((ft_strcmp(str, "mandelbrot2")) == 0))
-		data->p.fract = 0;
+		data->p.fract = 4;
 	else if (((ft_strcmp(str, "mandelbrot2")) == 0))
-		data->p.fract = 0;
+		data->p.fract = 5;
 	else if (((ft_strcmp(str, "mandelbrot2")) == 0))
-		data->p.fract = 0;
+		data->p.fract = 6;
 	else if (((ft_strcmp(str, "mandelbrot2")) == 0))
-		data->p.fract = 0;
+		data->p.fract = 7;
 	else
 		error(data);
 }

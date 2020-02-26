@@ -1,4 +1,4 @@
-NAME = fdf
+NAME = fractol
 
 SRC =   main.c error.c hooks.c fractol.c color_loop_helper_1.c color_loop.c
 

@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 05:22:04 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/26 01:38:48 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/26 06:07:19 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,10 @@ int		key_release(int key, t_data *data)
 {
 	if (key == 3)
 	{
-		if (data->p.fract == 1)
-			data->p.fract = 2;
-		else if (data->p.fract == 2)
-			data->p.fract = 3;
-		else if (data->p.fract == 3)
-			data->p.fract = 4;
+		if (data->p.fract < 7)
+			data->p.fract++;
 		else
-			data->p.fract = 1;
+			data->p.fract = 0;
 	}
 	ft_render(data);
 	return (0);
@@ -58,12 +54,10 @@ int		key_release(int key, t_data *data)
 
 int		mouse_press(int button, int x, int y, t_data *data)
 {
-
+	if (button == 1)
+		data->p.jul_bool = !data->p.jul_bool;
 	if (button == 4)
-	{
 		data->p.sc *= 0.95f;
-
-	}
 	if (button == 5)
 	{
 		data->p.sc *= 1.05f;
