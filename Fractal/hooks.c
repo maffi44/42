@@ -18,13 +18,13 @@ int		key_press(int key, t_data *data)
 		go_away(data);
 	if (key == 27)
 	{
-		data->p.sc *= 1.02f;
+		data->p.sc *= 1.12f;
 		if (data->p.sc > 1.f)
 			data->p.sc = 1.f;
 	}
 	if (key == 24)
 	{
-		data->p.sc *= 0.98f;
+		data->p.sc *= 0.88f;
 	}
 	if (key == 33)
 	{

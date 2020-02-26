@@ -109,11 +109,11 @@ int	fractol_frame(t_params *params, int x, int y)
 
 
 
-__kernel void test(__global int* message, t_params params)
+__kernel void render(__global int* img, t_params params)
 {
 	// получаем текущий id.
-	int x= get_global_id(0);
-	int y= get_global_id(1);
+	int x = get_global_id(0);
+	int y = get_global_id(1);
 
-	message[x + y * get_global_size(0) ] = fractol_frame(&params, x, y);
+	img[x + y * get_global_size(0) ] = fractol_frame(&params, x, y);
 }
