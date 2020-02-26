@@ -63,5 +63,5 @@ t_color		color_loop(unsigned int speed, t_color c)
 			continue;
 		c.colors[0]++;
 	}
-	return c;
+	return (c);
 }

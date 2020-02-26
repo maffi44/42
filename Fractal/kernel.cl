@@ -40,6 +40,8 @@ t_complex	mandelbar(t_complex z, t_complex c);
 int			fractol_frame(t_params *params, int x, int y);
 t_complex	f1(t_complex z, t_complex c);
 t_complex	f2(t_complex z, t_complex c);
+t_complex	f3(t_complex z, t_complex c);
+t_complex	f4(t_complex z, t_complex c);
 float 		f_abs(float f);
 
 float 		f_abs(float f)
@@ -100,6 +102,13 @@ t_complex	f3(t_complex z, t_complex c)
 	return (z);
 }
 
+t_complex	f4(t_complex z, t_complex c)
+{
+	z = init_complex((z.re * z.re - z.im * z.im + c.re),
+					 (4.0f * z.re * z.im + c.im));
+	return (z);
+}
+
 int	fractol_frame(t_params *params, int x, int y)
 {
 	int max_iteration;
@@ -141,7 +150,7 @@ int	fractol_frame(t_params *params, int x, int y)
 		else if (params->fract == 5)
 			z = f3(z, c);
 		else
-			z = julia(z, k);
+			z = f4(z, c);
         iteration++;
     }
     col.colors[0] = params->col.colors[0] * (float)iteration / max_iteration;
@@ -156,7 +165,6 @@ int	fractol_frame(t_params *params, int x, int y)
 
 __kernel void render(__global int* img, t_params params)
 {
-	// получаем текущий id.
 	int x = get_global_id(0);
 	int y = get_global_id(1);
 

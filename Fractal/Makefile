@@ -1,8 +1,9 @@
 NAME = fractol
 
-SRC =   main.c error.c hooks.c fractol.c color_loop_helper_1.c color_loop.c
+SRC =   main.c error.c hooks.c color_loop_helper_1.c color_loop.c \
+        opencl.c
 
-INCL = header.h fractol.h
+INCL = header.h
 
 GCC_FLAGS = #-Wall -Werror -Wextra
 
@@ -18,7 +19,7 @@ OBJ = $(SRC:.c=.o)
 
 .PHONY: all clean fclean re
 
-all: $(FT_LIB) $(NAME)
+all: $(MLX_LIB) $(FT_LIB) $(NAME)
 
 $(NAME): $(OBJ)
 	@gcc $(OBJ) $(FRAMEWORKS) $(MLX_LIB) $(FT_LIB) -o $(NAME)

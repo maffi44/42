@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 05:22:04 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/26 06:07:19 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/26 07:38:34 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		key_release(int key, t_data *data)
 {
 	if (key == 3)
 	{
-		if (data->p.fract < 7)
+		if (data->p.fract < 6)
 			data->p.fract++;
 		else
 			data->p.fract = 0;
@@ -74,9 +74,8 @@ int		mouse_press(int button, int x, int y, t_data *data)
 	return (0);
 }
 
-int			x_press(void *data)
+int		x_press(void *data)
 {
 	go_away(data);
 	return (0);
 }
-
