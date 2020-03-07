@@ -6,7 +6,7 @@ SRC =   main.c draw_line.c render.c functions.c matrix.c map_parser.c draw_horiz
 
 INCL = header.h matrix.h structs.h functions.h map_parser.h
 
-GCC_FLAGS = #-Wall -Werror -Wextra
+GCC_FLAGS = -Wall -Werror -Wextra
 
 MLX_LIB = MinilibX/minilibx_macos/libmlx.a
 MLX_DIR = MinilibX/minilibx_macos/
@@ -34,7 +34,7 @@ $(FT_LIB):
 	@$(MAKE) -sC $(FT_DIR)
 
 $(MLX_LIB):
-	@$(MAKE) -sC $(MLX_DIR)
+	@$(MAKE) -sC $(MLX_DIR) make all
 
 clean:
 	rm -rf $(OBJ)

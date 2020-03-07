@@ -6,7 +6,7 @@
 /*   By: mcamila <mcamila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:43:28 by mcamila           #+#    #+#             */
-/*   Updated: 2020/02/24 19:28:54 by mcamila          ###   ########.fr       */
+/*   Updated: 2020/02/22 06:35:43 by mcamila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void			draw_tri(t_pt2 p0, t_pt2 p1, t_pt2 p2, t_data *data)
 	y = p0.y - 1;
 	s.col1.argb = 0;
 	s.col2.argb = 0;
-	while (++y < (float)((int)(p1.y)))
+	while (++y < (float)((int)p1.y))
 		draw_tri_1(&s, data, y);
 	initializate_s_2(p1, p2, &s);
 	while (y <= (float)((int)p2.y))

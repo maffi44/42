@@ -1,4 +1,0 @@
-"/Users/mcamila/Desktop/3 ,.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/mcamila/MyProjects/42/42/FDF
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/mcamila/MyProjects/42/42/FDF/cmake-build-debug
