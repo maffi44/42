@@ -19,4 +19,4 @@ Fractal - Написанный мною рендер фрактала
 [TASK](https://github.com/BenjaminSouchet/42_Subjects/blob/master/00_Projects/03_Graphic/fract_ol.pdf)
 
 Видео работы Fractal:
-[![Watch the video](https://github.com/maffi44/42/blob/master/FDF/FDF_screen_shot.jpg)](https://youtu.be/AWmR25NQVuQ)
+[![Watch the video](https://github.com/maffi44/42/blob/master/Fractal/fractal_screen_shot.jpg)](https://youtu.be/AWmR25NQVuQ)
